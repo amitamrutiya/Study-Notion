@@ -47,6 +47,10 @@ const userSchems = new mongoose.Schema({
       ref: "CourseProgress",
     },
   ],
+  contactNumber: {
+    type: Number,
+  },
+
 });
 
 module.exports = mongoose.model("User", userSchems);
