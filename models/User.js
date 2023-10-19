@@ -50,7 +50,12 @@ const userSchems = new mongoose.Schema({
   contactNumber: {
     type: Number,
   },
-
+  token: {
+    type: String,
+  },
+  resetPasswordExpires: {
+    type: Date,
+  },
 });
 
 module.exports = mongoose.model("User", userSchems);
