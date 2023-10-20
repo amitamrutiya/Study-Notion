@@ -1,6 +1,7 @@
 const Section = require("../models/Section");
 const Course = require("../models/Course");
 
+// Create Section
 exports.createSection = async (req, res) => {
   try {
     //data fetch
@@ -48,8 +49,7 @@ exports.createSection = async (req, res) => {
   }
 };
 
-exports.getSection = async (req, res) => {};
-
+// Update Section
 exports.updateSection = async (req, res) => {
   try {
     //data fetch
@@ -93,6 +93,7 @@ exports.updateSection = async (req, res) => {
   }
 };
 
+// Delete Section
 exports.deleteSection = async (req, res) => {
   try {
     //data fetch
@@ -137,6 +138,46 @@ exports.deleteSection = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Unable to Delete section",
+      error: error.message,
+    });
+  }
+};
+
+// Get All Sections
+ecports.getAllSections = async (req, res) => {
+  try {
+    //data fetch
+    const { courseId } = req.body;
+
+    //data validation
+    if (!courseId) {
+      return res
+        .status(400)
+        .json({ success: false, error: "All fields are required" });
+    }
+
+    //check if course exist
+    const course = await Course.findById(courseId);
+    if (!course) {
+      return res
+        .status(404)
+        .json({ success: false, error: "Course not found" });
+    }
+
+    //get all Sections
+    const sections = await Section.find({ courseId });
+
+    //send response
+    res.status(201).json({
+      success: true,
+      message: "All Sections",
+      sections,
+    });
+  } catch (error) {
+    console.log("Error in getAllSections", error);
+    res.status(500).json({
+      success: false,
+      message: "Unable to get all sections",
       error: error.message,
     });
   }
