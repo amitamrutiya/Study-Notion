@@ -1,5 +1,5 @@
 const Course = require("../models/Course");
-const Tag = require("../models/Tag");
+const Category = require("../models/Category");
 const User = require("../models/User");
 const { uploadImageToCloudinary } = require("../utils/imageUploader");
 require("dotenv").config();
@@ -13,7 +13,8 @@ exports.createCourse = async (req, res) => {
       courseDescription,
       whatYouWillLearn,
       price,
-      tag,
+      category,
+      tags,
       totalDuration,
       language,
     } = req.body;
@@ -27,10 +28,11 @@ exports.createCourse = async (req, res) => {
       !courseDescription ||
       !whatYouWillLearn ||
       !price ||
-      !tag ||
+      !category ||
       !duration ||
       !language ||
-      !thumbnail
+      !thumbnail ||
+      !tags
     ) {
       return res
         .status(400)
@@ -46,12 +48,12 @@ exports.createCourse = async (req, res) => {
       });
     }
 
-    //check for tag
-    const tagDetails = await Tag.findById(tag);
-    if (!tagDetails) {
+    //check for category
+    const categoryDetails = await Category.findById(category);
+    if (!categoryDetails) {
       return res.status(400).json({
         success: false,
-        message: "Please select a valid tag",
+        message: "Please select a valid category",
       });
     }
 
@@ -69,7 +71,8 @@ exports.createCourse = async (req, res) => {
       whatYouWillLearn,
       price,
       thumbnail: thumbnailImage.secure_url,
-      tag: tagDetails._id,
+      category: categoryDetails._id,
+      tags,
       language,
       totalDuration,
     });
@@ -78,9 +81,9 @@ exports.createCourse = async (req, res) => {
     instructorDetails.courses.push(newCourse._id);
     await instructorDetails.save();
 
-    //update tag schema
-    tagDetails.courses.push(newCourse._id);
-    await tagDetails.save();
+    //update category schema
+    categoryDetails.courses.push(newCourse._id);
+    await categoryDetails.save();
 
     //send response
     return res.status(200).json({
@@ -108,7 +111,7 @@ exports.showAllCourses = async (req, res) => {
         thumbnail: true,
         instructor: true,
         ratingAndReviews: true,
-        tag: true,
+        category: true,
         studentsEnrolled: true,
       }
     )
