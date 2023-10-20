@@ -74,11 +74,7 @@ exports.createSubSection = async (req, res) => {
 exports.updateSubSection = async (req, res) => {
   try {
     //fetch data from request body
-    const { subSectionId, title, timeDuration, description } = req.body;
-
-    //extract file/video
-    const video = req.file.videoFile;
-    let videoUrl = null;
+    const { subSectionId } = req.body;
 
     //validation
     if (!subSectionId) {
@@ -87,9 +83,16 @@ exports.updateSubSection = async (req, res) => {
         message: " SubSectionId is required",
       });
     }
-    if (!title) title = subSection.title;
-    if (!timeDuration) timeDuration = subSection.timeDuration;
-    if (!description) description = subSection.description;
+
+    const {
+      title = subSection.title,
+      timeDuration = subSection.timeDuration,
+      description = subSection.description,
+    } = req.body;
+
+    //extract file/video
+    let videoUrl = null;
+    const video = req.file.videoFile;
     if (!video) videoUrl = subSection.videoUrl;
 
     //check if subSection exist
@@ -169,7 +172,7 @@ exports.deleteSubSection = async (req, res) => {
     const updatedSection = await Section.findByIdAndUpdate(
       { _id: sectionId },
       {
-        $pop: { subSections: subSectionId },
+        $pull: { subSections: subSectionId },
       },
       { new: true }
     );

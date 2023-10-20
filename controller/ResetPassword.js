@@ -2,7 +2,7 @@ const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
 const bcrypt = require("bcryptjs");
 
-//ResetPasswordToken
+// ResetPasswordToken
 exports.resetPasswordToken = async (req, res) => {
   try {
     //fetch email from request body
@@ -59,7 +59,7 @@ exports.resetPasswordToken = async (req, res) => {
   }
 };
 
-//ResetPassword
+// ResetPassword
 exports.resetPassword = async (req, res) => {
   try {
     //data fetch

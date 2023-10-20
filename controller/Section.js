@@ -121,7 +121,7 @@ exports.deleteSection = async (req, res) => {
     //update course with new deleted Section
     const updatedCourseDetails = await Course.findByIdAndUpdate(
       section.courseId,
-      { $pop: { courseContent: deletedSection._id } },
+      { $pull: { courseContent: deletedSection._id } },
       { new: true }
     )
       .populate("courseContent")

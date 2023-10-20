@@ -187,7 +187,6 @@ exports.login = async (req, res) => {
     //check if password is correct
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (isPasswordCorrect) {
-
       //genreate JWT token
       const payload = {
         email: user.email,
@@ -291,3 +290,4 @@ exports.changePassowrd = async (req, res) => {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
+
