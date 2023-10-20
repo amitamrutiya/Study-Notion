@@ -4,8 +4,8 @@ const Profile = require("../models/Profile");
 const otpGenerator = require("otp-generator");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-require("dotenv").config();
 const mailSender = require("../utils/mailSender");
+require("dotenv").config();
 
 //Send Otp
 exports.sendOTP = async (req, res) => {
@@ -13,7 +13,13 @@ exports.sendOTP = async (req, res) => {
     //fetch email from request body
     const { email } = req.body;
 
-    // TODO 1: validate email
+    //validate data
+    if (!email) {
+      return res
+        .status(403)
+        .json({ success: false, message: "Please fill all the fields" });
+    }
+
     //check if user already exist
     const checkUserPresent = await User.findOne({ email });
 
@@ -33,7 +39,7 @@ exports.sendOTP = async (req, res) => {
     console.log("OTP generated: " + otp);
 
     //check if otp already exist
-    // TODO 2: this is not a good way to check if otp already exist make it more efficient by bruteforce
+    // TODO 1: this is not a good way to check if otp already exist make it more efficient by bruteforce
     let result = await OTP.findOne({ otp: otp });
 
     while (result) {
@@ -46,14 +52,13 @@ exports.sendOTP = async (req, res) => {
     }
 
     //save otp to database
-    const otpPayload = { email, otp };
-    const otpBody = await OTP.create(otpPayload);
-    console.log("OTP saved to database: " + otpBody);
+    const otpBody = await OTP.create({ email, otp });
 
     //return response successful
     res.status(200).json({
       success: true,
       message: "OTP sent successfully",
+      data: otpBody,
     });
   } catch (error) {
     console.log("Error in sending OTP: " + error);
@@ -128,7 +133,7 @@ exports.signUp = async (req, res) => {
       gender: null,
       dateOfBirth: null,
       about: null,
-      contactNumber: null,
+      contactNumber: contactNumber ?? null,
     });
 
     const user = await User.create({
@@ -182,6 +187,7 @@ exports.login = async (req, res) => {
     //check if password is correct
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (isPasswordCorrect) {
+
       //genreate JWT token
       const payload = {
         email: user.email,

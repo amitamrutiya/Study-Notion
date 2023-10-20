@@ -29,7 +29,7 @@ exports.resetPasswordToken = async (req, res) => {
     await User.findOneAndUpdate(
       { email },
       {
-        token,
+        token: token,
         resetPasswordExpires: Date.now() + 5 * 60 * 1000,
       },
       { new: true }

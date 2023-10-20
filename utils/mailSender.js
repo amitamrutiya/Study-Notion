@@ -3,6 +3,7 @@ require("dotenv").config();
 
 const mailSender = async (email, title, body) => {
   try {
+    // create transporter object
     const transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
       secure: true,
@@ -12,13 +13,13 @@ const mailSender = async (email, title, body) => {
       },
     });
 
+    // send mail with defined transport object
     const info = await transporter.sendMail({
       from: "StudyNotion 📖 - by Amit",
       to: `${email}`,
       subject: `${title}`,
       html: `${body}`,
     });
-    
     return info;
   } catch (error) {
     console.log(error);
