@@ -68,7 +68,7 @@ exports.createRating = async (req, res) => {
     )
       .populate("updatedCourseDetails")
       .exec();
-    console.log(course);
+    console.log(updatedCourseDetails);
 
     // send response
     return res.status(200).json({
@@ -85,7 +85,39 @@ exports.createRating = async (req, res) => {
 // get average rating and review
 exports.getAverageRating = async (req, res) => {
   try {
-  } catch (error) {}
+    // get data
+    const { courseId } = req.body;
+
+    // validate data
+    if (!courseId) {
+      return res
+        .status(400)
+        .json({ success: false, message: "Please enter all the fields" });
+    }
+
+    // get average rating and review
+    const averageRating = await RatingAndReview.aggregate([
+      {
+        $match: { course: new mongoose.Types.ObjectId(courseId) },
+      },
+      {
+        $group: {
+          _id: null,
+          averageRating: { $avg: "$rating" },
+        },
+      },
+    ]);
+
+    // send response
+    return res.status(200).json({
+      success: true,
+      message: "Average rating and review fetched successfully",
+      data: averageRatingAndReview,
+    });
+  } catch (error) {
+    console.log("Error in getAverageRating");
+    return res.status(500).json({ success: false, message: error.message });
+  }
 };
 
 // get all rating and review
