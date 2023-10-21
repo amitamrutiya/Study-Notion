@@ -29,7 +29,7 @@ exports.createCourse = async (req, res) => {
       !whatYouWillLearn ||
       !price ||
       !category ||
-      !duration ||
+      !totalDuration ||
       !language ||
       !thumbnail ||
       !tags
@@ -40,7 +40,9 @@ exports.createCourse = async (req, res) => {
     }
 
     // Check for instructor
-    const instructorDetails = await User.findById(req.user._id);
+    const instructorDetails = await User.findById(req.user.id, {
+      accountType: "Instructor",
+    });
     if (!instructorDetails) {
       return res.status(400).json({
         success: false,
@@ -101,10 +103,10 @@ exports.createCourse = async (req, res) => {
 };
 
 //getAllCourse handler function
-exports.showAllCourses = async (req, res) => {
+exports.getAllCourses = async (req, res) => {
   try {
     const allCourses = await Course.find(
-      {},
+      { status: "Published" },
       {
         courseName: true,
         price: true,
@@ -115,7 +117,7 @@ exports.showAllCourses = async (req, res) => {
         studentsEnrolled: true,
       }
     )
-      .populate("instructor")
+      .populate("Instructor")
       .exec();
 
     return res.status(200).json({

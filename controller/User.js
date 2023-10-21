@@ -16,13 +16,14 @@ exports.deleteUserAccount = async (req, res) => {
     }
 
     // find profile
-    const userDetails = await User.findById(id);
+    const userDetails = await User.findById({ _id: id });
     if (!userDetails) {
       return res.status(400).json({
         success: false,
         message: "User not found",
       });
     }
+
     const profileId = userDetails.additionalDetails;
     if (!profileId) {
       return res.status(400).json({
@@ -32,15 +33,20 @@ exports.deleteUserAccount = async (req, res) => {
     }
 
     //if user is students then remove from enrolled courses
-    if (req.user.accountType === "student") {
-      await Course.updateMany(
-        { studentsEnrolled: id },
-        { $pull: { studentsEnrolled: id } }
-      );
+    if (req.user.accountType === "Student") {
+      for (const courseId of userDetails.courses) {
+        await Course.findByIdAndUpdate(
+          courseId,
+          { $pull: { studentsEnrolled: id } },
+          { new: true }
+        );
+      }
     }
     // delete profile and account
-    await Profile.findByIdAndDelete(profileId);
-    await User.findByIdAndDelete(id);
+    await Profile.findByIdAndDelete({
+      _id: new mongoose.Types.ObjectId(profileId),
+    });
+    await User.findByIdAndDelete({ _id: id });
 
     // return response
     return res.status(201).json({
@@ -58,7 +64,7 @@ exports.deleteUserAccount = async (req, res) => {
 };
 
 //Get User Details
-exports.getUserDetails = async (req, res) => {
+exports.getAllUserDetails = async (req, res) => {
   try {
     //get id
     const { id } = req.user;

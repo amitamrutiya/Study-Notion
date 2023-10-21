@@ -38,7 +38,7 @@ exports.createSubSection = async (req, res) => {
     //create a sub section
     const subSection = await SubSection.create({
       title,
-      timeDuration,
+      timeDuration: `${uploadDetails.duration}`,
       description,
       videoUrl: uploadVideo.secure_url,
     });
@@ -74,7 +74,7 @@ exports.createSubSection = async (req, res) => {
 exports.updateSubSection = async (req, res) => {
   try {
     //fetch data from request body
-    const { subSectionId } = req.body;
+    const { sectionId, subSectionId, title, description } = req.body;
 
     //validation
     if (!subSectionId) {
@@ -83,17 +83,6 @@ exports.updateSubSection = async (req, res) => {
         message: " SubSectionId is required",
       });
     }
-
-    const {
-      title = subSection.title,
-      timeDuration = subSection.timeDuration,
-      description = subSection.description,
-    } = req.body;
-
-    //extract file/video
-    let videoUrl = null;
-    const video = req.file.videoFile;
-    if (!video) videoUrl = subSection.videoUrl;
 
     //check if subSection exist
     const subSection = await Section.findById(subSectionId);
@@ -104,25 +93,28 @@ exports.updateSubSection = async (req, res) => {
       });
     }
 
+    if (title) subSection.title = title;
+    if (description) subSection.description = description;
+
+    //extract file/video
+    let videoUrl = null;
+    const video = req.file.videoFile;
+
     //upload video to clodinary
     if (video) {
-      uploadVideo = await uploadFileToCloudinary(
+      const uploadVideo = await uploadFileToCloudinary(
         video,
         process.env.CLOUDINARY_COURSE_THUMBNAIL_FOLDER
       );
-      videoUrl = uploadVideo.secure_url;
+      subSection.videoUrl = uploadVideo.secure_url;
+      subSection.timeDuration = `${uploadVideo.duration}`;
+    } else {
+      subSection.videoUrl = subSection.videoUrl;
     }
 
-    //update sub section
-    const updatedSubSection = await SubSection.findByIdAndUpdate(
-      { _id: subSectionId },
-      {
-        title,
-        timeDuration,
-        description,
-        videoUrl,
-      },
-      { new: true }
+    await subSection.save();
+    const updatedSection = await Section.findById(sectionId).populate(
+      "subSections"
     );
 
     //return response

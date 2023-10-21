@@ -44,7 +44,7 @@ exports.isStudent = async (req, res, next) => {
     const user = req.user;
 
     //check if user is student
-    if (user.accountType !== "student") {
+    if (user.accountType !== "Student") {
       return res.status(401).json({
         success: false,
         message: "This is a protected router for Students only",
@@ -64,7 +64,7 @@ exports.isInstructor = async (req, res, next) => {
     const user = req.user;
 
     //check if user is instructor
-    if (user.accountType !== "instructor") {
+    if (user.accountType !== "Instructor") {
       return res.status(401).json({
         success: false,
         message: "This is a protected router for instructor only",
@@ -84,7 +84,7 @@ exports.isAdmin = async (req, res, next) => {
     const user = req.user;
 
     //check if user is admin
-    if (user.accountType !== "admin") {
+    if (user.accountType !== "Admin") {
       return res.status(401).json({
         success: false,
         message: "This is a protected router for admin only",

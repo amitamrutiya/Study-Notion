@@ -1,6 +1,7 @@
 const User = require("../models/User");
 const mailSender = require("../utils/mailSender");
 const bcrypt = require("bcryptjs");
+const crypto = require("crypto");
 
 // ResetPasswordToken
 exports.resetPasswordToken = async (req, res) => {
@@ -23,7 +24,7 @@ exports.resetPasswordToken = async (req, res) => {
     }
 
     //generate token
-    const token = crypto.randomUUID();
+    const token = crypto.randomBytes(20).toString("hex");
 
     //update user by adding token and expiration time
     await User.findOneAndUpdate(
@@ -41,8 +42,8 @@ exports.resetPasswordToken = async (req, res) => {
     //send email to user
     await mailSender(
       email,
-      "Reset Password Email from StudyNotion",
-      `Password reset link: ${url}`
+      "Password Reset Link",
+      `Your Link for email verification is ${url}. Please click this url to reset your password.`
     );
 
     //return response successful
@@ -93,7 +94,7 @@ exports.resetPassword = async (req, res) => {
     if (userDetails.resetPasswordExpires < Date.now()) {
       return res.status(400).json({
         success: false,
-        message: "Token expired",
+        message: "Token is expired, please regenerate your token'",
       });
     }
 
@@ -120,4 +121,3 @@ exports.resetPassword = async (req, res) => {
     });
   }
 };
-

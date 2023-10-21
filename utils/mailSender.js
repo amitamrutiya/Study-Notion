@@ -15,7 +15,7 @@ const mailSender = async (email, title, body) => {
 
     // send mail with defined transport object
     const info = await transporter.sendMail({
-      from: "StudyNotion 📖 - by Amit",
+      from: "StudyNotion 📖 - by Amit Kumar",
       to: `${email}`,
       subject: `${title}`,
       html: `${body}`,

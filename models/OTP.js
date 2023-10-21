@@ -19,22 +19,22 @@ const OTPShema = new mongoose.Schema({
   },
 });
 
-async function sendVerficationEmail(email, otp) {
+async function sendVerificationEmail(email, otp) {
   try {
     const mailResponse = await mailSender(
       email,
-      "Verfication Email from StudyNotion",
-      otp
+      "Verification Email from StudyNotion",
+      emailTemplate(otp)
     );
-    console.log("Email sent Successfully: " + mailResponse.response);
+    console.log("Email sent Successfully: ", mailResponse);
   } catch (error) {
-    console.log("Error in sending email" + error);
+    console.log("error occured while sending mails: ", error);
     throw error;
   }
 }
 
 OTPShema.pre("save", async function (next) {
-  await sendVerficationEmail(this.email, this.otp);
+  await sendVerificationEmail(this.email, this.otp);
   next();
 });
 module.exports = mongoose.model("OTP", OTPShema);

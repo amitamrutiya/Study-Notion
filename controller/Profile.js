@@ -5,7 +5,14 @@ const User = require("../models/User");
 exports.updateProfile = async (req, res) => {
   try {
     // Get user id and data
-    const { dateOfBirth = "", about = "", contactNumber, gender } = req.body;
+    const {
+      firstName = "",
+      lastName = "",
+      dateOfBirth = "",
+      about = "",
+      contactNumber = "",
+      gender = "",
+    } = req.body;
     const { id } = req.user;
 
     // validation
@@ -14,12 +21,10 @@ exports.updateProfile = async (req, res) => {
         success: false,
         message: "User id is required",
       });
-    } else if (!contactNumber || !gender) {
-      return res.status(400).json({
-        success: false,
-        message: "Contact number and gender is required",
-      });
-    } else if (contactNumber.length < 10 || contactNumber.length > 10) {
+    } else if (
+      contactNumber &&
+      (contactNumber.length < 10 || contactNumber.length > 10)
+    ) {
       return res.status(400).json({
         success: false,
         message: "Contact number should be 10 digits",
@@ -31,6 +36,10 @@ exports.updateProfile = async (req, res) => {
     const profileId = userDetails.additionalDetails;
     const profileDetails = await Profile.findById(profileId);
 
+    // update user
+    const user = await User.findByIdAndUpdate(id, { firstName, lastName });
+    await user.save();
+
     // update profile
     profileDetails.dateOfBirth = dateOfBirth;
     profileDetails.about = about;
@@ -39,6 +48,11 @@ exports.updateProfile = async (req, res) => {
 
     // save profile
     await profileDetails.save();
+
+    // Find the updated user details
+    const updatedUserDetails = await User.findById(id)
+      .populate("additionalDetails")
+      .exec();
 
     // return response
     return res.status(201).json({
@@ -55,4 +69,3 @@ exports.updateProfile = async (req, res) => {
     });
   }
 };
-

@@ -44,12 +44,10 @@ const courseSchems = new mongoose.Schema({
     required: true,
     ref: "Category",
   },
-  tags: [
-    {
-      type: String,
-      required: true,
-    },
-  ],
+  tags: {
+    type: [String],
+    required: true,
+  },
   studentsEnrolled: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -68,6 +66,9 @@ const courseSchems = new mongoose.Schema({
   totalLectures: {
     type: Number,
     required: true,
+  },
+  status: {
+    enum: ["Draft", "Published"],
   },
 });
 
