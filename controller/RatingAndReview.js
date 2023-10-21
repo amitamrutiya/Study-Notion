@@ -109,11 +109,18 @@ exports.getAverageRating = async (req, res) => {
     ]);
 
     // send response
-    return res.status(200).json({
-      success: true,
-      message: "Average rating and review fetched successfully",
-      data: averageRatingAndReview,
-    });
+    if (averageRating > 0) {
+      return res.status(200).json({
+        success: true,
+        message: "Average rating and review fetched successfully",
+        data: averageRating[0].averageRating,
+      });
+    } else {
+      return res.status(400).json({
+        success: false,
+        message: "No rating and review found for this course",
+      });
+    }
   } catch (error) {
     console.log("Error in getAverageRating");
     return res.status(500).json({ success: false, message: error.message });
@@ -121,7 +128,27 @@ exports.getAverageRating = async (req, res) => {
 };
 
 // get all rating and review
-exports.getAllRating = async (req, res) => {
+exports.getAllRatingAndReview = async (req, res) => {
   try {
-  } catch (error) {}
+    const allReviews = await RatingAndReview.find({})
+      .sort({ rating: "desc" })
+      .populate({ path: "user", select: "firstName lastName email image" })
+      .populate({ path: "course", select: "courseName" })
+      .exec();
+
+    if (!allReviews) {
+      return res.status(400).json({
+        success: false,
+        message: "No rating and review found",
+      });
+    }
+    return res.status(200).json({
+      success: true,
+      message: "All rating and review fetched successfully",
+      data: allReviews,
+    });
+  } catch (error) {
+    console.log("Error in getAllRatingAndReview");
+    return res.status(500).json({ success: false, message: error.message });
+  }
 };
