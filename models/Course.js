@@ -61,14 +61,16 @@ const courseSchems = new mongoose.Schema({
   },
   totalDuration: {
     type: String,
-    required: true,
   },
   totalLectures: {
     type: Number,
-    required: true,
   },
   status: {
+    type: String,
     enum: ["Draft", "Published"],
+  },
+  instruction: {
+    type: [String],
   },
 });
 
