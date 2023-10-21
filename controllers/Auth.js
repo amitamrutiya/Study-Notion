@@ -231,8 +231,8 @@ exports.login = async (req, res) => {
   }
 };
 
-// ChangePassowrd
-exports.changePassowrd = async (req, res) => {
+// ChangePassword
+exports.changePassword = async (req, res) => {
   try {
     // Fetch data from request body
     const { oldPassword, newPassword, confirmNewPassword } = req.body;
