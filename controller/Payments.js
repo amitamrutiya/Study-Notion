@@ -125,6 +125,13 @@ exports.verifyPayment = async (req, res) => {
         enrolledStudent.email,
         courseEnrollmentEmail(enrolledStudent.name, enrolledCourse.courseName)
       );
+
+      console.log("emailResponse" + emailResponse);
+
+      return res.status(200).json({
+        success: true,
+        message: "Signature verified and Course enrolled successfully",
+      });
     } catch (error) {
       return res.status(500).json({ success: false, error: error.message });
     }
