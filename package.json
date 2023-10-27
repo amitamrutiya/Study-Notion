@@ -3,11 +3,12 @@
     "version": "0.1.0",
     "private": true,
     "dependencies": {
-        "concurrently": "^8.2.2"
+        "concurrently": "^8.2.2",
+        "react-router-dom": "^6.17.0"
     },
     "scripts": {
         "start:server": "cd backend && npm run dev",
         "start:client": "cd frontend && npm run dev",
-        "dev":"concurrently -n \"server,client\" -c \"red,blue\" \"npm run start:server\" \"npm run start:client\""
+        "dev": "concurrently -n \"server,client\" -c \"red,blue\" \"npm run start:server\" \"npm run start:client\""
     }
 }
