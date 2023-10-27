@@ -3,21 +3,35 @@ name: Node.js CI
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'backend/**'
   pull_request:
     branches: [ main ]
+    paths:
+      - 'backend/**'
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
 
     steps:
     - uses: actions/checkout@v2
+      with:
+        path: 'backend'
+        ref: main
+
     - name: Use Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14.x'
+        node-version: '20.x'
+
     - name: Install Dependencies
-      run: npm install
+      run: npm install --prefix backend
+
     - name: Run Tests
-      run: npm test
+      run: npm test --prefix backend
+
