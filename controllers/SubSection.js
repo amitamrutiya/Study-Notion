@@ -11,7 +11,7 @@ exports.createSubSection = async (req, res) => {
 
     //extract file/video
     const video = req.files.video;
-    
+
     //validation
     if (!sectionId || !title || !timeDuration || !video || !description) {
       return res.status(400).json({
@@ -85,7 +85,7 @@ exports.updateSubSection = async (req, res) => {
     }
 
     //check if subSection exist
-    const subSection = await Section.findById(subSectionId);
+    const subSection = await SubSection.findById(subSectionId);
     if (!subSection) {
       return res.status(404).json({
         success: false,
@@ -98,10 +98,10 @@ exports.updateSubSection = async (req, res) => {
 
     //extract file/video
     let videoUrl = null;
-    const video = req.file.videoFile;
 
     //upload video to clodinary
-    if (video) {
+    if (req.files && req.files.video !== undefined) {
+      const video = req.files.video;
       const uploadVideo = await uploadFileToCloudinary(
         video,
         process.env.CLOUDINARY_COURSE_THUMBNAIL_FOLDER
@@ -113,7 +113,7 @@ exports.updateSubSection = async (req, res) => {
     }
 
     await subSection.save();
-    const updatedSection = await Section.findById(sectionId).populate(
+    const updatedSubSection = await Section.findById(sectionId).populate(
       "subSections"
     );
 
@@ -148,7 +148,7 @@ exports.deleteSubSection = async (req, res) => {
     }
 
     //check if subSection exist
-    const subSection = await Section.findById(subSectionId);
+    const subSection = await SubSection.findById(subSectionId);
     if (!subSection) {
       return res.status(404).json({
         success: false,

@@ -54,10 +54,7 @@ exports.createCategory = async (req, res) => {
 exports.showAllCategories = async (req, res) => {
   try {
     //fetch all categories
-    const allCategories = await Category.find(
-      {},
-      { name: true, description: true }
-    );
+    const allCategories = await Category.find();
     res.status(200).json({
       success: true,
       message: "All categories return successfully",
@@ -87,7 +84,11 @@ exports.categoryPageDetails = async (req, res) => {
 
     // get category details
     const selectedCategory = await Category.findById(categoryId, { new: true })
-      .populate("courses")
+      .populate({
+        path: "courses",
+        // match: { status: "Published" },
+        populate: "ratingAndReviews",
+      })
       .exec();
 
     //validation
@@ -101,6 +102,7 @@ exports.categoryPageDetails = async (req, res) => {
     // get courses of different category
     const otherCategories = await Category.find(
       { _id: { $ne: categoryId } },
+      { name: true, description: true },
       { new: true }
     )
       .populate("courses")

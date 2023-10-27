@@ -131,7 +131,7 @@ exports.getAllCourses = async (req, res) => {
         studentsEnrolled: true,
       }
     )
-      .populate("Instructor")
+      .populate("instructor")
       .exec();
 
     return res.status(200).json({
@@ -140,8 +140,8 @@ exports.getAllCourses = async (req, res) => {
       data: allCourses,
     });
   } catch (error) {
-    log("Error in showAllCourses controller: ");
-    return req.status(500).json({
+    console.log("Error in showAllCourses controller: ");
+    return res.status(500).json({
       success: false,
       message: error.message,
     });

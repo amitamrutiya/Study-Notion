@@ -58,7 +58,7 @@ exports.createSection = async (req, res) => {
 exports.updateSection = async (req, res) => {
   try {
     //data fetch
-    const { sectionName, sectionId } = req.body;
+    const { sectionName, sectionId, courseId } = req.body;
 
     //data validation
     if (!sectionName || !sectionId) {
@@ -84,7 +84,7 @@ exports.updateSection = async (req, res) => {
 
     //update course with new updatedSection
     const course = await Course.findById(courseId)
-      .populate({ path: "courseContent", populate: { path: "subSection" } })
+      .populate({ path: "courseContent", populate: { path: "subSections" } })
       .exec();
 
     //send response
@@ -107,7 +107,7 @@ exports.updateSection = async (req, res) => {
 exports.deleteSection = async (req, res) => {
   try {
     //data fetch
-    const { sectionId } = req.body;
+    const { sectionId, courseId } = req.body;
 
     //data validation
     if (!sectionId) {
@@ -124,7 +124,7 @@ exports.deleteSection = async (req, res) => {
         .json({ success: false, error: "Section not found" });
     }
 
-    await Course.findByIdAndUpdate(section.courseId, {
+    await Course.findByIdAndUpdate(courseId, {
       $pull: { courseContent: sectionId },
     });
 
@@ -135,11 +135,11 @@ exports.deleteSection = async (req, res) => {
     const deletedSection = await Section.findByIdAndDelete(sectionId);
 
     //find the updated course and return
-    await Course.findById(section.courseId)
+    const updatedCourseDetails = await Course.findById(courseId)
       .populate({
         path: "courseContent",
         populate: {
-          path: "subSection",
+          path: "subSections",
         },
       })
       .exec();
