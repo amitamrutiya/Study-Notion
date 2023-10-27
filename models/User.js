@@ -47,9 +47,6 @@ const userSchems = new mongoose.Schema({
       ref: "CourseProgress",
     },
   ],
-  contactNumber: {
-    type: Number,
-  },
   token: {
     type: String,
   },

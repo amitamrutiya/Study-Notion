@@ -65,12 +65,16 @@ const courseSchems = new mongoose.Schema({
   totalLectures: {
     type: Number,
   },
+  instructions: {
+    type: [String],
+  },
   status: {
     type: String,
     enum: ["Draft", "Published"],
   },
-  instruction: {
-    type: [String],
+  createdAt: {
+    type: Date,
+    default: Date.now,
   },
 });
 
