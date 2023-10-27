@@ -24,7 +24,7 @@ exports.createSection = async (req, res) => {
     }
 
     // create Section
-    const newSection = await Section.create({ courseId, sectionName });
+    const newSection = await Section.create({ sectionName });
 
     //update course with newSection
     const updatedCourseDetails = await Course.findByIdAndUpdate(
@@ -32,7 +32,10 @@ exports.createSection = async (req, res) => {
       { $push: { courseContent: newSection._id } },
       { new: true }
     )
-      .populate({ path: "courseContent", populate: { path: "subSection" } })
+      .populate({
+        path: "courseContent",
+        populate: { path: "subSections" },
+      })
       .exec();
 
     //send response
@@ -158,7 +161,7 @@ exports.deleteSection = async (req, res) => {
 };
 
 // Get All Sections
-ecports.getAllSections = async (req, res) => {
+exports.getAllSections = async (req, res) => {
   try {
     //data fetch
     const { courseId } = req.body;

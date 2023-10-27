@@ -16,7 +16,7 @@ exports.createCategory = async (req, res) => {
     }
 
     // check if user is admin then only create category
-    if (req.user.accountType !== "admin") {
+    if (req.user.accountType !== "Admin") {
       return res.status(403).json({
         success: false,
         message: "You are not authorized to create category",
@@ -24,7 +24,7 @@ exports.createCategory = async (req, res) => {
     }
 
     //check if category already exist
-    const isExistingCategory = Category.findOne({ name });
+    const isExistingCategory = await Category.findOne({ name });
     if (isExistingCategory) {
       return res.status(400).json({
         success: false,

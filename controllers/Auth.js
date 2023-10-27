@@ -2,7 +2,7 @@ const User = require("../models/User");
 const OTP = require("../models/OTP");
 const Profile = require("../models/Profile");
 const otpGenerator = require("otp-generator");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const mailSender = require("../utils/mailSender");
 require("dotenv").config();
@@ -33,9 +33,9 @@ exports.sendOTP = async (req, res) => {
 
     //generate otp
     var otp = otpGenerator.generate(6, {
-      upperCase: false,
       specialChars: false,
-      alphabets: false,
+      lowerCaseAlphabets: false,
+      upperCaseAlphabets: false,
     });
     console.log("OTP generated: " + otp);
 
@@ -113,21 +113,25 @@ exports.signUp = async (req, res) => {
         .status(400)
         .json({ success: false, message: "User already exist" });
     }
-
     //find most recent OTP stored for the user
-    const recentOtp = await OTP.findOne({ email })
+    const recentOtp = await OTP.find({ email })
       .sort({ createdAt: -1 })
       .limit(1);
 
+    console.log("recentOtp  " + recentOtp);
     //check if OTP is valid
-    if (recentOtp.otp.length === 0) {
+    if (recentOtp.length === 0) {
       return res.status(400).json({ success: false, message: "OTP not found" });
-    } else if (recentOtp.otp !== otp) {
+    } else if (recentOtp[0].otp !== otp) {
       return res.status(400).json({ success: false, message: "Invalid OTP" });
     }
 
     //Hash Password
     const hashedPawword = await bcrypt.hash(password, 10);
+
+    // Create the user
+    let approved = "";
+    approved === "Instructor" ? (approved = false) : (approved = true);
 
     //save user to database
     const profileDetails = await Profile.create({
@@ -141,10 +145,11 @@ exports.signUp = async (req, res) => {
       firstName,
       lastName,
       email,
+      contactNumber: contactNumber,
       password: hashedPawword,
       accountType,
+      approved,
       additionalDetails: profileDetails._id,
-      contactNumber: contactNumber ?? null,
       image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName}+${lastName}`,
     });
 
@@ -166,68 +171,64 @@ exports.signUp = async (req, res) => {
 // Login
 exports.login = async (req, res) => {
   try {
-    //fetch data from request body
-    const { email, password } = req.body;
+    const { email, password } = req.body; //get data from req body
 
-    //validate data
     if (!email || !password) {
-      return res
-        .status(403)
-        .json({ success: false, message: "Please fill all the fields" });
-    }
-
-    //check if user exist
-    const user = await User.findOne({ email }).populate("additionalDetails");
-    if (!user) {
-      return res.status(401).json({
+      // validate krlo means all inbox are filled or not;
+      return res.status(403).json({
         success: false,
-        message: "User does not exist, please signup first",
+        message: "Please Fill up All the Required Fields",
       });
     }
 
-    //check if password is correct
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
-    if (isPasswordCorrect) {
-      //genreate JWT token
+    const user = await User.findOne({ email }).populate("additionalDetails"); //user check exist or not
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        message: "User is not registrered, please signup first",
+      });
+    }
+
+    if (await bcrypt.compare(password, user.password)) {
+      //generate JWT, after password matching/comparing
       const payload = {
+        // generate payload;
         email: user.email,
         id: user._id,
         accountType: user.accountType,
       };
       const token = jwt.sign(payload, process.env.JWT_SECRET, {
-        expiresIn: "20h",
+        // generate token (combination of header , payload , signature)
+        expiresIn: "20h", // set expiry time;
       });
       user.token = token;
       user.password = undefined;
 
-      //create cookie and send response
       const options = {
+        //create cookie and send response
         expires: new Date(
           Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
         ),
         httpOnly: true,
       };
       res.cookie("token", token, options).status(200).json({
-        token,
-        data: user,
         success: true,
-        message: "User logged in successfully",
+        token,
+        user,
+        message: "Logged in successfully",
       });
     } else {
-      return res
-        .status(401)
-        .json({ success: false, message: "Invalid credentials" });
+      return res.status(401).json({
+        success: false,
+        message: "Password is incorrect",
+      });
     }
-
-    //return response
-    res.status(200).json({
-      success: true,
-      message: "User logged in successfully",
-      data: user,
-    });
   } catch (error) {
-    console.log("Error in logging in user: " + error);
-    return res.status(500).json({ success: false, message: error.message });
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: "Login Failure, please try again",
+    });
   }
 };
 

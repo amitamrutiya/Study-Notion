@@ -1,6 +1,8 @@
 const User = require("../models/User");
 const Profile = require("../models/Profile");
 const Course = require("../models/Course");
+const mongoose = require("mongoose");
+
 //Delete Account
 exports.deleteUserAccount = async (req, res) => {
   try {
@@ -16,7 +18,7 @@ exports.deleteUserAccount = async (req, res) => {
     }
 
     // find profile
-    const userDetails = await User.findById({ _id: id });
+    const userDetails = await User.findById(id);
     if (!userDetails) {
       return res.status(400).json({
         success: false,

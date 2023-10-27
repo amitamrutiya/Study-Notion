@@ -1,26 +1,30 @@
 const Course = require("../models/Course");
 const Category = require("../models/Category");
 const User = require("../models/User");
-const { uploadFileToCloudinary } = require("../utils/imageUploader");
+const { uploadFileToCloudinary } = require("../utils/fileUploader");
 require("dotenv").config();
 
 //createCourse handler function
 exports.createCourse = async (req, res) => {
   try {
     //fetch data
-    const {
+    let {
       courseName,
       courseDescription,
       whatYouWillLearn,
       price,
       category,
-      tags,
+      tags: _tags,
       totalDuration,
       language,
+      status,
+      instructions: _instructions,
     } = req.body;
 
     //get thumbnail
     const thumbnail = req.files.thumbnailImage;
+    const tags = JSON.parse(_tags); //Convert the tag and instructions from stringified Array to Array
+    const instructions = JSON.parse(_instructions);
 
     //validate data
     if (
@@ -29,18 +33,20 @@ exports.createCourse = async (req, res) => {
       !whatYouWillLearn ||
       !price ||
       !category ||
-      !totalDuration ||
       !language ||
+      !instructions.length ||
       !thumbnail ||
-      !tags
+      !tags.length
     ) {
       return res
         .status(400)
         .json({ success: false, message: "Please enter all the fields" });
     }
-
+    if (!status || status === undefined) {
+      status = "Draft";
+    }
     // Check for instructor
-    const instructorDetails = await User.findById(req.user.id, {
+    let instructorDetails = await User.findById(req.user.id, {
       accountType: "Instructor",
     });
     if (!instructorDetails) {
@@ -51,7 +57,7 @@ exports.createCourse = async (req, res) => {
     }
 
     //check for category
-    const categoryDetails = await Category.findById(category);
+    let categoryDetails = await Category.findById(category);
     if (!categoryDetails) {
       return res.status(400).json({
         success: false,
@@ -66,7 +72,7 @@ exports.createCourse = async (req, res) => {
     );
 
     //create an entry for new course
-    const newCourse = await Course.create({
+    let newCourse = await Course.create({
       courseName,
       courseDescription,
       instructor: instructorDetails._id,
@@ -77,15 +83,23 @@ exports.createCourse = async (req, res) => {
       tags,
       language,
       totalDuration,
+      status,
+      instructions,
     });
 
     //push course id to instructor's course array
-    instructorDetails.courses.push(newCourse._id);
-    await instructorDetails.save();
+    await User.findByIdAndUpdate(
+      instructorDetails._id,
+      { $push: { courses: newCourse._id } },
+      { new: true }
+    );
 
     //update category schema
-    categoryDetails.courses.push(newCourse._id);
-    await categoryDetails.save();
+    await Category.findByIdAndUpdate(
+      category,
+      { $push: { courses: newCourse._id } },
+      { new: true }
+    );
 
     //send response
     return res.status(200).json({
@@ -158,7 +172,7 @@ exports.getCourseDetails = async (req, res) => {
       .populate("ratingAndReviews")
       .populate({
         path: "courseContent",
-        populate: { path: "subSection" },
+        populate: { path: "subSections" },
       })
       .exec();
 
