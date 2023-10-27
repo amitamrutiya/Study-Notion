@@ -2,9 +2,12 @@
     "name": "study-notion",
     "version": "0.1.0",
     "private": true,
-    "dependencies": {},
+    "dependencies": {
+        "concurrently": "^8.2.2"
+    },
     "scripts": {
         "start:server": "cd backend && npm run dev",
-        "start:client": "cd frontend && npm run dev"
+        "start:client": "cd frontend && npm run dev",
+        "dev":"concurrently -n \"server,client\" -c \"red,blue\" \"npm run start:server\" \"npm run start:client\""
     }
 }
