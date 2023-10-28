@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { HomePageExplore } from "../../../data/homepage-explore";
 import CourseCard from "./CourseCard";
 import HighlightText from "./HighlightText";
@@ -7,7 +7,7 @@ const tabsName = [
   "Free",
   "New to coding",
   "Most popular",
-  "Skill paths",
+  "Skills paths",
   "Career paths",
 ];
 
