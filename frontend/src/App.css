@@ -86,6 +86,17 @@ body {
   visibility: visible;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
 /* Hide default styling of details/summary */
 details > summary {
   list-style: none;
