@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
 import HighlightText from "../components/core/HomePage/HighlightText";
 import Banner from "../assets/Images/banner.mp4";
-// import Footer from "../components/common/Footer";
 import CTAButton from "../components/core/HomePage/Button";
 import CodeBlocks from "../components/core/HomePage/CodeBlocks";
 import ExploreMore from "../components/core/HomePage/ExploreMore";
-// import InstructorSection from "../components/core/HomePage/InstructorSection";
-// import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection";
-// import TimelineSection from "../components/core/HomePage/TimelineSection";
+import Footer from "../components/common/Footer";
+import InstructorSection from "../components/core/HomePage/InstructorSection";
+import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection";
+import TimelineSection from "../components/core/HomePage/TimelineSection";
 // import ReviewSlider from "../components/common/ReviewSlider";
 
 function Home() {
@@ -69,7 +69,8 @@ function Home() {
             position={"lg:flex-row"}
             heading={
               <div className="text-4xl font-semibold">
-                Unlock Your <HighlightText text={"coding potential"} /> with our online courses
+                Unlock Your <HighlightText text={"coding potential"} /> with our
+                online courses
               </div>
             }
             subheading={
@@ -116,11 +117,65 @@ function Home() {
 
         <ExploreMore />
       </div>
-      {/* Section 2 */}
+      {/*Section 2  */}
+      <div className="bg-pure-greys-5 text-richblack-700">
+        <div className="homepage_bg h-[320px]">
+          <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8">
+            <div className="lg:h-[150px]"></div>
 
-      {/* Section 3 */}
+            <div className="flex flex-row gap-7 text-white lg:mt-8">
+              <CTAButton active={true} linkto={"/signup"}>
+                <div className="flex items-center gap-2">
+                  {" "}
+                  Explore Full Catalog <FaArrowRight />{" "}
+                </div>
+              </CTAButton>
+              <CTAButton active={false} linkto={"/signup"}>
+                {" "}
+                Learn more{" "}
+              </CTAButton>
+            </div>
+          </div>
+        </div>
 
-      {/* Section 4 */}
+        <div className="mx-auto flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 ">
+          <div className="mb-10 mt-[-100px] flex flex-col justify-between gap-7 lg:mt-20 lg:flex-row lg:gap-0">
+            <div className="text-4xl font-semibold lg:w-[45%] ">
+              Get the Skills you need for a
+              <HighlightText text={"Job that is in demand"} />
+            </div>
+
+            <div className="flex flex-col items-start gap-10 lg:w-[40%]">
+              <p className="text-[16px]">
+                {" "}
+                The modern StudyNotion is the dictates its own terms. Today, to
+                be a competitive specialist requires more than professional
+                skills.{" "}
+              </p>
+              <CTAButton active={true} linkto={"/signup"}>
+                {" "}
+                Learn more{" "}
+              </CTAButton>
+            </div>
+          </div>
+
+          <TimelineSection />
+          <LearningLanguageSection />
+        </div>
+      </div>
+
+      {/*Section 3 */}
+      <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+        <InstructorSection />
+        <h1 className="text-center text-4xl font-semibold mt-8">
+          {" "}
+          Reviews from Other Learners{" "}
+        </h1>
+        {/* Review Slider here */}
+        {/* <ReviewSlider /> */}
+      </div>
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }
