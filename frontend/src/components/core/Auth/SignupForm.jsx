@@ -170,11 +170,11 @@ function SignupForm() {
             {/* Contact Number */}
             <label>
               <input
-                required
                 type="number"
                 value={contactNumber}
                 placeholder="12345 67890"
                 name="contactNumber"
+                onChange={handleOnChange}
                 style={{
                   boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                 }}
