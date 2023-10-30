@@ -1,7 +1,7 @@
-const BASE_URL = String(import.meta.env.REACT_APP_BASE_URL);
+const BASE_URL = String(import.meta.env.VITE_REACT_APP_BASE_URL);
 
 // AUTH ENDPOINTS
-export const endpoints = {
+export const authEndpoints = {
   SENDOTP_API: BASE_URL + "/auth/sendotp",
   SIGNUP_API: BASE_URL + "/auth/signup",
   LOGIN_API: BASE_URL + "/auth/login",
