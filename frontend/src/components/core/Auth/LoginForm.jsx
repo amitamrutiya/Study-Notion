@@ -1,15 +1,14 @@
 import { useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
-// import { useDispatch } from "react-redux"
-// import { Link, useNavigate } from "react-router-dom"
-import { Link } from "react-router-dom"
-// import { login } from "../../../services/operations/authAPI"
+import { useDispatch } from "react-redux"
+import { Link, useNavigate } from "react-router-dom"
+import { login } from "../../../services/operations/authAPI.js"
 
 
 function LoginForm(){
 
-  // const navigate = useNavigate()
-  // const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
   const [formData, setFormData] = useState({email: "",  password: "" })
   const [showPassword, setShowPassword] = useState(false)
   const { email, password } = formData
@@ -22,7 +21,7 @@ function LoginForm(){
 
   function handleOnSubmit(e){
     e.preventDefault()
-    // dispatch(login(email, password, navigate))
+    dispatch(login(email, password, navigate))
   }
 
 
