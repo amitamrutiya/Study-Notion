@@ -6,6 +6,10 @@ import Signup from "./pages/Signup";
 import Navbar from "./components/common/Navbar";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Error from "./pages/Error";
+import VerifyEmail from "./pages/VerifyEmail";
+import ForgotPassword from "./pages/ForgotPassword";
+import UpdatePassword from "./pages/UpdatePassword";
 
 export default function App() {
   return (
@@ -17,6 +21,10 @@ export default function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/about" element={<About />}></Route>
         <Route path="/contact" element={<Contact />}></Route>
+        <Route path="/verify-email" element={<VerifyEmail />}></Route>
+        <Route path="/forgot-password" element={<ForgotPassword />}></Route>
+        <Route path="/update-password/:id" element={<UpdatePassword />}></Route>
+        <Route path="*" element={<Error />}></Route>
       </Routes>
     </div>
   );
