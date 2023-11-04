@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
-import { MdKeyboardArrowDown } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-
-import { sendOtp } from "../../../services/operations/authAPI"
-import { setSignupData } from "../../../slices/authSlice"
+import CountryCode from "../../../data/countrycode.json";
+import { sendOtp } from "../../../services/operations/authAPI";
+import { setSignupData } from "../../../slices/authSlice";
 import { ACCOUNT_TYPE } from "../../../utils/constants";
 import Tab from "../../common/Tab";
 
@@ -133,7 +132,7 @@ function SignupForm() {
         <label className="w-full">
           {" "}
           <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
-            Email Address<sup className="text-pink-200">*</sup>
+            Email Address <sup className="text-pink-200">*</sup>
           </p>
           <input
             required
@@ -149,47 +148,56 @@ function SignupForm() {
           />
         </label>
 
-        <div className="flex flex-col gap-x-4">
-          {/* Country Code */}
-          <p className="mb-1 text-[0.875rem] leading-[1.375rem] text-richblack-5">
-            Phone Number
-          </p>
-          <div className="flex gap-4">
-            <label>
-              <div
-                className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px] h-12 flex items-center justify-evenly"
+        {/* Contact Number */}
+        <div className="flex flex-col gap-2">
+          <label htmlFor="contactNumber" className="lable-style">
+            {" "}
+            Contact Number{" "}
+          </label>
+
+          <div className="flex gap-5">
+            <div className="flex w-[81px] flex-col gap-2">
+              <select
+                type="text"
+                name="countrycode"
+                id="countrycode"
+                className="form-style bg-richblack-800"
                 style={{
                   boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                 }}
               >
-                +91
-                <MdKeyboardArrowDown />
-              </div>
-            </label>
+                {CountryCode.map((ele, i) => {
+                  return (
+                    <option key={i} value={ele.code}>
+                      {" "}
+                      {ele.code} - {ele.country}{" "}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
 
-            {/* Contact Number */}
-            <label>
+            <div className=" flex w-[calc(100%-90px)] flex-col gap-2 ">
               <input
                 type="number"
-                value={contactNumber}
-                placeholder="12345 67890"
                 name="contactNumber"
-                onChange={handleOnChange}
+                id="contactNumber"
+                placeholder="12345 67890"
+                className="form-style bg-richblack-800 rounded-[0.5rem] text-richblack-5"
                 style={{
                   boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
                 }}
-                className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
               />
-            </label>
+            </div>
           </div>
         </div>
 
-        {/* createPassword and Confirm Password */}
+        {/* Create Password and Confirm Password */}
         <div className="flex gap-x-4">
           {" "}
           <label className="relative">
             <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
-              Create Password<sup className="text-pink-200">*</sup>
+              Create Password <sup className="text-pink-200">*</sup>
             </p>
             <input
               required
@@ -217,7 +225,7 @@ function SignupForm() {
           </label>
           <label className="relative">
             <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
-              Confirm Password<sup className="text-pink-200">*</sup>
+              Confirm Password <sup className="text-pink-200">*</sup>
             </p>
             <input
               required
