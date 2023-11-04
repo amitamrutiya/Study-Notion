@@ -10,6 +10,7 @@ import Error from "./pages/Error";
 import VerifyEmail from "./pages/VerifyEmail";
 import ForgotPassword from "./pages/ForgotPassword";
 import UpdatePassword from "./pages/UpdatePassword";
+import OpenRoute from "./components/core/Auth/OpenRoute";
 
 export default function App() {
   return (
@@ -17,13 +18,55 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/signup" element={<Signup />}></Route>
-        <Route path="/about" element={<About />}></Route>
-        <Route path="/contact" element={<Contact />}></Route>
-        <Route path="/verify-email" element={<VerifyEmail />}></Route>
-        <Route path="/forgot-password" element={<ForgotPassword />}></Route>
-        <Route path="/update-password/:id" element={<UpdatePassword />}></Route>
+        <Route
+          path="signup"
+          element={
+            <OpenRoute>
+              <Signup />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <OpenRoute>
+              <Login />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="forgot-password"
+          element={
+            <OpenRoute>
+              <ForgotPassword />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="verify-email"
+          element={
+            <OpenRoute>
+              <VerifyEmail />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="update-password/:id"
+          element={
+            <OpenRoute>
+              <UpdatePassword />
+            </OpenRoute>
+          }
+        />
+        <Route
+          path="about"
+          element={
+            <OpenRoute>
+              <About />
+            </OpenRoute>
+          }
+        />
+        <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </div>
