@@ -4,8 +4,10 @@ import { toast } from "react-hot-toast";
 import CountryCode from "../../data/countrycode.json";
 import { apiConnector } from "../../services/apiconnector";
 import { contactusEndpoint } from "../../services/apis";
+import { useState } from "react";
 
 const ContactUsForm = () => {
+  const [loading, setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -13,18 +15,16 @@ const ContactUsForm = () => {
     formState: { errors, isSubmitSuccessful },
   } = useForm(); //  useform is used to collect data of input box in object form (read from internet)
 
-  let loading = false;
-
   const submitContactForm = async (data) => {
-    loading = true;
     const toastId = toast.loading("Loading...");
     try {
+      setLoading(true);
       await apiConnector("POST", contactusEndpoint.CONTACT_US_API, data);
+      setLoading(false);
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
     }
     toast.dismiss(toastId);
-    loading = false;
   };
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const ContactUsForm = () => {
         <div className="flex flex-col gap-2 lg:w-[48%]">
           <label htmlFor="lastname" className="lable-style">
             {" "}
-            Last Name <sup className="text-pink-200">*</sup>
+            Last Name
           </label>
           <input
             type="text"
