@@ -1,4 +1,4 @@
-export const country = [
+[
     {
         "country": "Afghanistan",
         "code": "+93"
