@@ -14,6 +14,7 @@ import OpenRoute from "./components/core/Auth/OpenRoute";
 import PrivateRoute from "./components/core/Auth/PrivateRoute";
 import Dashboard from "./pages/Dashboard";
 import MyProfile from "./components/core/Dashboard/MyProfile";
+import Settings from "./components/core/Dashboard/Settings";
 
 export default function App() {
   return (
@@ -79,6 +80,7 @@ export default function App() {
           }
         >
           <Route path="dashboard/my-profile" element={<MyProfile />} />
+          <Route path="dashboard/settings" element={<Settings />} />
         </Route>
       </Routes>
     </div>
