@@ -236,11 +236,11 @@ exports.login = async (req, res) => {
 exports.changePassword = async (req, res) => {
   try {
     // Fetch data from request body
-    const { oldPassword, newPassword, confirmNewPassword } = req.body;
+    const { oldPassword, newPassword } = req.body;
     const userDetails = await User.findById(req.user.id);
 
     // Validate data
-    if (!userDetails || !oldPassword || !newPassword || !confirmNewPassword) {
+    if (!userDetails || !oldPassword || !newPassword) {
       return res
         .status(403)
         .json({ success: false, message: "Please fill all the fields" });
@@ -252,13 +252,6 @@ exports.changePassword = async (req, res) => {
       userDetails.password
     );
     if (isPasswordCorrect) {
-      //match 2 password
-      if (newPassword !== confirmNewPassword) {
-        return res
-          .status(400)
-          .json({ success: false, message: "Password does not match" });
-      }
-
       //Hash Password
       const hashedPawword = await bcrypt.hash(newPassword, 10);
 
