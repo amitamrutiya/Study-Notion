@@ -31,7 +31,7 @@ router.post("/reset-password-token", resetPasswordToken);
 router.post("/reset-password", resetPassword);
 
 // User routes
-router.delete("/delete-account", auth, deleteUserAccount);
+router.delete("/deleteUserAccount", auth, deleteUserAccount);
 router.get("/getUserDetails", auth, getAllUserDetails);
 
 module.exports = router;

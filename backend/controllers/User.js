@@ -70,7 +70,7 @@ exports.getAllUserDetails = async (req, res) => {
   try {
     //get id
     const { id } = req.user;
-
+    console.log("id", id);
     //validation and get user details
     if (!id) {
       return res.status(400).json({

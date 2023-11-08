@@ -5,10 +5,10 @@ const {
   createCourse,
   getAllCourses,
   getCourseDetails,
-  //   getFullCourseDetails,
-  //   editCourse,
-  //   getInstructorCourses,
-  //   deleteCourse,
+    getFullCourseDetails,
+    editCourse,
+    getInstructorCourses,
+    deleteCourse,
 } = require("../controllers/Course"); // Course Controllers Import
 
 const {
@@ -54,10 +54,10 @@ router.post("/deleteSubSection", auth, isInstructor, deleteSubSection);
 router.post("/addSubSection", auth, isInstructor, createSubSection);
 router.get("/getAllCourses", getAllCourses);
 router.post("/getCourseDetails", getCourseDetails);
-// router.post("/editCourse", auth, isInstructor, editCourse);
-// router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses);
-// router.post("/getFullCourseDetails", auth, getFullCourseDetails);
-// router.delete("/deleteCourse", deleteCourse);
+router.post("/editCourse", auth, isInstructor, editCourse);
+router.get("/getInstructorCourses", auth, isInstructor, getInstructorCourses);
+router.post("/getFullCourseDetails", auth, getFullCourseDetails);
+router.delete("/deleteCourse", deleteCourse);
 
 // Category routes (Only by Admin)
 router.post("/createCategory", auth, isAdmin, createCategory);
