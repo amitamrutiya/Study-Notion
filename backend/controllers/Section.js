@@ -82,16 +82,19 @@ exports.updateSection = async (req, res) => {
       { new: true }
     );
 
-    //update course with new updatedSection
-    const course = await Course.findById(courseId)
-      .populate({ path: "courseContent", populate: { path: "subSections" } })
+    //update course with EditSection
+    const updatedCourseDetails = await Course.findByIdAndUpdate(courseId)
+      .populate({
+        path: "courseContent",
+        populate: { path: "subSections" },
+      })
       .exec();
 
     //send response
     res.status(201).json({
       success: true,
-      message: "Section updated successfully",
-      updatedSection,
+      message: "SubSection Edited successfully",
+      updatedCourseDetails,
     });
   } catch (error) {
     console.log("Error in updateSection", error);
@@ -145,7 +148,7 @@ exports.deleteSection = async (req, res) => {
       .exec();
 
     //send response
-    res.status(201).json({
+    return res.status(201).json({
       success: true,
       message: "Section deleted successfully",
       updatedCourseDetails,
