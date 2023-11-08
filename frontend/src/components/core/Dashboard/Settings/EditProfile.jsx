@@ -56,13 +56,13 @@ export default function EditProfile() {
               )}
             </div>
             <div className="flex flex-col gap-2 lg:w-[48%]">
-              <
-                type="text"
-                name="lastName"
-                id="lastNlabel htmlFor="lastName" className="lable-style">
+              <label htmlFor="lastName" className="lable-style">
                 Last Name
               </label>
-              <inputame"
+              <input
+                type="text"
+                name="lastName"
+                id="lastName"
                 placeholder="Enter first name"
                 className="form-style"
                 {...register("lastName", { required: true })}
