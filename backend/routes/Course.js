@@ -5,10 +5,10 @@ const {
   createCourse,
   getAllCourses,
   getCourseDetails,
-    getFullCourseDetails,
-    editCourse,
-    getInstructorCourses,
-    deleteCourse,
+  getFullCourseDetails,
+  editCourse,
+  getInstructorCourses,
+  deleteCourse,
 } = require("../controllers/Course"); // Course Controllers Import
 
 const {

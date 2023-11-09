@@ -167,7 +167,7 @@ exports.getCourseDetails = async (req, res) => {
     }
 
     // find course details
-    const courseDetails = await Course.find({ _id: courseId })
+    const courseDetails = await Course.findOne({ _id: courseId })
       .populate({
         path: "instructor",
         populate: { path: "additionalDetails" },
@@ -186,12 +186,24 @@ exports.getCourseDetails = async (req, res) => {
         message: `Could not find course details with ${courseId}`,
       });
     }
+    let totalDuration;
+    if (courseDetails.courseContent.length) {
+      let totalDurationInSeconds = 0;
+      courseDetails.courseContent.forEach((content) => {
+        content.subSections.forEach((subSection) => {
+          const timeDurationInSeconds = parseInt(subSection.timeDuration);
+          totalDurationInSeconds += timeDurationInSeconds;
+        });
+      });
+
+      totalDuration = convertSecondsToDuration(totalDurationInSeconds);
+    }
 
     // send response
     return res.status(200).json({
       success: true,
       message: "Course details fetched successfully",
-      data: courseDetails,
+      data: { courseDetails, totalDuration },
     });
   } catch (error) {
     console.log("Error in getCourseDetails controller: ");
@@ -333,7 +345,7 @@ exports.editCourse = async (req, res) => {
     const { courseId } = req.body;
     const updates = req.body;
     const course = await Course.findById(courseId);
-    
+
     if (!course) {
       return res.status(404).json({ error: "Course not found" });
     }
