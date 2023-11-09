@@ -52,11 +52,10 @@ export async function buyCourse(
       { courses },
       { Authorization: `Bearer ${token}` }
     );
-
+    
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message);
     }
-    console.log("PRINTING orderResponse", orderResponse);
 
     //options
     const options = {
@@ -82,7 +81,6 @@ export async function buyCourse(
         verifyPayment({ ...response, courses }, token, navigate, dispatch);
       },
     };
-    //miss hogya tha
     const paymentObject = new window.Razorpay(options);
     paymentObject.open();
     paymentObject.on("payment.failed", function (response) {
@@ -123,11 +121,10 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
     const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
       Authorization: `Bearer ${token}`,
     });
-
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
-    toast.success("payment Successful, ypou are addded to the course");
+    toast.success("payment Successful, you are addded to the course");
     navigate("/dashboard/enrolled-courses");
     dispatch(resetCart());
   } catch (error) {
