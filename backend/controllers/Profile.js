@@ -1,7 +1,10 @@
 const Profile = require("../models/Profile");
 const User = require("../models/User");
 const Course = require("../models/Course");
+const CourseProgress = require("../models/CourseProgress");
 const { uploadFileToCloudinary } = require("../utils/fileUploader");
+const { convertSecondsToDuration } = require("../utils/secToDuration");
+
 require("dotenv").config();
 
 // Update Profile
@@ -113,7 +116,7 @@ exports.getEnrolledCourses = async (req, res) => {
         populate: {
           path: "courseContent",
           populate: {
-            path: "subSection",
+            path: "subSections",
           },
         },
       })
@@ -126,7 +129,7 @@ exports.getEnrolledCourses = async (req, res) => {
       for (var j = 0; j < userDetails.courses[i].courseContent.length; j++) {
         totalDurationInSeconds += userDetails.courses[i].courseContent[
           j
-        ].subSection.reduce(
+        ].subSections.reduce(
           (acc, curr) => acc + parseInt(curr.timeDuration),
           0
         );
@@ -134,7 +137,7 @@ exports.getEnrolledCourses = async (req, res) => {
           totalDurationInSeconds
         );
         SubsectionLength +=
-          userDetails.courses[i].courseContent[j].subSection.length;
+          userDetails.courses[i].courseContent[j].subSections.length;
       }
       let courseProgressCount = await CourseProgress.findOne({
         courseID: userDetails.courses[i]._id,
