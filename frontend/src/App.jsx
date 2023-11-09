@@ -23,6 +23,8 @@ import Instructor from "./components/core/Dashboard/InstructorDashboard/Instruct
 import { ACCOUNT_TYPE } from "./utils/constants";
 import EditCourse from "./components/core/Dashboard/EditCourse";
 import { useSelector } from "react-redux";
+import Catalog from "./pages/Catalog";
+import CourseDetails from "./pages/CourseDetails";
 
 export default function App() {
   const { user } = useSelector((state) => state.profile);
@@ -32,6 +34,8 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="catalog/:catalogName" element={<Catalog />} />
+        <Route path="courses/:courseId" element={<CourseDetails />} />
         <Route
           path="signup"
           element={
