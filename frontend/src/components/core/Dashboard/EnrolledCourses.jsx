@@ -54,7 +54,7 @@ export default function EnrolledCourses() {
                 className="flex w-[45%] cursor-pointer items-center gap-4 px-5 py-3"
                 onClick={() => {
                   navigate(
-                    `/view-course/${course?._id}/section/${course.courseContent?.[0]?._id}/sub-section/${course.courseContent?.[0]?.subSection?.[0]?._id}`
+                    `/view-course/${course?._id}/section/${course.courseContent?.[0]?._id}/sub-section/${course.courseContent?.[0]?.subSections?.[0]?._id}`
                   );
                 }}
               >
@@ -80,7 +80,6 @@ export default function EnrolledCourses() {
                   height="8px"
                   isLabelVisible={false}
                 />{" "}
-                {/* progressbar show how many percentange course is completed; */}
               </div>
             </div>
           ))}
