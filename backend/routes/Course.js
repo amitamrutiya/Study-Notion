@@ -42,7 +42,7 @@ const {
   isAdmin,
 } = require("../middlewares/auth"); // Importing Middlewares
 
-// const { updateCourseProgress } = require("../controllers/courseProgress");
+const { updateCourseProgress } = require("../controllers/courseProgress");
 
 // Course routes (only by Instructors)
 router.post("/createCourse", auth, isInstructor, createCourse);
@@ -67,7 +67,8 @@ router.post("/getCategoryPageDetails", categoryPageDetails);
 // Rating and Review (only by Student)
 router.post("/createRating", auth, isStudent, createRating);
 router.get("/getAverageRating", getAverageRating);
-router.get("/getAllRatingReviews", getAllRatingAndReview);
-// router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress);
+router.get("/getReviews", getAllRatingAndReview);
+
+router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress);
 
 module.exports = router;

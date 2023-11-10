@@ -29,6 +29,7 @@ export const getAllCourses = async () => {
     if (!response?.data?.success) {
       throw new Error("Could Not Fetch Course Categories");
     }
+    console.log("GET_ALL_COURSE_API API RESPONSE............", response);
     result = response?.data?.data;
   } catch (error) {
     console.log("GET_ALL_COURSE_API API ERROR............", error);
@@ -39,7 +40,7 @@ export const getAllCourses = async () => {
 };
 
 export const fetchCourseDetails = async (courseId) => {
-  const toastId = toast.loading("Loading...")
+  const toastId = toast.loading("Loading...");
   let result = null;
   try {
     const response = await apiConnector("POST", COURSE_DETAILS_API, {
@@ -56,7 +57,7 @@ export const fetchCourseDetails = async (courseId) => {
     result = error.response.data;
     toast.error(error.response.data.message);
   }
-  toast.dismiss(toastId)
+  toast.dismiss(toastId);
   return result;
 };
 
@@ -342,16 +343,11 @@ export const getFullDetailsOfCourse = async (courseId, token) => {
 // mark a lecture as complete
 export const markLectureAsComplete = async (data, token) => {
   let result = null;
-  console.log("mark complete data", data);
   const toastId = toast.loading("Loading...");
   try {
     const response = await apiConnector("POST", LECTURE_COMPLETION_API, data, {
       Authorization: `Bearer ${token}`,
     });
-    console.log(
-      "MARK_LECTURE_AS_COMPLETE_API API RESPONSE............",
-      response
-    );
 
     if (!response.data.message) {
       throw new Error(response.data.error);
