@@ -124,8 +124,7 @@ exports.getAllRatingAndReview = async (req, res) => {
       .populate({ path: "user", select: "firstName lastName email image" })
       .populate({ path: "course", select: "courseName" })
       .exec();
-
-    console.log("allReviews", allReviews);
+  
     if (!allReviews) {
       return res.status(400).json({
         success: false,
