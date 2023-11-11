@@ -2,13 +2,12 @@ import FoundingStory from "../assets/Images/FoundingStory.png";
 import BannerImage1 from "../assets/Images/aboutus1.webp";
 import BannerImage2 from "../assets/Images/aboutus2.webp";
 import BannerImage3 from "../assets/Images/aboutus3.webp";
-
 import ContactFormSection from "../components/core/AboutPage/ContactFormSection.jsx";
 import LearningGrid from "../components/core/AboutPage/LearningGrid";
 import Quote from "../components/core/AboutPage/Quote";
 import StatsComponenet from "../components/core/AboutPage/Stats";
 import HighlightText from "../components/core/HomePage/HighlightText";
-// import ReviewSlider from "../components/common/ReviewSlider";
+import ReviewSlider from "../components/common/ReviewSlider";
 import Footer from "../components/common/Footer";
 
 const About = () => {
@@ -128,7 +127,7 @@ const About = () => {
           {" "}
           Reviews from other learners{" "}
         </h1>
-        {/* <ReviewSlider /> */}
+        <ReviewSlider />
       </div>
       <Footer />
     </div>

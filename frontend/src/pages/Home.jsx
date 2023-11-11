@@ -9,7 +9,7 @@ import Footer from "../components/common/Footer";
 import InstructorSection from "../components/core/HomePage/InstructorSection";
 import LearningLanguageSection from "../components/core/HomePage/LearningLanguageSection";
 import TimelineSection from "../components/core/HomePage/TimelineSection";
-// import ReviewSlider from "../components/common/ReviewSlider";
+import ReviewSlider from "../components/common/ReviewSlider";
 
 function Home() {
   return (
@@ -172,7 +172,7 @@ function Home() {
           Reviews from Other Learners{" "}
         </h1>
         {/* Review Slider here */}
-        {/* <ReviewSlider /> */}
+        <ReviewSlider />
       </div>
       {/* Footer */}
       <Footer />

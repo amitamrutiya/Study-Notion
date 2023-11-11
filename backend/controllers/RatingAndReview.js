@@ -5,10 +5,11 @@ const mongoose = require("mongoose");
 
 // create Rating and review
 exports.createRating = async (req, res) => {
+  console.log("----------------------------------------");
   try {
     // get data
     const { rating, review, courseId } = req.body;
-    const { userId } = req.user.id;
+    const userId = req.user.id;
 
     // validate data
     if (!rating || !review || !courseId || !userId) {
@@ -17,25 +18,15 @@ exports.createRating = async (req, res) => {
         .json({ success: false, message: "Please enter all the fields" });
     }
 
-    // check if user is enrolled or not
-    const user = await User.findById(userId);
-    if (!user.courses.includes(courseId)) {
-      return res.status(400).json({
-        success: false,
-        message: "You are not enrolled in this course",
-      });
-    }
-
-    // TODO : not forget to run this method
-    // const courseDetails = await Course.findOne({
-    //   _id: courseId,
-    //   studentsEnrolled: { $elemMatch: { $eq: userId } },
-    // });
+    const courseDetails = await Course.findOne({
+      _id: courseId,
+      studentsEnrolled: { $elemMatch: { $eq: userId } },
+    }); //check if user is enrolled or not
 
     if (!courseDetails) {
-      return res.status(400).json({
+      return res.status(404).json({
         success: false,
-        message: "You are not enrolled in this course",
+        message: "Student is not enrolled in the course",
       });
     }
 
@@ -61,15 +52,12 @@ exports.createRating = async (req, res) => {
 
     // update course with this rating/review
     const updatedCourseDetails = await Course.findByIdAndUpdate(
-      courseId,
+      { _id: courseId },
       {
         $push: { ratingAndReviews: ratingAndReview._id },
       },
       { new: true }
-    )
-      .populate("updatedCourseDetails")
-      .exec();
-    console.log(updatedCourseDetails);
+    );
 
     // send response
     return res.status(200).json({
@@ -137,6 +125,7 @@ exports.getAllRatingAndReview = async (req, res) => {
       .populate({ path: "course", select: "courseName" })
       .exec();
 
+    console.log("allReviews", allReviews);
     if (!allReviews) {
       return res.status(400).json({
         success: false,
