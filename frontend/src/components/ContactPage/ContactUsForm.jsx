@@ -20,7 +20,7 @@ const ContactUsForm = () => {
     try {
       setLoading(true);
       await apiConnector("POST", contactusEndpoint.CONTACT_US_API, data);
-      toastId = toast.success("We got you data");
+      toast.success("We got you data");
       setLoading(false);
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
