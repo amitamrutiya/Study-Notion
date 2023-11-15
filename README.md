@@ -1,6 +1,6 @@
 # StudyNotion Online Education Platform (MERN App) [Website Link](https://studynotion-frontend.vercel.app/)
 
-![Main Page](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/ce77e48b-ccd7-4b44-aa65-43b448d08cfa)
+![Main Page](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/751c80f1-de29-410b-8c0f-c7f547852581)
 
 
 ## Project Description
@@ -53,7 +53,7 @@ relevant information related to the platform.
 Here is a high-level diagram that illustrates the architecture of the StudyNotion ed-tech
 platform:
 
-![Architecture](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/bb2372cd-f187-4c96-9ecb-fe8556496ee3)
+![Architecture](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/c6d93b1a-493f-4001-bc89-d66367a0c3b3)
 
 
 ## Front End
@@ -153,7 +153,8 @@ for an ed-tech platform, with a focus on security, reliability, and ease of use.
 right frameworks, libraries, and tools, we can ensure that the platform functions smoothly
 and provides an optimal user experience for all its users.
 
-![Database Schema](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/ff6e93e0-4aae-40d1-81de-893ce273b0d3)
+![Database Schema](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/245285a5-71b0-43ad-ab05-57c5ee383c82)
+
 
 The REST API design for the StudyNotion ed-tech platform is a crucial part
 of the project. The API endpoints and their functionalities are designed to ensure seamless
