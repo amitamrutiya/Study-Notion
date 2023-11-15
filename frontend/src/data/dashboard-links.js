@@ -37,14 +37,6 @@ export const sidebarLinks = [
   },
   {
     id: 6,
-    name: "Purchase History",
-    path: "/dashboard/purchase-history",
-    type: ACCOUNT_TYPE.STUDENT,
-    icon: "VscHistory",
-  },
-  
-  {
-    id: 7,
     name: "Cart",
     path: "/dashboard/cart",
     type: ACCOUNT_TYPE.STUDENT,

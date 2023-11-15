@@ -77,7 +77,7 @@ const Footer = () => {
                 Support{" "}
               </h1>
               <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200 mt-2">
-                <Link to={"/help-center"}>Help Center</Link>
+                <Link to={"/contact"}>Help Center</Link>
               </div>
             </div>
 
@@ -86,16 +86,16 @@ const Footer = () => {
                 {" "}
                 Plans{" "}
               </h1>
-              <div className="flex flex-col gap-2 mt-2 text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200">
-                <Link to={Plans[0].split(" ").join("-").toLowerCase()}>
+              <div className="flex flex-col gap-2 mt-2 text-[14px] cursor-pointer ">
+                <Link to={Plans[0].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
                   {" "}
                   {Plans[0]}{" "}
                 </Link>
-                <Link to={Plans[1].split(" ").join("-").toLowerCase()}>
+                <Link to={Plans[1].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
                   {" "}
                   {Plans[1]}{" "}
                 </Link>
-                <Link to={Plans[2].split(" ").join("-").toLowerCase()}>
+                <Link to={Plans[2].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
                   {" "}
                   {Plans[2]}{" "}
                 </Link>
@@ -105,16 +105,16 @@ const Footer = () => {
                 {" "}
                 Community{" "}
               </h1>
-              <div className="flex flex-col gap-2 mt-2 text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200">
-                <Link to={Community[0].split(" ").join("-").toLowerCase()}>
+              <div className="flex flex-col gap-2 mt-2 text-[14px] cursor-pointer ">
+                <Link to={Community[0].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
                   {" "}
                   {Community[0]}{" "}
                 </Link>
-                <Link to={Community[1].split(" ").join("-").toLowerCase()}>
+                <Link to={Community[1].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
                   {" "}
                   {Community[1]}{" "}
                 </Link>
-                <Link to={Community[2].split(" ").join("-").toLowerCase()}>
+                <Link to={Community[2].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
                   {" "}
                   {Community[2]}{" "}
                 </Link>

@@ -16,10 +16,11 @@ const ContactUsForm = () => {
   } = useForm(); //  useform is used to collect data of input box in object form (read from internet)
 
   const submitContactForm = async (data) => {
-    const toastId = toast.loading("Loading...");
+    let toastId = toast.loading("Loading...");
     try {
       setLoading(true);
       await apiConnector("POST", contactusEndpoint.CONTACT_US_API, data);
+      toastId = toast.success("We got you data");
       setLoading(false);
     } catch (error) {
       console.log("ERROR MESSAGE - ", error.message);
@@ -183,10 +184,9 @@ const ContactUsForm = () => {
         disabled={loading}
         type="submit"
         className={`rounded-md bg-yellow-50 px-6 py-3 text-center text-[13px] font-bold text-black shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)]
-                  ${
-                    !loading &&
-                    "transition-all duration-200 hover:scale-95 hover:shadow-none"
-                  }  disabled:bg-richblack-500 sm:text-[16px] `}
+                  ${!loading &&
+          "transition-all duration-200 hover:scale-95 hover:shadow-none"
+          }  disabled:bg-richblack-500 sm:text-[16px] `}
       >
         Send Message
       </button>

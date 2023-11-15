@@ -15,6 +15,7 @@ import {
 } from "../../../../services/operations/courseDetailsAPI.js";
 import { COURSE_STATUS } from "../../../../utils/constants";
 import ConfirmationModal from "../../../common/ConfirmationModal";
+import {GetCourseTotalDuration} from "../../../../utils/totalDuration.js";
 
 export default function CoursesTable({ courses, setCourses }) {
   const navigate = useNavigate();
@@ -112,7 +113,7 @@ export default function CoursesTable({ courses, setCourses }) {
                 </Td>
                 <Td className="text-sm font-medium text-richblack-100">
                   {" "}
-                  2hr 30min{" "}
+                  {GetCourseTotalDuration(course)}{" "}
                 </Td>
                 <Td className="text-sm font-medium text-richblack-100">
                   {" "}
