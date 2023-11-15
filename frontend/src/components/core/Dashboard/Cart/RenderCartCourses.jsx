@@ -3,9 +3,12 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import ReactStars from "react-rating-stars-component";
 import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart } from "../../../../slices/cartSlice";
+import { removeCourseFromCart } from "../../../../services/operations/courseDetailsAPI";
 
 export default function RenderCartCourses() {
   const { cart } = useSelector((state) => state.cart);
+  const { user } = useSelector((state) => state.profile);
+  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   return (
@@ -13,9 +16,8 @@ export default function RenderCartCourses() {
       {cart.map((course, indx) => (
         <div
           key={course._id}
-          className={`flex w-full flex-wrap items-start justify-between gap-6 ${
-            indx !== cart.length - 1 && "border-b border-b-richblack-400 pb-6"
-          } ${indx !== 0 && "mt-6"} `}
+          className={`flex w-full flex-wrap items-start justify-between gap-6 ${indx !== cart.length - 1 && "border-b border-b-richblack-400 pb-6"
+            } ${indx !== 0 && "mt-6"} `}
         >
           <div className="flex flex-1 flex-col gap-4 xl:flex-row">
             <img
@@ -53,7 +55,11 @@ export default function RenderCartCourses() {
 
           <div className="flex flex-col items-end space-y-2">
             <button
-              onClick={() => dispatch(removeFromCart(course._id))}
+              onClick={() => {
+                dispatch(removeFromCart(course._id));
+                removeCourseFromCart({ courseId: course._id, userId: user._id }, token);
+              }}
+              // onClick={() => dispatch(removeFromCart(course._id))}
               className="flex items-center gap-x-1 rounded-md border border-richblack-600 bg-richblack-700 py-3 px-[12px] text-pink-200"
             >
               <RiDeleteBin6Line />

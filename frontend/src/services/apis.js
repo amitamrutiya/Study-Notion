@@ -58,9 +58,17 @@ export const categories = {
 export const catalogData = {
   CATALOGPAGEDATA_API: BASE_URL + "/course/getCategoryPageDetails",
 };
+
 // CONTACT-US API
 export const contactusEndpoint = {
   CONTACT_US_API: BASE_URL + "/reach/contact",
+};
+
+// CART API
+export const cartEndpoints = {
+  ADD_TO_CART_API: BASE_URL + "/course/addCourseIntoCart",
+  REMOVE_FROM_CART_API: BASE_URL + "/course/removeCourseFromCart",
+  CLEAR_CART_API: BASE_URL + "/course/clearCart",
 };
 
 // SETTINGS PAGE API

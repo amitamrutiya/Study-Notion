@@ -37,6 +37,12 @@ const userSchems = new mongoose.Schema({
       ref: "Course",
     },
   ],
+  cartAddedCourses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
   image: {
     type: String,
     required: true,

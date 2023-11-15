@@ -1,6 +1,6 @@
 import { toast } from "react-hot-toast";
 import { apiConnector } from "../apiconnector";
-import { courseEndpoints } from "../apis";
+import { cartEndpoints, courseEndpoints } from "../apis";
 
 const {
   COURSE_DETAILS_API,
@@ -20,6 +20,8 @@ const {
   CREATE_RATING_API,
   LECTURE_COMPLETION_API,
 } = courseEndpoints;
+
+const { ADD_TO_CART_API, REMOVE_FROM_CART_API, CLEAR_CART_API } = cartEndpoints;
 
 export const getAllCourses = async () => {
   const toastId = toast.loading("Loading...");
@@ -381,6 +383,78 @@ export const createRating = async (data, token) => {
   } catch (error) {
     success = false;
     console.log("CREATE RATING API ERROR............", error);
+    toast.error(error.message);
+  }
+  toast.dismiss(toastId);
+  return success;
+};
+
+// add course to cart
+export const addCourseToCart = async (data, token) => {
+  const toastId = toast.loading("Loading...");
+  let success = false;
+  try {
+    const response = await apiConnector("POST", ADD_TO_CART_API, data, {
+      Authorization: `Bearer ${token}`,
+    });
+    console.log("ADD_TO_CART_API API RESPONSE............", response);
+
+    if (!response?.data?.success) {
+      throw new Error("Could Not Add Course To Cart");
+    }
+    toast.success("Course Added To Cart");
+    success = true;
+  } catch (error) {
+    success = false;
+    console.log("ADD_TO_CART_API API ERROR............", error);
+    toast.error(error.message);
+  }
+  toast.dismiss(toastId);
+  return success;
+};
+
+// remove course from cart
+export const removeCourseFromCart = async (data, token) => {
+  const toastId = toast.loading("Loading...");
+  let success = false;
+  try {
+    const response = await apiConnector("POST", REMOVE_FROM_CART_API, data, {
+      Authorization: `Bearer ${token}`,
+    });
+    console.log("REMOVE_FROM_CART_API API RESPONSE............", response);
+
+    if (!response?.data?.success) {
+      throw new Error("Could Not Remove Course From Cart");
+    }
+    toast.success("Course Removed From Cart");
+    success = true;
+  } catch (error) {
+    success = false;
+    console.log("REMOVE_FROM_CART_API API ERROR............", error);
+    toast.error(error.message);
+  }
+  toast.dismiss(toastId);
+  return success;
+};
+
+// clear cart
+export const clearCart = async (data, token) => {
+  const toastId = toast.loading("Loading...");
+  let success = false;
+  try {
+    const response = await apiConnector("POST", CLEAR_CART_API, data, {
+      Authorization: `Bearer ${token}`,
+    });
+    console.log("CLEAR_CART_API API RESPONSE............", response);
+
+    if (!response?.data?.success) {
+      throw new Error("Could Not Clear Cart");
+    }
+    toast.success("Cart Cleared");
+    success = true;
+  } catch (error) {
+    success = false;
+    console.log("CLEAR_CART_API API ERROR............", error);
     toast.error(error.message);
   }
   toast.dismiss(toastId);

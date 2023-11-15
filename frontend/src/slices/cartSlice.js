@@ -35,8 +35,6 @@ const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(state.cart)); // Update to localstorage
       localStorage.setItem("total", JSON.stringify(state.total));
       localStorage.setItem("totalItems", JSON.stringify(state.totalItems));
-
-      toast.success("Course added to cart"); // show toast
     },
 
     removeFromCart: (state, action) => {
@@ -52,8 +50,6 @@ const cartSlice = createSlice({
         localStorage.setItem("cart", JSON.stringify(state.cart)); // Update to localstorage
         localStorage.setItem("total", JSON.stringify(state.total));
         localStorage.setItem("totalItems", JSON.stringify(state.totalItems));
-
-        toast.success("Course removed from cart"); // show toast
       }
     },
 

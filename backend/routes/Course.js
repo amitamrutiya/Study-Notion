@@ -36,6 +36,12 @@ const {
 } = require("../controllers/RatingAndReview"); // Rating Controllers Import
 
 const {
+  addCourseIntoCart,
+  removeCourseFromCart,
+  clearCart,
+} = require("../controllers/Cart"); // Cart Controllers Import
+
+const {
   auth,
   isInstructor,
   isStudent,
@@ -63,6 +69,11 @@ router.delete("/deleteCourse", deleteCourse);
 router.post("/createCategory", auth, isAdmin, createCategory);
 router.get("/showAllCategories", showAllCategories);
 router.post("/getCategoryPageDetails", categoryPageDetails);
+
+// Cart routes (only by Student)
+router.post("/addCourseIntoCart", auth, isStudent, addCourseIntoCart);
+router.post("/removeCourseFromCart", auth, isStudent, removeCourseFromCart);
+router.post("/clearCart", auth, isStudent, clearCart);
 
 // Rating and Review (only by Student)
 router.post("/createRating", auth, isStudent, createRating);
