@@ -1,7 +1,17 @@
 # StudyNotion Online Education Platform (MERN App) [Website Link](https://studynotion-frontend.vercel.app/)
 
-![Main Page](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/751c80f1-de29-410b-8c0f-c7f547852581)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/amitamrutiya2210/Study-Notion?logo=github&style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/) 
+[![GitHub last commit](https://img.shields.io/github/last-commit/amitamrutiya2210/Study-Notion?style=for-the-badge&logo=git)](https://github.com/amitamrutiya2210/Study-Notion/) 
+[![GitHub stars](https://img.shields.io/github/stars/amitamrutiya2210/Study-Notion?style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/stargazers) 
+[![My stars](https://img.shields.io/github/stars/amitamrutiya2210?affiliations=OWNER%2CCOLLABORATOR&style=for-the-badge&label=My%20stars)](https://github.com/amitamrutiya2210/Study-Notion/) 
+[![GitHub forks](https://img.shields.io/github/forks/amitamrutiya2210/Study-Notion?style=for-the-badge&logo=git)](https://github.com/amitamrutiya2210/Study-Notion/)
+[![Code size](https://img.shields.io/github/languages/code-size/amitamrutiya2210/Study-Notion?style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/)
+[![Languages](https://img.shields.io/github/languages/count/amitamrutiya2210/Study-Notion?style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/)
+[![Top](https://img.shields.io/github/languages/top/amitamrutiya2210/Study-Notion?style=for-the-badge&label=Top%20Languages)](https://github.com/amitamrutiya2210/Study-Notion/)
+[![Issues](https://img.shields.io/github/issues/amitamrutiya2210/Study-Notion?style=for-the-badge&label=Issues)](https://github.com/amitamrutiya2210/Study-Notion/)
+[![Watchers](	https://img.shields.io/github/watchers/amitamrutiya2210/Study-Notion?label=Watch&style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/) 
 
+![Main Page](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/751c80f1-de29-410b-8c0f-c7f547852581)
 
 ## Project Description
 
