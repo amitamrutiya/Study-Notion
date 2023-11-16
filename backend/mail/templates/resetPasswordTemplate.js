@@ -75,7 +75,7 @@ const resetPassword = (email, url) => {
             <p>If you did not request this, please disregard this email.</p>
           </div>
           <div class="support">If you have any questions or need assistance, please feel free to reach out to us at <a
-              href="mailto:info@studynotion.com">info@studynotion.com</a>. We are here to help!</div>
+              href="mailto:info@studynotion.store">info@studynotion.store</a>. We are here to help!</div>
         </div>
       </body>
       </html>`;
