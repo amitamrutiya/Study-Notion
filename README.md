@@ -1,4 +1,4 @@
-# StudyNotion Online Education Platform (MERN App) [Website Link](https://studynotion-frontend.vercel.app/)
+# StudyNotion Online Education Platform (MERN App) [Website Link](https://studynotion.store)
 
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/amitamrutiya2210/Study-Notion?logo=github&style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/) 
 [![GitHub last commit](https://img.shields.io/github/last-commit/amitamrutiya2210/Study-Notion?style=for-the-badge&logo=git)](https://github.com/amitamrutiya2210/Study-Notion/) 
@@ -12,6 +12,12 @@
 [![Watchers](	https://img.shields.io/github/watchers/amitamrutiya2210/Study-Notion?label=Watch&style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/) 
 
 ![Main Page](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/751c80f1-de29-410b-8c0f-c7f547852581)
+
+## Tech Stack
+
+**Client:** React, Redux, TailwindCSS, HTML, CSS, JavaScript 
+
+**Server:** Node, Express, MongoDB, Razorpay
 
 ## Project Description
 
@@ -174,3 +180,20 @@ requests and responses provided above illustrate how each endpoint will function
 what kind of data it will accept or return. With this API design, StudyNotion will be able to
 provide a smooth user experience while ensuring security and stability.
 
+## Run Locally
+
+```bash
+  git clone https://github.com/amitamrutiya2210/Study-Notion
+  cd Study-Notion
+  npm install
+  cd backend
+  npm install
+  cp .env .sample.env and setup environment variable
+  cd ..
+  cd frontend
+  npm install
+  cp .env .sample.env and setup environment variable
+  cd ..
+  npm run dev
+```
+    
