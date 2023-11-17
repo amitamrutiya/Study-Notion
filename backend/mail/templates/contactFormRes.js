@@ -1,11 +1,11 @@
-exports.contactUsEmail = (
+export default function contactUsEmail(
   email,
   firstname,
   lastname,
   message,
   phoneNo,
   countrycode
-) => {
+) {
   return `<!DOCTYPE html>
     <html>
 
@@ -94,4 +94,4 @@ exports.contactUsEmail = (
     </body>
 
     </html>`;
-};
+}

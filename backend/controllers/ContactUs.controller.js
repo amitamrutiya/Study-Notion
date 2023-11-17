@@ -1,8 +1,8 @@
-const { contactUsEmail } = require("../mail/templates/contactFormRes");
-const mailSender = require("../utils/mailSender");
+import contactUsEmail from "../mail/templates/contactFormRes";
+import mailSender from "../utils/mailSender";
 require("dotenv").config();
 
-exports.contactUsController = async (req, res) => {
+export async function contactUsController(req, res) {
   // fetch data
   const { email, firstname, lastname, message, phoneNo, countrycode } =
     req.body;
@@ -24,4 +24,4 @@ exports.contactUsController = async (req, res) => {
       message: "Something went wrong in contact us...",
     });
   }
-};
+}

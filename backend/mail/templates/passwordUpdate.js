@@ -1,4 +1,4 @@
-exports.passwordUpdated = (email, name) => {
+export default function passwordUpdated(email, name) {
   return `<!DOCTYPE html>
     <html>
 
@@ -72,4 +72,4 @@ exports.passwordUpdated = (email, name) => {
     </body>
 
     </html>`;
-};
+}

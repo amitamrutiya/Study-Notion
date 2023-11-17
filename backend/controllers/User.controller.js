@@ -1,10 +1,10 @@
-const User = require("../models/User");
-const Profile = require("../models/Profile");
-const Course = require("../models/Course");
-const mongoose = require("mongoose");
+import User from "../models/User.model";
+import Profile from "../models/Profile.model";
+import Course from "../models/Course.model";
+import mongoose from "mongoose";
 
 //Delete Account
-exports.deleteUserAccount = async (req, res) => {
+export async function deleteUserAccount(req, res) {
   try {
     // Get user id
     const { id } = req.user;
@@ -63,10 +63,10 @@ exports.deleteUserAccount = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
 //Get User Details
-exports.getAllUserDetails = async (req, res) => {
+export async function getAllUserDetails(req, res) {
   try {
     //get id
     const { id } = req.user;
@@ -96,4 +96,4 @@ exports.getAllUserDetails = async (req, res) => {
       error: error.message,
     });
   }
-};
+}

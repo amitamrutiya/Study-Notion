@@ -1,4 +1,4 @@
-exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
+export default function paymentSuccessEmail(name, amount, orderId, paymentId) {
   return `<!DOCTYPE html>
       <html>
 
@@ -82,4 +82,4 @@ exports.paymentSuccessEmail = (name, amount, orderId, paymentId) => {
       </body>
 
       </html>`;
-};
+}

@@ -1,10 +1,11 @@
-const Category = require("../models/Category");
+import Category from "../models/Category.model";
+
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
 
 //create category handler function
-exports.createCategory = async (req, res) => {
+export async function createCategory(req, res) {
   try {
     //fetch name and description from request body
     const { name, description } = req.body;
@@ -50,10 +51,10 @@ exports.createCategory = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
 //getAllcategories handler function
-exports.showAllCategories = async (req, res) => {
+export async function showAllCategories(req, res) {
   try {
     //fetch all categories
     const allCategories = await Category.find();
@@ -68,10 +69,10 @@ exports.showAllCategories = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
 // get category page details
-exports.categoryPageDetails = async (req, res) => {
+export async function categoryPageDetails(req, res) {
   try {
     // get categoryId
     const { categoryId } = req.body;
@@ -149,4 +150,4 @@ exports.categoryPageDetails = async (req, res) => {
     console.log("Error in categoryPageDetails");
     return res.status(500).json({ success: false, message: error.message });
   }
-};
+}

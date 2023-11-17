@@ -1,15 +1,16 @@
-const User = require("../models/User.models");
-const OTP = require("../models/OTP");
-const Profile = require("../models/Profile");
-const otpGenerator = require("otp-generator");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const mailSender = require("../utils/mailSender");
+import User from "../models/User.model";
+import OTP from "../models/OTP.model";
+import Profile from "../models/Profile.model";
+import otpGenerator from "otp-generator";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import mailSender from "../utils/mailSender";
+import passwordUpdated from "../mail/templates/passwordUpdate";
+
 require("dotenv").config();
-const { passwordUpdated } = require("../mail/templates/passwordUpdate");
 
 // Send Otp
-exports.sendOTP = async (req, res) => {
+export async function sendOTP(req, res) {
   try {
     //fetch email from request body
     const { email } = req.body;
@@ -68,10 +69,10 @@ exports.sendOTP = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
 // Singup
-exports.signUp = async (req, res) => {
+export async function signUp(req, res) {
   try {
     //data fetch from request body
     const {
@@ -166,10 +167,10 @@ exports.signUp = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
 // Login
-exports.login = async (req, res) => {
+export async function login(req, res) {
   try {
     const { email, password } = req.body; //get data from req body
 
@@ -230,10 +231,10 @@ exports.login = async (req, res) => {
       message: "Login Failure, please try again",
     });
   }
-};
+}
 
 // ChangePassword
-exports.changePassword = async (req, res) => {
+export async function changePassword(req, res) {
   try {
     // Fetch data from request body
     const { oldPassword, newPassword } = req.body;
@@ -294,4 +295,4 @@ exports.changePassword = async (req, res) => {
     console.log("Error in changing password: " + error);
     return res.status(500).json({ success: false, message: error.message });
   }
-};
+}

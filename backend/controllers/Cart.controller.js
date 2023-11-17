@@ -1,6 +1,6 @@
-const User = require("../models/User");
+import User from "../models/User.model";
 
-exports.addCourseIntoCart = async (req, res) => {
+export async function addCourseIntoCart(req, res) {
   try {
     const { courseId, userId } = req.body;
     const user = await User.findById(userId);
@@ -31,9 +31,9 @@ exports.addCourseIntoCart = async (req, res) => {
       message: "Error on addCourseIntoCart controller: " + error,
     });
   }
-};
+}
 
-exports.removeCourseFromCart = async (req, res) => {
+export async function removeCourseFromCart(req, res) {
   const { courseId, userId } = req.body;
 
   if (courseId === undefined || userId === undefined) {
@@ -64,9 +64,9 @@ exports.removeCourseFromCart = async (req, res) => {
       message: "Error on removeFromCart controller: " + error,
     });
   }
-};
+}
 
-exports.clearCart = async (req, res) => {
+export async function clearCart(req, res) {
   const { userId } = req.body;
 
   if (userId === undefined) {
@@ -97,4 +97,4 @@ exports.clearCart = async (req, res) => {
       message: "Error on clearCart controller: " + error,
     });
   }
-};
+}

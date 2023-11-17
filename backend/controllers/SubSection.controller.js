@@ -1,10 +1,10 @@
-const SubSection = require("../models/SubSection");
-const Section = require("../models/Section");
-const { uploadFileToCloudinary } = require("../utils/fileUploader");
+import SubSection from "../models/SubSection.model";
+import Section from "../models/Section.model";
+import uploadFileToCloudinary from "../utils/fileUploader";
 require("dotenv").config();
 
 // Create SubSection
-exports.createSubSection = async (req, res) => {
+export async function createSubSection(req, res) {
   try {
     //fetch data from request body
     const { sectionId, title, description } = req.body;
@@ -67,10 +67,10 @@ exports.createSubSection = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
 // update SubSection
-exports.updateSubSection = async (req, res) => {
+export async function updateSubSection(req, res) {
   try {
     //fetch data from request body
     const { sectionId, subSectionId, title, description } = req.body;
@@ -112,9 +112,8 @@ exports.updateSubSection = async (req, res) => {
     }
 
     await subSection.save();
-    const updatedSubSection = await Section.findById(sectionId).populate(
-      "subSections"
-    );
+    const updatedSubSection =
+      await Section.findById(sectionId).populate("subSections");
 
     //return response
     return res.status(201).json({
@@ -130,10 +129,10 @@ exports.updateSubSection = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
 // delete SubSection
-exports.deleteSubSection = async (req, res) => {
+export async function deleteSubSection(req, res) {
   try {
     //fetch data from request body
     const { subSectionId, sectionId } = req.body;
@@ -182,10 +181,10 @@ exports.deleteSubSection = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
 // get all SubSection
-exports.getAllSubSections = async (req, res) => {
+export async function getAllSubSections(req, res) {
   try {
     //fetch data from request body
     const { sectionId } = req.body;
@@ -224,4 +223,4 @@ exports.getAllSubSections = async (req, res) => {
       error: error.message,
     });
   }
-};
+}

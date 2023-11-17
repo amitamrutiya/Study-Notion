@@ -1,11 +1,11 @@
-const resetPassword = require("../mail/templates/resetPasswordTemplate");
-const User = require("../models/User");
-const mailSender = require("../utils/mailSender");
-const bcrypt = require("bcrypt");
-const crypto = require("crypto");
+import resetPassword from "../mail/templates/resetPasswordTemplate";
+import User from "../models/User.model";
+import mailSender from "../utils/mailSender";
+import bcrypt from "bcrypt";
+import crypto from "crypto";
 
 // ResetPasswordToken
-exports.resetPasswordToken = async (req, res) => {
+export async function resetPasswordToken(req, res) {
   try {
     //fetch email from request body
     const { email } = req.body;
@@ -55,10 +55,10 @@ exports.resetPasswordToken = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
 // ResetPassword
-exports.resetPassword = async (req, res) => {
+export async function resetPassword(req, res) {
   try {
     //data fetch
     const { password, confirmPassword, token } = req.body;
@@ -117,4 +117,4 @@ exports.resetPassword = async (req, res) => {
       message: error.message,
     });
   }
-};
+}

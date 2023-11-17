@@ -1,15 +1,15 @@
-const Course = require("../models/Course");
-const Category = require("../models/Category");
-const User = require("../models/User");
-const SubSection = require("../models/SubSection");
-const Section = require("../models/Section");
-const CourseProgress = require("../models/CourseProgress");
-const { uploadFileToCloudinary } = require("../utils/fileUploader");
-const { convertSecondsToDuration } = require("../utils/secToDuration");
+import Course from "../models/Course.model";
+import Category from "../models/Category.model";
+import User from "../models/User.model";
+import SubSection from "../models/SubSection.model";
+import Section from "../models/Section.model";
+import CourseProgress from "../models/CourseProgress.model";
+import uploadFileToCloudinary from "../utils/fileUploader";
+import convertSecondsToDuration from "../utils/secToDuration";
 require("dotenv").config();
 
 //createCourse handler function
-exports.createCourse = async (req, res) => {
+export async function createCourse(req, res) {
   try {
     //fetch data
     let {
@@ -118,10 +118,10 @@ exports.createCourse = async (req, res) => {
       message: "Error on createCourse controller: " + error,
     });
   }
-};
+}
 
 //getAllCourse handler function
-exports.getAllCourses = async (req, res) => {
+export async function getAllCourses(req, res) {
   try {
     const allCourses = await Course.find(
       { status: "Published" },
@@ -150,10 +150,10 @@ exports.getAllCourses = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
 //getCourseDetails handler function
-exports.getCourseDetails = async (req, res) => {
+export async function getCourseDetails(req, res) {
   try {
     // get id
     const { courseId } = req.body;
@@ -212,9 +212,9 @@ exports.getCourseDetails = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
-exports.getFullCourseDetails = async (req, res) => {
+export async function getFullCourseDetails(req, res) {
   try {
     const { courseId } = req.body;
     const userId = req.user.id;
@@ -271,10 +271,10 @@ exports.getFullCourseDetails = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
 // Get a list of Course for a given Instructor
-exports.getInstructorCourses = async (req, res) => {
+export async function getInstructorCourses(req, res) {
   try {
     const instructorId = req.user.id; // Get the instructor ID from the authenticated user or request body
 
@@ -302,9 +302,9 @@ exports.getInstructorCourses = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
-exports.deleteCourse = async (req, res) => {
+export async function deleteCourse(req, res) {
   try {
     const { courseId } = req.body;
 
@@ -344,10 +344,10 @@ exports.deleteCourse = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
 // Edit Course Details
-exports.editCourse = async (req, res) => {
+export async function editCourse(req, res) {
   try {
     const { courseId } = req.body;
     const updates = req.body;
@@ -409,4 +409,4 @@ exports.editCourse = async (req, res) => {
       error: error.message,
     });
   }
-};
+}

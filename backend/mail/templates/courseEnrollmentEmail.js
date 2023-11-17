@@ -1,4 +1,4 @@
-exports.courseEnrollmentEmail = (courseName, name) => {
+export default function courseEnrollmentEmail(courseName, name) {
   return `<!DOCTYPE html>
     <html>
 
@@ -84,4 +84,4 @@ exports.courseEnrollmentEmail = (courseName, name) => {
     </body>
 
     </html>`;
-};
+}

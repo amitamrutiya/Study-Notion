@@ -1,10 +1,7 @@
-const mongoose = require("mongoose");
-const Section = require("../models/Section");
-const SubSection = require("../models/SubSection");
-const CourseProgress = require("../models/CourseProgress");
-const Course = require("../models/Course");
+import SubSection from "../models/SubSection.model";
+import CourseProgress from "../models/CourseProgress.model";
 
-exports.updateCourseProgress = async (req, res) => {
+export async function updateCourseProgress(req, res) {
   const { courseId, subsectionId } = req.body;
   const userId = req.user.id;
 
@@ -49,4 +46,4 @@ exports.updateCourseProgress = async (req, res) => {
       .status(500)
       .json({ success: true, error: "Internal server error" });
   }
-};
+}

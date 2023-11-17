@@ -1,7 +1,7 @@
 import { v2 as cloudinary } from "cloudinary";
 
 // Upload any files and images to cloudinary
-export async function uploadFileToCloudinary(file, folder, height, quality) {
+export default async function uploadFileToCloudinary(file, folder, height, quality) {
   try {
     const options = { folder };
 

@@ -1,14 +1,13 @@
-const Profile = require("../models/Profile");
-const User = require("../models/User");
-const Course = require("../models/Course");
-const CourseProgress = require("../models/CourseProgress");
-const { uploadFileToCloudinary } = require("../utils/fileUploader");
-const { convertSecondsToDuration } = require("../utils/secToDuration");
-
+import Profile from "../models/Profile.model";
+import User from "../models/User.model";
+import Course from "../models/Course.model";
+import CourseProgress from "../models/CourseProgress.model";
+import uploadFileToCloudinary from "../utils/fileUploader";
+import convertSecondsToDuration from "../utils/secToDuration";
 require("dotenv").config();
 
 // Update Profile
-exports.updateProfile = async (req, res) => {
+export async function updateProfile(req, res) {
   try {
     // Get user id and data
     const {
@@ -75,9 +74,9 @@ exports.updateProfile = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
-exports.updateDisplayPicture = async (req, res) => {
+export async function updateDisplayPicture(req, res) {
   try {
     const displayPicture = req.files.displayPicture;
     const userId = req.user.id;
@@ -105,9 +104,9 @@ exports.updateDisplayPicture = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
-exports.getEnrolledCourses = async (req, res) => {
+export async function getEnrolledCourses(req, res) {
   try {
     const userId = req.user.id;
     let userDetails = await User.findOne({ _id: userId })
@@ -173,9 +172,9 @@ exports.getEnrolledCourses = async (req, res) => {
       message: error.message,
     });
   }
-};
+}
 
-exports.instructorDashboard = async (req, res) => {
+export async function instructorDashboard(req, res) {
   try {
     const courseDetails = await Course.find({ instructor: req.user.id });
 
@@ -201,4 +200,4 @@ exports.instructorDashboard = async (req, res) => {
     console.error(error);
     res.status(500).json({ message: "Server Error" });
   }
-};
+}

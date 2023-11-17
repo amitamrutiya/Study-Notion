@@ -1,8 +1,8 @@
-const jwt = require("jsonwebtoken");
+import jwt from "jsonwebtoken";
 require("dotenv").config();
 
 //auth
-exports.auth = async (req, res, next) => {
+export async function auth(req, res, next) {
   try {
     //get token from header
     const token =
@@ -35,10 +35,10 @@ exports.auth = async (req, res, next) => {
     console.log("Error in auth middleware: " + error);
     return res.status(500).json({ success: false, message: error.message });
   }
-};
+}
 
 //isStudent
-exports.isStudent = async (req, res, next) => {
+export async function isStudent(req, res, next) {
   try {
     //get user from request object
     const user = req.user;
@@ -55,10 +55,10 @@ exports.isStudent = async (req, res, next) => {
     console.log("Error in isStudent middleware: " + error);
     return res.status(500).json({ success: false, message: error.message });
   }
-};
+}
 
 //isInstructor
-exports.isInstructor = async (req, res, next) => {
+export async function isInstructor(req, res, next) {
   try {
     //get user from request object
     const user = req.user;
@@ -75,10 +75,10 @@ exports.isInstructor = async (req, res, next) => {
     console.log("Error in isInstructor middleware: " + error);
     return res.status(500).json({ success: false, message: error.message });
   }
-};
+}
 
 //isAdmin
-exports.isAdmin = async (req, res, next) => {
+export async function isAdmin(req, res, next) {
   try {
     //get user from request object
     const user = req.user;
@@ -95,4 +95,4 @@ exports.isAdmin = async (req, res, next) => {
     console.log("Error in isAdmin middleware: " + error);
     return res.status(500).json({ success: false, message: error.message });
   }
-};
+}

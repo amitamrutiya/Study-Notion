@@ -1,4 +1,4 @@
-const resetPassword = (email, url) => {
+export default function resetPassword(email, url) {
   return `
       <!DOCTYPE html>
       <html>
@@ -79,6 +79,4 @@ const resetPassword = (email, url) => {
         </div>
       </body>
       </html>`;
-};
-
-module.exports = resetPassword;
+}

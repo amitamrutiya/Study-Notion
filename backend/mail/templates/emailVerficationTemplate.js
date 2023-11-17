@@ -1,4 +1,4 @@
-const otpTemplate = (otp) => {
+export default function otpTemplate(otp) {
   return `<!DOCTYPE html>
 	<html>
 
@@ -83,5 +83,4 @@ const otpTemplate = (otp) => {
 	</body>
 
 	</html>`;
-};
-module.exports = otpTemplate;
+}

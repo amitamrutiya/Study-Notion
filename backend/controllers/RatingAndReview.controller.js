@@ -1,10 +1,9 @@
-const RatingAndReview = require("../models/RatingAndReview");
-const Course = require("../models/Course");
-const User = require("../models/User");
-const mongoose = require("mongoose");
+import RatingAndReview from "../models/RatingAndReview.model";
+import Course from "../models/Course.model";
+import mongoose from "mongoose";
 
 // create Rating and review
-exports.createRating = async (req, res) => {
+export async function createRating(req, res) {
   console.log("----------------------------------------");
   try {
     // get data
@@ -69,10 +68,10 @@ exports.createRating = async (req, res) => {
     console.log("Error in createRatingAndReview");
     return res.status(500).json({ success: false, message: error.message });
   }
-};
+}
 
 // get average rating and review
-exports.getAverageRating = async (req, res) => {
+export async function getAverageRating(req, res) {
   try {
     // get data
     const { courseId } = req.body;
@@ -114,17 +113,17 @@ exports.getAverageRating = async (req, res) => {
     console.log("Error in getAverageRating");
     return res.status(500).json({ success: false, message: error.message });
   }
-};
+}
 
 // get all rating and review
-exports.getAllRatingAndReview = async (req, res) => {
+export async function getAllRatingAndReview(req, res) {
   try {
     const allReviews = await RatingAndReview.find({})
       .sort({ rating: "desc" })
       .populate({ path: "user", select: "firstName lastName email image" })
       .populate({ path: "course", select: "courseName" })
       .exec();
-  
+
     if (!allReviews) {
       return res.status(400).json({
         success: false,
@@ -140,4 +139,4 @@ exports.getAllRatingAndReview = async (req, res) => {
     console.log("Error in getAllRatingAndReview");
     return res.status(500).json({ success: false, message: error.message });
   }
-};
+}

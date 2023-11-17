@@ -1,9 +1,9 @@
-const Section = require("../models/Section");
-const Course = require("../models/Course");
-const SubSection = require("../models/SubSection");
+import Section from "../models/Section.model";
+import Course from "../models/Course.model";
+import SubSection from "../models/SubSection.model";
 
 // Create Section
-exports.createSection = async (req, res) => {
+export async function createSection(req, res) {
   try {
     // data fetch
     const { sectionName, courseId } = req.body;
@@ -52,10 +52,10 @@ exports.createSection = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
 // Update Section
-exports.updateSection = async (req, res) => {
+export async function updateSection(req, res) {
   try {
     //data fetch
     const { sectionName, sectionId, courseId } = req.body;
@@ -104,10 +104,10 @@ exports.updateSection = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
 // Delete Section
-exports.deleteSection = async (req, res) => {
+export async function deleteSection(req, res) {
   try {
     //data fetch
     const { sectionId, courseId } = req.body;
@@ -161,10 +161,10 @@ exports.deleteSection = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
 
 // Get All Sections
-exports.getAllSections = async (req, res) => {
+export async function getAllSections(req, res) {
   try {
     //data fetch
     const { courseId } = req.body;
@@ -201,4 +201,4 @@ exports.getAllSections = async (req, res) => {
       error: error.message,
     });
   }
-};
+}
