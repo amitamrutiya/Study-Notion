@@ -1,24 +1,16 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const {
-  login,
-  signUp,
-  sendOTP,
-  changePassword,
-} = require("../controllers/Auth");
+import { login, signUp, sendOTP, changePassword } from "../controllers/Auth";
 
-const {
+import {
   resetPasswordToken,
   resetPassword,
-} = require("../controllers/ResetPassword");
+} from "../controllers/ResetPassword";
 
-const {
-  deleteUserAccount,
-  getAllUserDetails,
-} = require("../controllers/User");
+import { deleteUserAccount, getAllUserDetails } from "../controllers/User";
 
-const { auth } = require("../middlewares/auth");
+import { auth } from "../middlewares/auth";
 
 // Authentication routes
 router.post("/login", login);
@@ -34,4 +26,4 @@ router.post("/reset-password", resetPassword);
 router.delete("/deleteUserAccount", auth, deleteUserAccount);
 router.get("/getUserDetails", auth, getAllUserDetails);
 
-module.exports = router;
+export default router;

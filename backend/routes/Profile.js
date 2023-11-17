@@ -1,13 +1,13 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const { auth, isInstructor } = require("../middlewares/auth");
-const {
+import { auth, isInstructor } from "../middlewares/auth.middelware";
+import {
   updateProfile,
   updateDisplayPicture,
   getEnrolledCourses,
   instructorDashboard,
-} = require("../controllers/Profile");
+} from "../controllers/Profile";
 
 //  Profile routes
 router.put("/updateProfile", auth, updateProfile);
@@ -15,4 +15,4 @@ router.get("/getEnrolledCourses", auth, getEnrolledCourses);
 router.put("/updateDisplayPicture", auth, updateDisplayPicture);
 router.get("/instructorDashboard", auth, isInstructor, instructorDashboard);
 
-module.exports = router;
+export default router;

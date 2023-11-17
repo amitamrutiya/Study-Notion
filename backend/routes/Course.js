@@ -1,7 +1,7 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const {
+import {
   createCourse,
   getAllCourses,
   getCourseDetails,
@@ -9,46 +9,41 @@ const {
   editCourse,
   getInstructorCourses,
   deleteCourse,
-} = require("../controllers/Course"); // Course Controllers Import
+} from "../controllers/Course"; // Course Controllers Import
 
-const {
+import {
   showAllCategories,
   createCategory,
   categoryPageDetails,
-} = require("../controllers/Category"); // Categories Controllers Import
+} from "../controllers/Category"; // Categories Controllers Import
 
-const {
+import {
   createSection,
   updateSection,
   deleteSection,
-} = require("../controllers/Section"); // Sections Controllers Import
+} from "../controllers/Section"; // Sections Controllers Import
 
-const {
+import {
   createSubSection,
   updateSubSection,
   deleteSubSection,
-} = require("../controllers/SubSection"); // Sub-Sections Controllers Import
+} from "../controllers/SubSection"; // Sub-Sections Controllers Import
 
-const {
+import {
   createRating,
   getAverageRating,
   getAllRatingAndReview,
-} = require("../controllers/RatingAndReview"); // Rating Controllers Import
+} from "../controllers/RatingAndReview"; // Rating Controllers Import
 
-const {
+import {
   addCourseIntoCart,
   removeCourseFromCart,
   clearCart,
-} = require("../controllers/Cart"); // Cart Controllers Import
+} from "../controllers/Cart"; // Cart Controllers Import
 
-const {
-  auth,
-  isInstructor,
-  isStudent,
-  isAdmin,
-} = require("../middlewares/auth"); // Importing Middlewares
+import { auth, isInstructor, isStudent, isAdmin } from "../middlewares/auth"; // Importing Middlewares
 
-const { updateCourseProgress } = require("../controllers/courseProgress");
+import { updateCourseProgress } from "../controllers/courseProgress.controller";
 
 // Course routes (only by Instructors)
 router.post("/createCourse", auth, isInstructor, createCourse);
@@ -82,4 +77,4 @@ router.get("/getReviews", getAllRatingAndReview);
 
 router.post("/updateCourseProgress", auth, isStudent, updateCourseProgress);
 
-module.exports = router;
+export default router;

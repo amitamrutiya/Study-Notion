@@ -1,12 +1,12 @@
-const express = require("express");
-const router = express.Router();
+import { Router } from "express";
+const router = Router();
 
-const {
+import {
   capturePayment,
   verifyPayment,
   sendPaymentSuccessEmail,
-} = require("../controllers/Payments");
-const { auth, isStudent } = require("../middlewares/auth");
+} from "../controllers/Payments";
+import { auth, isStudent } from "../middlewares/auth";
 
 router.post("/capturePayment", auth, isStudent, capturePayment);
 router.post("/verifyPayment", auth, isStudent, verifyPayment);
@@ -17,4 +17,4 @@ router.post(
   sendPaymentSuccessEmail
 );
 
-module.exports = router;
+export default router;
