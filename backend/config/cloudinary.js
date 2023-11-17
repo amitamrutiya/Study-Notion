@@ -1,6 +1,6 @@
-const cloudinary = require("cloudinary").v2;
+import { v2 as cloudinary } from "cloudinary";
 
-exports.cloudinaryConnect = () => {
+export function cloudinaryConnect() {
   try {
     cloudinary.config({
       cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -10,4 +10,4 @@ exports.cloudinaryConnect = () => {
   } catch (error) {
     console.log("Error in connecting to cloudinary: " + error);
   }
-};
+}

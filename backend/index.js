@@ -1,21 +1,33 @@
-const express = require("express");
-const userRoutes = require("./routes/User");
-const profileRoutes = require("./routes/Profile");
-const paymentRoutes = require("./routes/Payment");
-const courseRoutes = require("./routes/Course");
-const contactUsRoute = require("./routes/ContactUs");
-const database = require("./config/database");
-const cookieParser = require("cookie-parser");
-const cors = require("cors");
-const { cloudinaryConnect } = require("./config/cloudinary");
-const fileUpload = require("express-fileupload");
-require("dotenv").config();
+import express from "express";
+import userRoutes from "./routes/User";
+import profileRoutes from "./routes/Profile";
+import paymentRoutes from "./routes/Payment";
+import courseRoutes from "./routes/Course";
+import contactUsRoute from "./routes/ContactUs";
+import connectDB from "./config/database";
+import cookieParser from "cookie-parser";
+import cors from "cors";
+import { cloudinaryConnect } from "./config/cloudinary";
+import fileUpload from "express-fileupload";
+import dotenv from "dotenv";
+
+dotenv.config({
+  path: "./env",
+});
 
 const app = express();
-const PORT = process.env.PORT || 4000;
 
 //database connect
-database.connect();
+connectDB()
+  .then(() => {
+    app.listen(process.env.PORT || 4000, () => {
+      console.log(`⚙️   Server is running at port : ${process.env.PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.log("MONGO db connection failed !!! ", err);
+  });
+
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
@@ -49,8 +61,4 @@ app.get("/", (req, res) => {
     success: true,
     message: "Your server is up and running....",
   });
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running at ${PORT}`);
 });

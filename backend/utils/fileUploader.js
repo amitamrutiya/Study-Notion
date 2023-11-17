@@ -1,7 +1,7 @@
-const cloudinary = require("cloudinary").v2;
+import { v2 as cloudinary } from "cloudinary";
 
 // Upload any files and images to cloudinary
-exports.uploadFileToCloudinary = async (file, folder, height, quality) => {
+export async function uploadFileToCloudinary(file, folder, height, quality) {
   try {
     const options = { folder };
 
@@ -19,4 +19,4 @@ exports.uploadFileToCloudinary = async (file, folder, height, quality) => {
     console.log("Error in uploading image to cloudinary: " + error.message);
     throw error;
   }
-};
+}

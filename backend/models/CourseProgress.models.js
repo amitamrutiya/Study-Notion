@@ -18,4 +18,4 @@ const courseProgressSchems = new Schema({
   ],
 });
 
-export const CourseProgress = model("CourseProgress", courseProgressSchems);
+export default CourseProgress = model("CourseProgress", courseProgressSchems);

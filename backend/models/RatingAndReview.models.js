@@ -21,4 +21,7 @@ const ratingAndReviewSchema = new Schema({
     },
 });
 
-export const RatingAndReview = model("RatingAndReview", ratingAndReviewSchema);
+export default RatingAndReview = model(
+  "RatingAndReview",
+  ratingAndReviewSchema
+);
