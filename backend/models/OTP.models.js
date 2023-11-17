@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
-const mailSender = require("../utils/mailSender");
-const otpTemplate = require("../mail/templates/emailVerficationTemplate.js");
+import { Schema, model } from "mongoose";
+import mailSender from "../utils/mailSender.js";
+import otpTemplate from "../mail/templates/emailVerficationTemplate.js";
 
-const OTPShema = new mongoose.Schema({
+const OTPShema = new Schema({
   email: {
     type: String,
     required: true,
@@ -38,4 +38,5 @@ OTPShema.pre("save", async function (next) {
   await sendVerificationEmail(this.email, this.otp);
   next();
 });
-module.exports = mongoose.model("OTP", OTPShema);
+
+export const OTP = model("OTP", OTPShema);

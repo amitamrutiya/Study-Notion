@@ -1,6 +1,6 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const userSchems = new mongoose.Schema({
+const userSchems = new Schema({
   firstName: {
     type: String,
     required: true,
@@ -27,19 +27,19 @@ const userSchems = new mongoose.Schema({
     required: true,
   },
   additionalDetails: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     required: true,
     ref: "Profile",
   },
   courses: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Course",
     },
   ],
   cartAddedCourses: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Course",
     },
   ],
@@ -49,7 +49,7 @@ const userSchems = new mongoose.Schema({
   },
   courseProgress: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "CourseProgress",
     },
   ],
@@ -61,4 +61,4 @@ const userSchems = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("User", userSchems);
+export const User = model("User", userSchems);

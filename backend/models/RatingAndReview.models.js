@@ -1,13 +1,13 @@
-const mongoose = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const ratingAndReviewSchema = new mongoose.Schema({
+const ratingAndReviewSchema = new Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
         ref: "User",
     },
     course: {
-        type: mongoose.Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         required: true,
         ref: "Course",
     },
@@ -21,4 +21,4 @@ const ratingAndReviewSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model("RatingAndReview", ratingAndReviewSchema);
+export const RatingAndReview = model("RatingAndReview", ratingAndReviewSchema);
