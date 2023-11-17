@@ -1,13 +1,13 @@
-import User from "../models/User.model";
-import OTP from "../models/OTP.model";
-import Profile from "../models/Profile.model";
+import User from "../models/User.model.js";
+import OTP from "../models/OTP.model.js";
+import Profile from "../models/Profile.model.js";
 import otpGenerator from "otp-generator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import mailSender from "../utils/mailSender";
-import passwordUpdated from "../mail/templates/passwordUpdate";
+import mailSender from "../utils/mailSender.js";
+import passwordUpdated from "../mail/templates/passwordUpdate.js";
 
-require("dotenv").config();
+// require("dotenv").config();
 
 // Send Otp
 export async function sendOTP(req, res) {
@@ -267,6 +267,7 @@ export async function changePassword(req, res) {
       try {
         const emailResponse = await mailSender(
           updatedUserDetails.email,
+          "Password updated successfully - [StudyNotion]",
           passwordUpdated(
             updatedUserDetails.email,
             `Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`

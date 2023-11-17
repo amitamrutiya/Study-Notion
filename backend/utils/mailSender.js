@@ -1,5 +1,5 @@
 import nodemailer from "nodemailer";
-require("dotenv").config();
+// // require("dotenv").config();
 
 export default async function mailSender(email, title, body) {
   try {

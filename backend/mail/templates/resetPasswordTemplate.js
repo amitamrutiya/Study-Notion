@@ -1,4 +1,4 @@
-export default function resetPassword(email, url) {
+export default function resetPasswordTemplate(email, url) {
   return `
       <!DOCTYPE html>
       <html>

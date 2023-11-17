@@ -14,4 +14,4 @@ const tagsSchema = new Schema({
   },
 });
 
-export default Tag = model("Tag", tagsSchema);
+export default model("Tag", tagsSchema);

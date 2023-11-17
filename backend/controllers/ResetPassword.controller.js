@@ -1,6 +1,6 @@
-import resetPassword from "../mail/templates/resetPasswordTemplate";
-import User from "../models/User.model";
-import mailSender from "../utils/mailSender";
+import resetPasswordTemplate from "../mail/templates/resetPasswordTemplate.js";
+import User from "../models/User.model.js";
+import mailSender from "../utils/mailSender.js";
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 
@@ -41,7 +41,11 @@ export async function resetPasswordToken(req, res) {
     const url = `http://localhost:3000/update-password/${token}`;
 
     //send email to user
-    await mailSender(email, "Password Reset Link", resetPassword(email, url));
+    await mailSender(
+      email,
+      "Password Reset Link",
+      resetPasswordTemplate(email, url)
+    );
 
     //return response successful
     res.status(200).json({

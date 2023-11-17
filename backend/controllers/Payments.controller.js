@@ -1,12 +1,12 @@
-import instance from "../config/razorpay";
-import Course from "../models/Course.model";
-import CourseProgress from "../models/CourseProgress.model";
-import User from "../models/User.model";
-import mailSender from "../utils/mailSender";
+import instance from "../config/razorpay.js";
+import Course from "../models/Course.model.js";
+import CourseProgress from "../models/CourseProgress.model.js";
+import User from "../models/User.model.js";
+import mailSender from "../utils/mailSender.js";
 import crypto from "crypto";
-import courseEnrollmentEmail from "../mail/templates/courseEnrollmentEmail";
+import courseEnrollmentEmail from "../mail/templates/courseEnrollmentEmail.js";
 import mongoose from "mongoose";
-import paymentSuccessEmail from "../mail/templates/paymentSuccessEmail";
+import paymentSuccessEmail from "../mail/templates/paymentSuccessEmail.js";
 
 //initiate the razorpay order
 export async function capturePayment(req, res) {

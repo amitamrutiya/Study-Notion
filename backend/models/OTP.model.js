@@ -39,4 +39,4 @@ OTPShema.pre("save", async function (next) {
   next();
 });
 
-export default OTP = model("OTP", OTPShema);
+export default model("OTP", OTPShema);

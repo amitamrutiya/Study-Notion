@@ -61,4 +61,4 @@ const userSchems = new Schema({
   },
 });
 
-export default User = model("User", userSchems);
+export default model("User", userSchems);

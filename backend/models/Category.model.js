@@ -17,4 +17,4 @@ const categorySchems = new Schema({
   ],
 });
 
-export default Category = model("Category", categorySchems);
+export default model("Category", categorySchems);

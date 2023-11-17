@@ -1,16 +1,24 @@
 import { Router } from "express";
 const router = Router();
 
-import { login, signUp, sendOTP, changePassword } from "../controllers/Auth";
+import {
+  login,
+  signUp,
+  sendOTP,
+  changePassword,
+} from "../controllers/Auth.controller.js";
 
 import {
   resetPasswordToken,
   resetPassword,
-} from "../controllers/ResetPassword";
+} from "../controllers/ResetPassword.controller.js";
 
-import { deleteUserAccount, getAllUserDetails } from "../controllers/User";
+import {
+  deleteUserAccount,
+  getAllUserDetails,
+} from "../controllers/User.controller.js";
 
-import { auth } from "../middlewares/auth";
+import { auth } from "../middlewares/auth.middelware.js";
 
 // Authentication routes
 router.post("/login", login);

@@ -13,4 +13,4 @@ const sectionSchems = new Schema({
   ],
 });
 
-export default Section = model("Section", sectionSchems);
+export default model("Section", sectionSchems);

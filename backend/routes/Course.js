@@ -9,41 +9,41 @@ import {
   editCourse,
   getInstructorCourses,
   deleteCourse,
-} from "../controllers/Course"; // Course Controllers Import
+} from "../controllers/Course.controller.js"; // Course Controllers Import
 
 import {
   showAllCategories,
   createCategory,
   categoryPageDetails,
-} from "../controllers/Category"; // Categories Controllers Import
+} from "../controllers/Category.controller.js"; // Categories Controllers Import
 
 import {
   createSection,
   updateSection,
   deleteSection,
-} from "../controllers/Section"; // Sections Controllers Import
+} from "../controllers/Section.controller.js"; // Sections Controllers Import
 
 import {
   createSubSection,
   updateSubSection,
   deleteSubSection,
-} from "../controllers/SubSection"; // Sub-Sections Controllers Import
+} from "../controllers/SubSection.controller.js"; // Sub-Sections Controllers Import
 
 import {
   createRating,
   getAverageRating,
   getAllRatingAndReview,
-} from "../controllers/RatingAndReview"; // Rating Controllers Import
+} from "../controllers/RatingAndReview.controller.js"; // Rating Controllers Import
 
 import {
   addCourseIntoCart,
   removeCourseFromCart,
   clearCart,
-} from "../controllers/Cart"; // Cart Controllers Import
+} from "../controllers/Cart.controller.js"; // Cart Controllers Import
 
-import { auth, isInstructor, isStudent, isAdmin } from "../middlewares/auth"; // Importing Middlewares
+import { auth, isInstructor, isStudent, isAdmin } from "../middlewares/auth.middelware.js"; // Importing Middlewares
 
-import { updateCourseProgress } from "../controllers/courseProgress.controller";
+import { updateCourseProgress } from "../controllers/courseProgress.controller.js";
 
 // Course routes (only by Instructors)
 router.post("/createCourse", auth, isInstructor, createCourse);

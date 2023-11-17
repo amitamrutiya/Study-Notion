@@ -1,10 +1,10 @@
-import Profile from "../models/Profile.model";
-import User from "../models/User.model";
-import Course from "../models/Course.model";
-import CourseProgress from "../models/CourseProgress.model";
-import uploadFileToCloudinary from "../utils/fileUploader";
-import convertSecondsToDuration from "../utils/secToDuration";
-require("dotenv").config();
+import Profile from "../models/Profile.model.js";
+import User from "../models/User.model.js";
+import Course from "../models/Course.model.js";
+import CourseProgress from "../models/CourseProgress.model.js";
+import uploadFileToCloudinary from "../utils/fileUploader.js";
+import convertSecondsToDuration from "../utils/secToDuration.js";
+// require("dotenv").config();
 
 // Update Profile
 export async function updateProfile(req, res) {

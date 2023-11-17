@@ -18,4 +18,4 @@ const subSectionSchems = new Schema({
   },
 });
 
-export default SubSection = model("SubSection", subSectionSchems);
+export default model("SubSection", subSectionSchems);

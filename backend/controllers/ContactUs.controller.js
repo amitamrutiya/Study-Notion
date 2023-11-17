@@ -1,6 +1,6 @@
-import contactUsEmail from "../mail/templates/contactFormRes";
-import mailSender from "../utils/mailSender";
-require("dotenv").config();
+import contactUsEmail from "../mail/templates/contactFormRes.js";
+import mailSender from "../utils/mailSender.js";
+// require("dotenv").config();
 
 export async function contactUsController(req, res) {
   // fetch data

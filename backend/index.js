@@ -1,13 +1,13 @@
 import express from "express";
-import userRoutes from "./routes/User";
-import profileRoutes from "./routes/Profile";
-import paymentRoutes from "./routes/Payment";
-import courseRoutes from "./routes/Course";
-import contactUsRoute from "./routes/ContactUs";
-import connectDB from "./config/database";
+import userRoutes from "./routes/User.js";
+import profileRoutes from "./routes/Profile.js";
+import paymentRoutes from "./routes/Payment.js";
+import courseRoutes from "./routes/Course.js";
+import contactUsRoute from "./routes/ContactUs.js";
+import connectDB from "./config/database.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { cloudinaryConnect } from "./config/cloudinary";
+import { cloudinaryConnect } from "./config/cloudinary.js";
 import fileUpload from "express-fileupload";
 import dotenv from "dotenv";
 

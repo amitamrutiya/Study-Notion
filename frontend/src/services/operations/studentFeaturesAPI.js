@@ -52,7 +52,7 @@ export async function buyCourse(
       { courses },
       { Authorization: `Bearer ${token}` }
     );
-    
+
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message);
     }
@@ -124,7 +124,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
-    toast.success("payment Successful, you are addded to the course");
+    toast.success("Payment Successful, you are addded to the course");
     navigate("/dashboard/enrolled-courses");
     dispatch(resetCart());
   } catch (error) {

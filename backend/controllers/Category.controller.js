@@ -1,4 +1,4 @@
-import Category from "../models/Category.model";
+import Category from "../models/Category.model.js";
 
 function getRandomInt(max) {
   return Math.floor(Math.random() * max);

@@ -1,12 +1,12 @@
-import Course from "../models/Course.model";
-import Category from "../models/Category.model";
-import User from "../models/User.model";
-import SubSection from "../models/SubSection.model";
-import Section from "../models/Section.model";
-import CourseProgress from "../models/CourseProgress.model";
-import uploadFileToCloudinary from "../utils/fileUploader";
-import convertSecondsToDuration from "../utils/secToDuration";
-require("dotenv").config();
+import Course from "../models/Course.model.js";
+import Category from "../models/Category.model.js";
+import User from "../models/User.model.js";
+import SubSection from "../models/SubSection.model.js";
+import Section from "../models/Section.model.js";
+import CourseProgress from "../models/CourseProgress.model.js";
+import uploadFileToCloudinary from "../utils/fileUploader.js";
+import convertSecondsToDuration from "../utils/secToDuration.js";
+// require("dotenv").config();
 
 //createCourse handler function
 export async function createCourse(req, res) {

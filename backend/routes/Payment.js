@@ -5,8 +5,8 @@ import {
   capturePayment,
   verifyPayment,
   sendPaymentSuccessEmail,
-} from "../controllers/Payments";
-import { auth, isStudent } from "../middlewares/auth";
+} from "../controllers/Payments.controller.js";
+import { auth, isStudent } from "../middlewares/auth.middelware.js";
 
 router.post("/capturePayment", auth, isStudent, capturePayment);
 router.post("/verifyPayment", auth, isStudent, verifyPayment);

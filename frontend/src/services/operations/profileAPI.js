@@ -52,7 +52,7 @@ export async function getUserEnrolledCourses(token) {
       throw new Error(response.data.message);
     }
     console.log(
-      "GET_USER_ENROLLED_COURSES_API API ERROR............",
+      "GET_USER_ENROLLED_COURSES_API API SUCCESS............",
       response.data
     );
     result = response.data.data;

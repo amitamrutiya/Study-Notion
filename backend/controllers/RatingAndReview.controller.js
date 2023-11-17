@@ -1,5 +1,5 @@
-import RatingAndReview from "../models/RatingAndReview.model";
-import Course from "../models/Course.model";
+import RatingAndReview from "../models/RatingAndReview.model.js";
+import Course from "../models/Course.model.js";
 import mongoose from "mongoose";
 
 // create Rating and review

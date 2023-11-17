@@ -1,7 +1,7 @@
-import SubSection from "../models/SubSection.model";
-import Section from "../models/Section.model";
-import uploadFileToCloudinary from "../utils/fileUploader";
-require("dotenv").config();
+import SubSection from "../models/SubSection.model.js";
+import Section from "../models/Section.model.js";
+import uploadFileToCloudinary from "../utils/fileUploader.js";
+// require("dotenv").config();
 
 // Create SubSection
 export async function createSubSection(req, res) {

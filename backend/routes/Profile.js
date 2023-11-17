@@ -1,13 +1,13 @@
 import { Router } from "express";
 const router = Router();
 
-import { auth, isInstructor } from "../middlewares/auth.middelware";
+import { auth, isInstructor } from "../middlewares/auth.middelware.js";
 import {
   updateProfile,
   updateDisplayPicture,
   getEnrolledCourses,
   instructorDashboard,
-} from "../controllers/Profile";
+} from "../controllers/Profile.controller.js";
 
 //  Profile routes
 router.put("/updateProfile", auth, updateProfile);
