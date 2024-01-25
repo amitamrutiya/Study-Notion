@@ -8,7 +8,8 @@
     "start": "node -r dotenv/config --experimental-json-modules index.js",
     "dev": "nodemon -r dotenv/config --experimental-json-modules index.js",
     "test": "jest",
-    "build": "npm i"
+    "build": "npm i",
+    "format": "cd .. && npm run format"
   },
   "keywords": [],
   "author": "",

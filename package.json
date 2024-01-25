@@ -10,7 +10,7 @@
         "start:server": "cd backend && npm run dev",
         "start:client": "cd frontend && npm run dev",
         "dev": "concurrently -n \"server,client\" -c \"red,blue\" \"npm run start:server\" \"npm run start:client\"",
-        "format": "eslint --fix . && eslint --ext .jsx . --fix"
+        "format": "npx eslint . --ext .js,.jsx"
     },
     "devDependencies": {
         "eslint-config-standard": "^17.1.0",

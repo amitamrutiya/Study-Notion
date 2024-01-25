@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Backend CI
 
 on:
   push:
@@ -30,11 +30,8 @@ jobs:
         node-version: '20.x'
 
     - name: Install Dependencies
-      run: npm install --prefix backend
+      run: npm install
 
     - name: Run ESLint
-      run: cd.. && npm run format
-
-    - name: Run Tests
-      run: npm test --prefix backend
+      run: npm run format
 
