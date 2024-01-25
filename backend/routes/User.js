@@ -6,17 +6,17 @@ import {
   signUp,
   sendOTP,
   changePassword,
-} from "../controllers/Auth.controller.js";
+} from "../controllers/auth.controller.js";
 
 import {
   resetPasswordToken,
   resetPassword,
-} from "../controllers/ResetPassword.controller.js";
+} from "../controllers/resetPassword.controller.js";
 
 import {
   deleteUserAccount,
   getAllUserDetails,
-} from "../controllers/User.controller.js";
+} from "../controllers/user.controller.js";
 
 import { auth } from "../middlewares/auth.middelware.js";
 

@@ -1,6 +1,6 @@
-import User from "../models/User.model.js";
-import Profile from "../models/Profile.model.js";
-import Course from "../models/Course.model.js";
+import User from "../models/user.model.js";
+import Profile from "../models/profile.model.js";
+import Course from "../models/course.model.js";
 import mongoose from "mongoose";
 
 //Delete Account

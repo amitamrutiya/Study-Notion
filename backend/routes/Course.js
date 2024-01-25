@@ -21,19 +21,19 @@ import {
   createSection,
   updateSection,
   deleteSection,
-} from "../controllers/Section.controller.js"; // Sections Controllers Import
+} from "../controllers/section.controller.js"; // Sections Controllers Import
 
 import {
   createSubSection,
   updateSubSection,
   deleteSubSection,
-} from "../controllers/SubSection.controller.js"; // Sub-Sections Controllers Import
+} from "../controllers/subSection.controller.js"; // Sub-Sections Controllers Import
 
 import {
   createRating,
   getAverageRating,
   getAllRatingAndReview,
-} from "../controllers/RatingAndReview.controller.js"; // Rating Controllers Import
+} from "../controllers/ratingAndReview.controller.js"; // Rating Controllers Import
 
 import {
   addCourseIntoCart,

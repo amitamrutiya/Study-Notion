@@ -1,5 +1,5 @@
-import SubSection from "../models/SubSection.model.js";
-import Section from "../models/Section.model.js";
+import SubSection from "../models/subSection.model.js";
+import Section from "../models/section.model.js";
 import uploadFileToCloudinary from "../utils/fileUploader.js";
 // require("dotenv").config();
 

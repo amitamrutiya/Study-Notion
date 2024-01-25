@@ -1,6 +1,6 @@
 import { Router } from "express";
 const router = Router();
-import { contactUsController } from "../controllers/ContactUs.controller.js";
+import { contactUsController } from "../controllers/contactUs.controller.js";
 
 router.post("/contact", contactUsController);
 

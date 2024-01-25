@@ -1,7 +1,7 @@
-import Profile from "../models/Profile.model.js";
-import User from "../models/User.model.js";
-import Course from "../models/Course.model.js";
-import CourseProgress from "../models/CourseProgress.model.js";
+import Profile from "../models/profile.model.js";
+import User from "../models/user.model.js";
+import Course from "../models/course.model.js";
+import CourseProgress from "../models/courseProgress.model.js";
 import uploadFileToCloudinary from "../utils/fileUploader.js";
 import convertSecondsToDuration from "../utils/secToDuration.js";
 // require("dotenv").config();

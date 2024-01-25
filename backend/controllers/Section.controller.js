@@ -1,6 +1,6 @@
-import Section from "../models/Section.model.js";
-import Course from "../models/Course.model.js";
-import SubSection from "../models/SubSection.model.js";
+import Section from "../models/section.model.js";
+import Course from "../models/course.model.js";
+import SubSection from "../models/subSection.model.js";
 
 // Create Section
 export async function createSection(req, res) {

@@ -1,5 +1,5 @@
-import SubSection from "../models/SubSection.model.js";
-import CourseProgress from "../models/CourseProgress.model.js";
+import SubSection from "../models/subSection.model.js";
+import CourseProgress from "../models/courseProgress.model.js";
 
 export async function updateCourseProgress(req, res) {
   const { courseId, subsectionId } = req.body;

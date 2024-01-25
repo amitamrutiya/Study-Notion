@@ -7,7 +7,7 @@ import {
   updateDisplayPicture,
   getEnrolledCourses,
   instructorDashboard,
-} from "../controllers/Profile.controller.js";
+} from "../controllers/profile.controller.js";
 
 //  Profile routes
 router.put("/updateProfile", auth, updateProfile);

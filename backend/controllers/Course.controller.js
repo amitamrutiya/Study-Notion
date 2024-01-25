@@ -1,9 +1,9 @@
-import Course from "../models/Course.model.js";
-import Category from "../models/Category.model.js";
-import User from "../models/User.model.js";
-import SubSection from "../models/SubSection.model.js";
-import Section from "../models/Section.model.js";
-import CourseProgress from "../models/CourseProgress.model.js";
+import Course from "../models/course.model.js";
+import Category from "../models/category.model.js";
+import User from "../models/user.model.js";
+import SubSection from "../models/subSection.model.js";
+import Section from "../models/section.model.js";
+import CourseProgress from "../models/courseProgress.model.js";
 import uploadFileToCloudinary from "../utils/fileUploader.js";
 import convertSecondsToDuration from "../utils/secToDuration.js";
 // require("dotenv").config();
