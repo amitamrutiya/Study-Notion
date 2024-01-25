@@ -1,100 +1,100 @@
-import User from "../models/user.model.js";
+import User from '../models/user.model.js'
 
-export async function addCourseIntoCart(req, res) {
+export async function addCourseIntoCart (req, res) {
   try {
-    const { courseId, userId } = req.body;
-    const user = await User.findById(userId);
+    const { courseId, userId } = req.body
+    const user = await User.findById(userId)
 
     if (courseId === undefined || userId === undefined) {
       return res.status(400).json({
         success: false,
-        message: "courseId or userId is undefined",
-      });
+        message: 'courseId or userId is undefined'
+      })
     }
 
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "User not found",
-      });
+        message: 'User not found'
+      })
     }
-    user.cartAddedCourses.push(courseId);
-    await user.save();
+    user.cartAddedCourses.push(courseId)
+    await user.save()
     return res.status(200).json({
       success: true,
-      message: "Course added to cart",
-    });
+      message: 'Course added to cart'
+    })
   } catch (error) {
-    console.log("Error in addCourseIntoCart: " + error);
+    console.log('Error in addCourseIntoCart: ' + error)
     return res.status(500).json({
       success: false,
-      message: "Error on addCourseIntoCart controller: " + error,
-    });
+      message: 'Error on addCourseIntoCart controller: ' + error
+    })
   }
 }
 
-export async function removeCourseFromCart(req, res) {
-  const { courseId, userId } = req.body;
+export async function removeCourseFromCart (req, res) {
+  const { courseId, userId } = req.body
 
   if (courseId === undefined || userId === undefined) {
     return res.status(400).json({
       success: false,
-      message: "courseId or userId is undefined",
-    });
+      message: 'courseId or userId is undefined'
+    })
   }
 
   try {
-    const user = await User.findById(userId);
+    const user = await User.findById(userId)
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "User not found",
-      });
+        message: 'User not found'
+      })
     }
-    user.cartAddedCourses.pull(courseId);
-    await user.save();
+    user.cartAddedCourses.pull(courseId)
+    await user.save()
     return res.status(200).json({
       success: true,
-      message: "Course removed from cart",
-    });
+      message: 'Course removed from cart'
+    })
   } catch (error) {
-    console.log("Error in removeFromCart: " + error);
+    console.log('Error in removeFromCart: ' + error)
     return res.status(500).json({
       success: false,
-      message: "Error on removeFromCart controller: " + error,
-    });
+      message: 'Error on removeFromCart controller: ' + error
+    })
   }
 }
 
-export async function clearCart(req, res) {
-  const { userId } = req.body;
+export async function clearCart (req, res) {
+  const { userId } = req.body
 
   if (userId === undefined) {
     return res.status(400).json({
       success: false,
-      message: "userId is undefined",
-    });
+      message: 'userId is undefined'
+    })
   }
 
   try {
-    const user = await User.findById(userId);
+    const user = await User.findById(userId)
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: "User not found",
-      });
+        message: 'User not found'
+      })
     }
-    user.cartAddedCourses = [];
-    await user.save();
+    user.cartAddedCourses = []
+    await user.save()
     return res.status(200).json({
       success: true,
-      message: "Cart cleared",
-    });
+      message: 'Cart cleared'
+    })
   } catch (error) {
-    console.log("Error in clearCart: " + error);
+    console.log('Error in clearCart: ' + error)
     return res.status(500).json({
       success: false,
-      message: "Error on clearCart controller: " + error,
-    });
+      message: 'Error on clearCart controller: ' + error
+    })
   }
 }

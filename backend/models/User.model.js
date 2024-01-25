@@ -1,64 +1,64 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose'
 
 const userSchems = new Schema({
   firstName: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   lastName: {
     type: String,
     required: true,
-    trim: true,
+    trim: true
   },
   email: {
     type: String,
     required: true,
     trim: true,
-    unique: true,
+    unique: true
   },
   password: {
     type: String,
-    required: true,
+    required: true
   },
   accountType: {
     type: String,
-    enum: ["Admin", "Student", "Instructor"],
-    required: true,
+    enum: ['Admin', 'Student', 'Instructor'],
+    required: true
   },
   additionalDetails: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: "Profile",
+    ref: 'Profile'
   },
   courses: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Course",
-    },
+      ref: 'Course'
+    }
   ],
   cartAddedCourses: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Course",
-    },
+      ref: 'Course'
+    }
   ],
   image: {
     type: String,
-    required: true,
+    required: true
   },
   courseProgress: [
     {
       type: Schema.Types.ObjectId,
-      ref: "CourseProgress",
-    },
+      ref: 'CourseProgress'
+    }
   ],
   token: {
-    type: String,
+    type: String
   },
   resetPasswordExpires: {
-    type: Date,
-  },
-});
+    type: Date
+  }
+})
 
-export default model("User", userSchems);
+export default model('User', userSchems)

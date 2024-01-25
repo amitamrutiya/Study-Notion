@@ -1,16 +1,16 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose'
 
 const sectionSchems = new Schema({
   sectionName: {
     type: String,
-    required: true,
+    required: true
   },
   subSections: [
     {
       type: Schema.Types.ObjectId,
-      ref: "SubSection",
-    },
-  ],
-});
+      ref: 'SubSection'
+    }
+  ]
+})
 
-export default model("Section", sectionSchems);
+export default model('Section', sectionSchems)

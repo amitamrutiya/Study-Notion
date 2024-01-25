@@ -1,4 +1,4 @@
-export default function paymentSuccessEmail(name, amount, orderId, paymentId) {
+export default function paymentSuccessEmail (name, amount, orderId, paymentId) {
   return `<!DOCTYPE html>
       <html>
 
@@ -81,5 +81,5 @@ export default function paymentSuccessEmail(name, amount, orderId, paymentId) {
           </div>
       </body>
 
-      </html>`;
+      </html>`
 }

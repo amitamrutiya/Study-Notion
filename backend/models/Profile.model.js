@@ -1,20 +1,20 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose'
 
 const profileSchems = new Schema({
   gender: {
-    type: String,
+    type: String
   },
   dateOfBirth: {
-    type: String,
+    type: String
   },
   about: {
     type: String,
-    trim: true,
+    trim: true
   },
   contactNumber: {
     type: Number,
-    trim: true,
-  },
-});
+    trim: true
+  }
+})
 
-export default model("Profile", profileSchems);
+export default model('Profile', profileSchems)

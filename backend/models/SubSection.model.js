@@ -1,21 +1,21 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose'
 
 const subSectionSchems = new Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
   timeDuration: {
     type: String,
-    required: true,
+    required: true
   },
   description: {
     type: String,
-    required: true,
+    required: true
   },
   videoUrl: {
-    type: String,
-  },
-});
+    type: String
+  }
+})
 
-export default model("SubSection", subSectionSchems);
+export default model('SubSection', subSectionSchems)

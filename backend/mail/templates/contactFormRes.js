@@ -1,4 +1,4 @@
-export default function contactUsEmail(
+export default function contactUsEmail (
   email,
   firstname,
   lastname,
@@ -93,5 +93,5 @@ export default function contactUsEmail(
         </div>
     </body>
 
-    </html>`;
+    </html>`
 }

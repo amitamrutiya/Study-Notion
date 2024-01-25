@@ -1,4 +1,4 @@
-export default function passwordUpdated(email, name) {
+export default function passwordUpdated (email, name) {
   return `<!DOCTYPE html>
     <html>
 
@@ -71,5 +71,5 @@ export default function passwordUpdated(email, name) {
         </div>
     </body>
 
-    </html>`;
+    </html>`
 }
