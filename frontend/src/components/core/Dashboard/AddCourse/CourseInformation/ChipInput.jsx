@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 import { MdClose } from "react-icons/md";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 
 export default function ChipInput({
   label,

@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
 import { MdNavigateNext } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux'
 import {
   addCourseDetails,
   editCourseDetails,
@@ -64,7 +64,7 @@ export default function CourseInformationForm() {
       currentValues.courseBenefits !== course.whatYouWillLearn ||
       currentValues.courseCategory._id !== course.category._id ||
       currentValues.courseRequirements.toString() !==
-        course.instructions.toString() ||
+      course.instructions.toString() ||
       currentValues.courseImage !== course.thumbnail
     ) {
       return true;

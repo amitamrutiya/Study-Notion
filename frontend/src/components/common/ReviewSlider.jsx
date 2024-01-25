@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 import ReactStars from "react-rating-stars-component";
 
 import { Swiper, SwiperSlide } from "swiper/react"; // Import Swiper React components
@@ -65,9 +65,9 @@ function ReviewSlider() {
                   <p className="font-medium text-richblack-25">
                     {review?.review.split(" ").length > truncateWords
                       ? `${review?.review
-                          .split(" ")
-                          .slice(0, truncateWords)
-                          .join(" ")} ...`
+                        .split(" ")
+                        .slice(0, truncateWords)
+                        .join(" ")} ...`
                       : `${review?.review}`}
                   </p>
 

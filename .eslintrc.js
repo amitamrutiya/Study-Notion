@@ -17,6 +17,9 @@ module.exports = {
       ],
       parserOptions: {
         sourceType: 'script'
+      },
+      rules: {
+          'error': 0,
       }
     }
   ],

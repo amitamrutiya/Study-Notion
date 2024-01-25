@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 import { VscAdd } from "react-icons/vsc";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { fetchInstructorCourses } from "../../../../services/operations/courseDetailsAPI.js";
 import IconBtn from "../../../common/IconBtn.jsx";
 import CoursesTable from "./CoursesTable.jsx";

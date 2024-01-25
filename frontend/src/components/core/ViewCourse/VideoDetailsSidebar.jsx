@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 import { BsChevronDown } from "react-icons/bs";
 import { IoIosArrowBack } from "react-icons/io";
-import { useSelector } from "react-redux";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useSelector } from 'react-redux'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import IconBtn from "../../common/IconBtn";
 
 export default function VideoDetailsSidebar({ setReviewModal }) {
@@ -85,11 +85,10 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
                   </div>
                   <div className="flex items-center gap-3">
                     <span
-                      className={`${
-                        activeStatus === course?.sectionName
-                          ? "rotate-0"
-                          : "rotate-180"
-                      } transition-all duration-500`}
+                      className={`${activeStatus === course?.sectionName
+                        ? "rotate-0"
+                        : "rotate-180"
+                        } transition-all duration-500`}
                     >
                       <BsChevronDown />
                     </span>
@@ -101,11 +100,10 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
                   <div className="transition-[height] duration-500 ease-in-out">
                     {course.subSections.map((topic, i) => (
                       <div
-                        className={`flex gap-3  px-5 py-2 ${
-                          videoBarActive === topic._id
-                            ? "bg-yellow-200 font-semibold text-richblack-800"
-                            : "hover:bg-richblack-900"
-                        } `}
+                        className={`flex gap-3  px-5 py-2 ${videoBarActive === topic._id
+                          ? "bg-yellow-200 font-semibold text-richblack-800"
+                          : "hover:bg-richblack-900"
+                          } `}
                         key={i}
                         onClick={() => {
                           navigate(
@@ -117,7 +115,7 @@ export default function VideoDetailsSidebar({ setReviewModal }) {
                         <input
                           type="checkbox"
                           checked={completedLectures.includes(topic?._id)}
-                          onChange={() => {}}
+                          onChange={() => { }}
                         />
                         {topic.title}
                       </div>

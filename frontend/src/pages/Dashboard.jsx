@@ -1,5 +1,5 @@
-import { useSelector } from "react-redux";
-import { Outlet } from "react-router-dom";
+import { useSelector } from 'react-redux'
+import { Outlet } from 'react-router-dom'
 import Sidebar from "../components/core/Dashboard/Sidebar.jsx";
 
 function Dashboard() {

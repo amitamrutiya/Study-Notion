@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react'
 import { HomePageExplore } from "../../../data/homepage-explore";
 import CourseCard from "./CourseCard";
 import HighlightText from "./HighlightText";
@@ -42,11 +42,10 @@ const ExploreMore = () => {
           return (
             <div
               className={`text-[16px] flex flex-row items-center gap-2 rounded-full transition-all duration-200 cursor-pointer  hover:bg-richblack-900 hover:text-richblack-5 px-7 py-[7px]
-                                    ${
-                                      currentTab === element
-                                        ? "bg-richblack-900 text-richblack-5 font-medium"
-                                        : "text-richblack-200"
-                                    } `}
+                                    ${currentTab === element
+                  ? "bg-richblack-900 text-richblack-5 font-medium"
+                  : "text-richblack-200"
+                } `}
               key={index}
               onClick={() => setMyCards(element)}
             >

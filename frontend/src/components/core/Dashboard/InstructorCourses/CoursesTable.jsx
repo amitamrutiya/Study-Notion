@@ -1,12 +1,12 @@
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import { useState } from "react";
+import { useState } from 'react'
 import { FaCheck } from "react-icons/fa";
 import { FiEdit2 } from "react-icons/fi";
 import { HiClock } from "react-icons/hi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 import { formatDate } from "../../../../services/formatDate.js";
 import {
@@ -15,7 +15,7 @@ import {
 } from "../../../../services/operations/courseDetailsAPI.js";
 import { COURSE_STATUS } from "../../../../utils/constants";
 import ConfirmationModal from "../../../common/ConfirmationModal";
-import {GetCourseTotalDuration} from "../../../../utils/totalDuration.js";
+import { GetCourseTotalDuration } from "../../../../utils/totalDuration.js";
 
 export default function CoursesTable({ courses, setCourses }) {
   const navigate = useNavigate();
@@ -86,11 +86,11 @@ export default function CoursesTable({ courses, setCourses }) {
                     </p>
                     <p className="text-xs text-richblack-300">
                       {course.courseDescription.split(" ").length >
-                      TRUNCATE_LENGTH
+                        TRUNCATE_LENGTH
                         ? course.courseDescription
-                            .split(" ")
-                            .slice(0, TRUNCATE_LENGTH)
-                            .join(" ") + "..."
+                          .split(" ")
+                          .slice(0, TRUNCATE_LENGTH)
+                          .join(" ") + "..."
                         : course.courseDescription}
                     </p>
                     <p className="text-[12px] text-white">
@@ -143,10 +143,10 @@ export default function CoursesTable({ courses, setCourses }) {
                         btn2Text: "Cancel",
                         btn1Handler: !loading
                           ? () => handleCourseDelete(course._id)
-                          : () => {},
+                          : () => { },
                         btn2Handler: !loading
                           ? () => setConfirmationModal(null)
-                          : () => {},
+                          : () => { },
                       });
                     }}
                   >

@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react'
 import Footer from "../components/common/Footer";
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom'
 import { apiConnector } from "../services/apiconnector";
 import { categories } from "../services/apis";
 import { getCatalogaPageData } from "../services/operations/pageAndComponentData";
 import Course_Card from "../components/core/Catalog/Course_Card";
 import CourseSlider from "../components/core/Catalog/CourseSlider";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 import Error from "./Error";
 
 const Catalog = () => {
@@ -81,22 +81,20 @@ const Catalog = () => {
         <div className="section_heading">Courses to get you started</div>
         <div className="my-4 flex border-b border-b-richblack-600 text-sm">
           <p
-            className={`px-4 py-2 ${
-              active === 1
-                ? "border-b border-b-yellow-25 text-yellow-25"
-                : "text-richblack-50"
-            } cursor-pointer`}
+            className={`px-4 py-2 ${active === 1
+              ? "border-b border-b-yellow-25 text-yellow-25"
+              : "text-richblack-50"
+              } cursor-pointer`}
             onClick={() => setActive(1)}
           >
             {" "}
             Most Populer{" "}
           </p>
           <p
-            className={`px-4 py-2 ${
-              active === 2
-                ? "border-b border-b-yellow-25 text-yellow-25"
-                : "text-richblack-50"
-            } cursor-pointer`}
+            className={`px-4 py-2 ${active === 2
+              ? "border-b border-b-yellow-25 text-yellow-25"
+              : "text-richblack-50"
+              } cursor-pointer`}
             onClick={() => setActive(2)}
           >
             {" "}

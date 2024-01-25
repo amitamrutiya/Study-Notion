@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect } from 'react'
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import CountryCode from "../../data/countrycode.json";
 import { apiConnector } from "../../services/apiconnector";
 import { contactusEndpoint } from "../../services/apis";
-import { useState } from "react";
+import { useState } from 'react'
 
 const ContactUsForm = () => {
   const [loading, setLoading] = useState(false);

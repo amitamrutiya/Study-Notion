@@ -1,6 +1,6 @@
-import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import Home from './pages/Home'
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Navbar from "./components/common/Navbar";
@@ -22,14 +22,14 @@ import AddCourse from "./components/core/Dashboard/AddCourse";
 import Instructor from "./components/core/Dashboard/InstructorDashboard/InstructorDashboard";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import EditCourse from "./components/core/Dashboard/EditCourse";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
 import Catalog from "./pages/Catalog";
 import CourseDetails from "./pages/CourseDetails";
 import ViewCourse from "./pages/ViewCourse";
 import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 
-export default function App() {
-  const { user } = useSelector((state) => state.profile);
+export default function App () {
+  const { user } = useSelector((state) => state.profile)
 
   return (
     <div className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">

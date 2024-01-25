@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from 'react'
 import { AiOutlineDown } from "react-icons/ai";
 import CourseSubSectionAccordion from "./CourseSubSectionAccordion";
 

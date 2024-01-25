@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 
 import { getFullDetailsOfCourse } from "../../../../services/operations/courseDetailsAPI";
 import { setCourse, setEditCourse } from "../../../../slices/courseSlice";

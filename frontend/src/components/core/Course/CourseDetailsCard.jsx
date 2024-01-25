@@ -1,8 +1,8 @@
 import copy from "copy-to-clipboard";
 import { BsFillCaretRightFill } from "react-icons/bs";
 import { FaShareSquare } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { addToCart } from "../../../slices/cartSlice";
 import { toast } from "react-hot-toast";
 import { ACCOUNT_TYPE } from "../../../utils/constants";
