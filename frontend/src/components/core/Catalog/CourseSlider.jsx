@@ -3,7 +3,6 @@ import 'swiper/css'
 import CourseCard from './CourseCard'
 import PropTypes from 'prop-types'
 
-
 const CourseSlider = ({ Courses }) => {
   return (
     <>

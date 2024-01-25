@@ -9,7 +9,6 @@ import { ACCOUNT_TYPE } from '../../../utils/constants'
 import { addCourseToCart } from '../../../services/operations/courseDetailsAPI'
 import PropTypes from 'prop-types'
 
-
 function CourseDetailsCard ({ course, setConfirmationModal, handleBuyCourse }) {
   const { user } = useSelector((state) => state.profile)
   const { token } = useSelector((state) => state.auth)

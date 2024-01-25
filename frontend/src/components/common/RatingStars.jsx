@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { TiStarFullOutline, TiStarHalfOutline, TiStarOutline } from 'react-icons/ti'
+import PropTypes from 'prop-types'
 
 function RatingStars ({ ReviewCount, StarSize }) {
   const [starCount, SetStarCount] = useState({
@@ -30,6 +31,11 @@ function RatingStars ({ ReviewCount, StarSize }) {
       })}
     </div>
   )
+}
+
+RatingStars.propTypes = {
+  ReviewCount: PropTypes.number.isRequired,
+  StarSize: PropTypes.number,
 }
 
 export default RatingStars

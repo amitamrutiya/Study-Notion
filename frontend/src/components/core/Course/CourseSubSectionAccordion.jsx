@@ -20,4 +20,3 @@ CourseSubSectionAccordion.propTypes = {
 }
 
 export default CourseSubSectionAccordion
-

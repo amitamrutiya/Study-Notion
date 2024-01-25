@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
 import CourseSubSectionAccordion from './CourseSubSectionAccordion'
+import PropTypes from 'prop-types'
 
 export default function CourseAccordionBar ({ course, isActive, handleActive }) {
   const contentEl = useRef(null)
@@ -57,4 +58,10 @@ export default function CourseAccordionBar ({ course, isActive, handleActive }) 
       </div>
     </div>
   )
+}
+
+CourseAccordionBar.propTypes = {
+  course: PropTypes.object.isRequired,
+  isActive: PropTypes.array.isRequired,
+  handleActive: PropTypes.func.isRequired,
 }

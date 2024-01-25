@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 export default function IconBtn ({
   text,
   onclick,
@@ -31,4 +33,14 @@ export default function IconBtn ({
           )}
     </button>
   )
+}
+
+IconBtn.propTypes = {
+  text: PropTypes.string.isRequired,
+  onclick: PropTypes.func,
+  children: PropTypes.node,
+  disabled: PropTypes.bool,
+  outline: PropTypes.bool,
+  customClasses: PropTypes.string,
+  type: PropTypes.string,
 }
