@@ -4,7 +4,7 @@ const initialState = {
   courseSectionData: [],
   courseEntireData: [],
   completedLectures: [],
-  totalNoOfLectures: 0
+  totalNoOfLectures: 0,
 }
 
 const viewCourseSlice = createSlice({
@@ -25,8 +25,8 @@ const viewCourseSlice = createSlice({
     },
     updateCompletedLectures: (state, action) => {
       state.completedLectures = [...state.completedLectures, action.payload]
-    }
-  }
+    },
+  },
 })
 
 export const {
@@ -34,7 +34,7 @@ export const {
   setEntireCourseData,
   setTotalNoOfLectures,
   setCompletedLectures,
-  updateCompletedLectures
+  updateCompletedLectures,
 } = viewCourseSlice.actions
 
 export default viewCourseSlice.reducer

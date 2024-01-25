@@ -1,49 +1,51 @@
-import copy from "copy-to-clipboard";
-import { BsFillCaretRightFill } from "react-icons/bs";
-import { FaShareSquare } from "react-icons/fa";
+import copy from 'copy-to-clipboard'
+import { BsFillCaretRightFill } from 'react-icons/bs'
+import { FaShareSquare } from 'react-icons/fa'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { addToCart } from "../../../slices/cartSlice";
-import { toast } from "react-hot-toast";
-import { ACCOUNT_TYPE } from "../../../utils/constants";
-import { addCourseToCart } from "../../../services/operations/courseDetailsAPI";
+import { addToCart } from '../../../slices/cartSlice'
+import { toast } from 'react-hot-toast'
+import { ACCOUNT_TYPE } from '../../../utils/constants'
+import { addCourseToCart } from '../../../services/operations/courseDetailsAPI'
+import PropTypes from 'prop-types'
 
-function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
-  const { user } = useSelector((state) => state.profile);
-  const { token } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { thumbnail: ThumbnailImage, price: CurrentPrice } = course;
+
+function CourseDetailsCard ({ course, setConfirmationModal, handleBuyCourse }) {
+  const { user } = useSelector((state) => state.profile)
+  const { token } = useSelector((state) => state.auth)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { thumbnail: ThumbnailImage, price: CurrentPrice } = course
 
   const handleShare = () => {
-    copy(window.location.href);
-    toast.success("Link copied to clipboard");
-  };
+    copy(window.location.href)
+    toast.success('Link copied to clipboard')
+  }
 
   const handleAddToCart = async () => {
     if (user && user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
-      toast.error("You are an Instructor. You can't buy a course.");
-      return;
+      toast.error("You are an Instructor. You can't buy a course.")
+      return
     }
     if (token) {
-      dispatch(addToCart(course));
-      await addCourseToCart({ courseId: course._id, userId: user._id }, token);
-      return;
+      dispatch(addToCart(course))
+      await addCourseToCart({ courseId: course._id, userId: user._id }, token)
+      return
     }
     setConfirmationModal({
-      text1: "You are not logged in!",
-      text2: "Please login to add To Cart",
-      btn1Text: "Login",
-      btn2Text: "Cancel",
-      btn1Handler: () => navigate("/login"),
+      text1: 'You are not logged in!',
+      text2: 'Please login to add To Cart',
+      btn1Text: 'Login',
+      btn2Text: 'Cancel',
+      btn1Handler: () => navigate('/login'),
       btn2Handler: () => setConfirmationModal(null),
-    });
-  };
+    })
+  }
 
   return (
     <>
       <div
-        className={`flex flex-col gap-4 rounded-md bg-richblack-700 p-4 text-richblack-5`}
+        className={'flex flex-col gap-4 rounded-md bg-richblack-700 p-4 text-richblack-5'}
       >
         {/* Course Image */}
         <img
@@ -61,40 +63,40 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
               className="yellowButton"
               onClick={
                 user && course?.studentsEnrolled.includes(user?._id)
-                  ? () => navigate("/dashboard/enrolled-courses")
+                  ? () => navigate('/dashboard/enrolled-courses')
                   : handleBuyCourse
               }
             >
               {user && course?.studentsEnrolled.includes(user?._id)
-                ? "Go To Course"
-                : "Buy Now"}
+                ? 'Go To Course'
+                : 'Buy Now'}
             </button>
             {(!user || !course?.studentsEnrolled.includes(user?._id)) && (
               <button onClick={handleAddToCart} className="blackButton">
-                {" "}
-                Add to Cart{" "}
+                {' '}
+                Add to Cart{' '}
               </button>
             )}
           </div>
           <div>
             <p className="pb-3 pt-6 text-center text-sm text-richblack-25">
-              {" "}
-              30-Day Money-Back Guarantee{" "}
+              {' '}
+              30-Day Money-Back Guarantee{' '}
             </p>
           </div>
-          <div className={``}>
-            <p className={`my-2 text-xl font-semibold `}>
-              {" "}
-              This Course Includes :{" "}
+          <div className={''}>
+            <p className={'my-2 text-xl font-semibold '}>
+              {' '}
+              This Course Includes :{' '}
             </p>
             <div className="flex flex-col gap-3 text-sm text-caribbeangreen-100">
               {course?.instructions?.map((item, i) => {
                 return (
-                  <p className={`flex gap-2`} key={i}>
+                  <p className={'flex gap-2'} key={i}>
                     <BsFillCaretRightFill />
                     <span>{item}</span>
                   </p>
-                );
+                )
               })}
             </div>
           </div>
@@ -109,7 +111,13 @@ function CourseDetailsCard({ course, setConfirmationModal, handleBuyCourse }) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default CourseDetailsCard;
+CourseDetailsCard.propTypes = {
+  course: PropTypes.object,
+  setConfirmationModal: PropTypes.func,
+  handleBuyCourse: PropTypes.func,
+}
+
+export default CourseDetailsCard

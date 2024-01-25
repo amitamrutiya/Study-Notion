@@ -12,8 +12,8 @@ export const FooterLink2 = [
       { title: 'Cybersecurity', link: '/cybersecurity' },
       { title: 'Data Analytics', link: '/data-analytics' },
       { title: 'Data Science', link: '/data-science' },
-      { title: 'Data Visualization', link: '/data-visualization' }
-    ]
+      { title: 'Data Visualization', link: '/data-visualization' },
+    ],
   },
   {
     title: 'Languages',
@@ -26,8 +26,8 @@ export const FooterLink2 = [
       { title: 'Java', link: '/java' },
       { title: 'JavaScript', link: '/javascript' },
       { title: 'Kotlin', link: '/kotlin' },
-      { title: 'PHP', link: '/php' }
-    ]
+      { title: 'PHP', link: '/php' },
+    ],
   },
   {
     title: 'Career building',
@@ -37,10 +37,10 @@ export const FooterLink2 = [
       { title: 'Interview prep', link: '/interview-prep' },
       {
         title: 'Professional certification',
-        link: '/professional-certification'
+        link: '/professional-certification',
       },
       { title: 'Full Catalog', link: '/full-catalog' },
-      { title: 'Beta Content', link: '/beta-content' }
-    ]
-  }
+      { title: 'Beta Content', link: '/beta-content' },
+    ],
+  },
 ]

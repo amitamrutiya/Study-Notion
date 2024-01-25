@@ -15,7 +15,7 @@ export async function createSubSection (req, res) {
     if (!sectionId || !title || !video || !description) {
       return res.status(400).json({
         success: false,
-        message: 'All fields are required'
+        message: 'All fields are required',
       })
     }
 
@@ -24,30 +24,30 @@ export async function createSubSection (req, res) {
     if (!section) {
       return res.status(404).json({
         success: false,
-        message: 'Section not found'
+        message: 'Section not found',
       })
     }
 
     // upload video to clodinary
     const uploadVideo = await uploadFileToCloudinary(
       video,
-      process.env.CLOUDINARY_COURSE_THUMBNAIL_FOLDER
+      process.env.CLOUDINARY_COURSE_THUMBNAIL_FOLDER,
     )
     // create a sub section
     const subSection = await SubSection.create({
       title,
       timeDuration: `${uploadVideo.duration}`,
       description,
-      videoUrl: uploadVideo.secure_url
+      videoUrl: uploadVideo.secure_url,
     })
 
     // update section with this subsection ObjectId
     const updatedSection = await Section.findByIdAndUpdate(
       { _id: sectionId },
       {
-        $push: { subSections: subSection._id }
+        $push: { subSections: subSection._id },
       },
-      { new: true }
+      { new: true },
     )
       .populate('subSections')
       .exec()
@@ -56,14 +56,14 @@ export async function createSubSection (req, res) {
     return res.status(201).json({
       success: true,
       message: 'Subsection created successfully',
-      data: updatedSection
+      data: updatedSection,
     })
   } catch (error) {
     console.log('Error in createSubSection', error)
     res.status(500).json({
       success: false,
       message: 'Unable to create new subsection',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -78,7 +78,7 @@ export async function updateSubSection (req, res) {
     if (!subSectionId) {
       return res.status(400).json({
         success: false,
-        message: ' SubSectionId is required'
+        message: ' SubSectionId is required',
       })
     }
 
@@ -87,7 +87,7 @@ export async function updateSubSection (req, res) {
     if (!subSection) {
       return res.status(404).json({
         success: false,
-        message: 'subSection not found'
+        message: 'subSection not found',
       })
     }
 
@@ -99,7 +99,7 @@ export async function updateSubSection (req, res) {
       const video = req.files.video
       const uploadVideo = await uploadFileToCloudinary(
         video,
-        process.env.CLOUDINARY_COURSE_THUMBNAIL_FOLDER
+        process.env.CLOUDINARY_COURSE_THUMBNAIL_FOLDER,
       )
       subSection.videoUrl = uploadVideo.secure_url
       subSection.timeDuration = `${uploadVideo.duration}`
@@ -115,14 +115,14 @@ export async function updateSubSection (req, res) {
     return res.status(201).json({
       success: true,
       message: 'Subsection updated successfully',
-      data: updatedSubSection
+      data: updatedSubSection,
     })
   } catch (error) {
     console.log('Error in updateSubSection', error)
     res.status(500).json({
       success: false,
       message: 'Unable to update subsection',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -137,7 +137,7 @@ export async function deleteSubSection (req, res) {
     if (!subSectionId || !sectionId) {
       return res.status(400).json({
         success: false,
-        message: ' SubSectionId and sectionId are required'
+        message: ' SubSectionId and sectionId are required',
       })
     }
 
@@ -146,7 +146,7 @@ export async function deleteSubSection (req, res) {
     if (!subSection) {
       return res.status(404).json({
         success: false,
-        message: 'SubSection not found'
+        message: 'SubSection not found',
       })
     }
 
@@ -158,23 +158,23 @@ export async function deleteSubSection (req, res) {
     const updatedSection = await Section.findByIdAndUpdate(
       { _id: sectionId },
       {
-        $pull: { subSections: subSectionId }
+        $pull: { subSections: subSectionId },
       },
-      { new: true }
+      { new: true },
     )
 
     // return response
     return res.status(201).json({
       success: true,
       message: 'Subsection updated successfully',
-      data: updatedSection
+      data: updatedSection,
     })
   } catch (error) {
     console.log('Error in deleteSection', error)
     res.status(500).json({
       success: false,
       message: 'Unable to delete subsection',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -189,7 +189,7 @@ export async function getAllSubSections (req, res) {
     if (!sectionId) {
       return res.status(400).json({
         success: false,
-        message: ' sectionId is required'
+        message: ' sectionId is required',
       })
     }
 
@@ -198,7 +198,7 @@ export async function getAllSubSections (req, res) {
     if (!section) {
       return res.status(404).json({
         success: false,
-        message: 'Section not found'
+        message: 'Section not found',
       })
     }
 
@@ -209,14 +209,14 @@ export async function getAllSubSections (req, res) {
     return res.status(201).json({
       success: true,
       message: 'Subsections fetched successfully',
-      data: subSections
+      data: subSections,
     })
   } catch (error) {
     console.log('Error in getAllSubSections', error)
     res.status(500).json({
       success: false,
       message: 'Unable to fetch subsections',
-      error: error.message
+      error: error.message,
     })
   }
 }

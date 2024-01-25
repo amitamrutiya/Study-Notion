@@ -3,7 +3,7 @@ import { Router } from 'express'
 import {
   capturePayment,
   verifyPayment,
-  sendPaymentSuccessEmail
+  sendPaymentSuccessEmail,
 } from '../controllers/payments.controller.js'
 import { auth, isStudent } from '../middlewares/auth.middelware.js'
 const router = Router()
@@ -14,7 +14,7 @@ router.post(
   '/sendPaymentSuccessEmail',
   auth,
   isStudent,
-  sendPaymentSuccessEmail
+  sendPaymentSuccessEmail,
 )
 
 export default router

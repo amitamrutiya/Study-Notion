@@ -1,32 +1,32 @@
 import { useState } from 'react'
-import { toast } from "react-hot-toast";
-import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { toast } from 'react-hot-toast'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import CountryCode from "../../../data/countrycode.json";
-import { sendOtp } from "../../../services/operations/authAPI";
-import { setSignupData } from "../../../slices/authSlice";
-import { ACCOUNT_TYPE } from "../../../utils/constants";
-import Tab from "../../common/Tab";
+import CountryCode from '../../../data/countrycode.json'
+import { sendOtp } from '../../../services/operations/authAPI'
+import { setSignupData } from '../../../slices/authSlice'
+import { ACCOUNT_TYPE } from '../../../utils/constants'
+import Tab from '../../common/Tab'
 
-function SignupForm() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+function SignupForm () {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   // student or instructor
-  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT);
+  const [accountType, setAccountType] = useState(ACCOUNT_TYPE.STUDENT)
 
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    contactNumber: "",
-    password: "",
-    confirmPassword: "",
-  });
+    firstName: '',
+    lastName: '',
+    email: '',
+    contactNumber: '',
+    password: '',
+    confirmPassword: '',
+  })
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
   const {
     firstName,
     lastName,
@@ -34,50 +34,50 @@ function SignupForm() {
     contactNumber,
     password,
     confirmPassword,
-  } = formData;
+  } = formData
 
   // Handle input fields, when some value changes
-  function handleOnChange(e) {
+  function handleOnChange (e) {
     setFormData((prevData) => ({
       ...prevData,
       [e.target.name]: e.target.value,
-    }));
+    }))
   }
 
   // Handle Form Submission
-  function handleOnSubmit(e) {
-    e.preventDefault();
+  function handleOnSubmit (e) {
+    e.preventDefault()
     if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
-      return;
+      toast.error('Passwords do not match')
+      return
     }
-    const signupData = { ...formData, accountType };
-    dispatch(setSignupData(signupData)); // Setting signup data to state To be used after otp verification
-    dispatch(sendOtp(formData.email, navigate)); // Send OTP to user for verification
+    const signupData = { ...formData, accountType }
+    dispatch(setSignupData(signupData)) // Setting signup data to state To be used after otp verification
+    dispatch(sendOtp(formData.email, navigate)) // Send OTP to user for verification
     setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      contactNumber: "",
-      password: "",
-      confirmPassword: "",
-    }); // Reset
-    setAccountType(ACCOUNT_TYPE.STUDENT);
+      firstName: '',
+      lastName: '',
+      email: '',
+      contactNumber: '',
+      password: '',
+      confirmPassword: '',
+    }) // Reset
+    setAccountType(ACCOUNT_TYPE.STUDENT)
   }
 
   // data to pass to Tab component
   const tabData = [
     {
       id: 1,
-      tabName: "Student",
+      tabName: 'Student',
       type: ACCOUNT_TYPE.STUDENT,
     },
     {
       id: 2,
-      tabName: "Instructor",
+      tabName: 'Instructor',
       type: ACCOUNT_TYPE.INSTRUCTOR,
     },
-  ];
+  ]
 
   return (
     <div>
@@ -100,7 +100,7 @@ function SignupForm() {
               placeholder="Enter First Name"
               name="firstName"
               style={{
-                boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                boxShadow: 'inset 0px -1px 0px rgba(255, 255, 255, 0.18)',
               }}
               className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
             />
@@ -108,9 +108,9 @@ function SignupForm() {
 
           {/* Last Name */}
           <label>
-            {" "}
+            {' '}
             <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
-              {" "}
+              {' '}
               Last Name <sup className="text-pink-200">*</sup>
             </p>
             <input
@@ -121,7 +121,7 @@ function SignupForm() {
               placeholder="Enter Last Name"
               name="lastName"
               style={{
-                boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                boxShadow: 'inset 0px -1px 0px rgba(255, 255, 255, 0.18)',
               }}
               className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
             />
@@ -130,7 +130,7 @@ function SignupForm() {
 
         {/* Email */}
         <label className="w-full">
-          {" "}
+          {' '}
           <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
             Email Address <sup className="text-pink-200">*</sup>
           </p>
@@ -142,7 +142,7 @@ function SignupForm() {
             placeholder="Enter Email Name"
             name="email"
             style={{
-              boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+              boxShadow: 'inset 0px -1px 0px rgba(255, 255, 255, 0.18)',
             }}
             className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
           />
@@ -151,8 +151,8 @@ function SignupForm() {
         {/* Contact Number */}
         <div className="flex flex-col gap-2">
           <label htmlFor="contactNumber" className="lable-style">
-            {" "}
-            Contact Number{" "}
+            {' '}
+            Contact Number{' '}
           </label>
 
           <div className="flex gap-5">
@@ -163,16 +163,16 @@ function SignupForm() {
                 id="countrycode"
                 className="form-style bg-richblack-800"
                 style={{
-                  boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                  boxShadow: 'inset 0px -1px 0px rgba(255, 255, 255, 0.18)',
                 }}
               >
                 {CountryCode.map((ele, i) => {
                   return (
                     <option key={i} value={ele.code}>
-                      {" "}
-                      {ele.code} - {ele.country}{" "}
+                      {' '}
+                      {ele.code} - {ele.country}{' '}
                     </option>
-                  );
+                  )
                 })}
               </select>
             </div>
@@ -182,10 +182,11 @@ function SignupForm() {
                 type="number"
                 name="contactNumber"
                 id="contactNumber"
+                value={contactNumber}
                 placeholder="12345 67890"
                 className="form-style bg-richblack-800 rounded-[0.5rem] text-richblack-5"
                 style={{
-                  boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                  boxShadow: 'inset 0px -1px 0px rgba(255, 255, 255, 0.18)',
                 }}
               />
             </div>
@@ -194,20 +195,20 @@ function SignupForm() {
 
         {/* Create Password and Confirm Password */}
         <div className="flex gap-x-4">
-          {" "}
+          {' '}
           <label className="relative">
             <p className="text-[0.875rem] text-richblack-5 mb-1 leading-[1.375rem]">
               Create Password <sup className="text-pink-200">*</sup>
             </p>
             <input
               required
-              type={showPassword ? "text" : "password"}
+              type={showPassword ? 'text' : 'password'}
               name="password"
               onChange={handleOnChange}
               value={password}
               placeholder="Enter Password"
               style={{
-                boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                boxShadow: 'inset 0px -1px 0px rgba(255, 255, 255, 0.18)',
               }}
               className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
             />
@@ -216,11 +217,13 @@ function SignupForm() {
               className="absolute right-3 top-[38px] cursor-pointer"
               onClick={() => setShowPassword((prev) => !prev)}
             >
-              {showPassword ? (
+              {showPassword
+                ? (
                 <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
-              ) : (
+                  )
+                : (
                 <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-              )}
+                  )}
             </span>
           </label>
           <label className="relative">
@@ -229,13 +232,13 @@ function SignupForm() {
             </p>
             <input
               required
-              type={showConfirmPassword ? "text" : "password"}
+              type={showConfirmPassword ? 'text' : 'password'}
               name="confirmPassword"
               onChange={handleOnChange}
               value={confirmPassword}
               placeholder="Confirm Password"
               style={{
-                boxShadow: "inset 0px -1px 0px rgba(255, 255, 255, 0.18)",
+                boxShadow: 'inset 0px -1px 0px rgba(255, 255, 255, 0.18)',
               }}
               className="bg-richblack-800 rounded-[0.5rem] text-richblack-5 w-full p-[12px]"
             />
@@ -244,11 +247,13 @@ function SignupForm() {
               className="absolute right-3 top-[38px] cursor-pointer"
               onClick={() => setShowConfirmPassword((prev) => !prev)}
             >
-              {showConfirmPassword ? (
+              {showConfirmPassword
+                ? (
                 <AiOutlineEyeInvisible fontSize={24} fill="#AFB2BF" />
-              ) : (
+                  )
+                : (
                 <AiOutlineEye fontSize={24} fill="#AFB2BF" />
-              )}
+                  )}
             </span>
           </label>
         </div>
@@ -257,12 +262,12 @@ function SignupForm() {
           type="submit"
           className="mt-6 rounded-[8px] bg-yellow-50 py-[8px] px-[12px] font-medium text-richblack-900"
         >
-          {" "}
-          Create Account{" "}
+          {' '}
+          Create Account{' '}
         </button>
       </form>
     </div>
-  );
+  )
 }
 
-export default SignupForm;
+export default SignupForm

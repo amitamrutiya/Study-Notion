@@ -14,7 +14,7 @@ export async function createCategory (req, res) {
     if (!name || !description) {
       return res.status(403).json({
         success: false,
-        message: 'Please fill all the fields'
+        message: 'Please fill all the fields',
       })
     }
 
@@ -22,7 +22,7 @@ export async function createCategory (req, res) {
     if (req.user.accountType !== 'Admin') {
       return res.status(403).json({
         success: false,
-        message: 'You are not authorized to create category'
+        message: 'You are not authorized to create category',
       })
     }
 
@@ -31,7 +31,7 @@ export async function createCategory (req, res) {
     if (isExistingCategory) {
       return res.status(400).json({
         success: false,
-        message: 'Category already exist'
+        message: 'Category already exist',
       })
     }
 
@@ -42,13 +42,13 @@ export async function createCategory (req, res) {
     res.status(200).json({
       success: true,
       message: 'Category created successfully',
-      categoryDetails
+      categoryDetails,
     })
   } catch (error) {
     console.log('Error in creating category: ' + error)
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -61,12 +61,12 @@ export async function showAllCategories (req, res) {
     res.status(200).json({
       success: true,
       message: 'All categories return successfully',
-      allCategories
+      allCategories,
     })
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -81,7 +81,7 @@ export async function categoryPageDetails (req, res) {
     if (!categoryId) {
       return res.status(400).json({
         success: false,
-        message: 'Please provide category id'
+        message: 'Please provide category id',
       })
     }
 
@@ -90,7 +90,7 @@ export async function categoryPageDetails (req, res) {
       .populate({
         path: 'courses',
         match: { status: 'Published' },
-        populate: ['ratingAndReviews', 'instructor']
+        populate: ['ratingAndReviews', 'instructor'],
       })
       .exec()
 
@@ -98,25 +98,25 @@ export async function categoryPageDetails (req, res) {
     if (selectedCategory.courses.length === 0) {
       return res.status(404).json({
         success: false,
-        message: 'No courses found for the selected category.'
+        message: 'No courses found for the selected category.',
       })
     }
 
     // get courses of different category
     const categoriesExceptSelected = await Category.find({
-      _id: { $ne: categoryId }
+      _id: { $ne: categoryId },
     })
       .populate('courses')
       .exec()
 
     const differentCategory = await Category.findOne(
       categoriesExceptSelected[getRandomInt(categoriesExceptSelected.length)]
-        ._id
+        ._id,
     )
       .populate({
         path: 'courses',
         match: { status: 'Published' },
-        populate: ['ratingAndReviews', 'instructor']
+        populate: ['ratingAndReviews', 'instructor'],
       })
       .exec()
 
@@ -126,8 +126,8 @@ export async function categoryPageDetails (req, res) {
         path: 'courses',
         match: { status: 'Published' },
         populate: {
-          path: 'instructor'
-        }
+          path: 'instructor',
+        },
       })
       .exec()
 
@@ -143,8 +143,8 @@ export async function categoryPageDetails (req, res) {
       data: {
         selectedCategory,
         differentCategory,
-        mostSellingCourses
-      }
+        mostSellingCourses,
+      },
     })
   } catch (error) {
     console.log('Error in categoryPageDetails')

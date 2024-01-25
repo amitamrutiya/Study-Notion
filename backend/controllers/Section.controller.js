@@ -30,11 +30,11 @@ export async function createSection (req, res) {
     const updatedCourseDetails = await Course.findByIdAndUpdate(
       courseId,
       { $push: { courseContent: newSection._id } },
-      { new: true }
+      { new: true },
     )
       .populate({
         path: 'courseContent',
-        populate: { path: 'subSections' }
+        populate: { path: 'subSections' },
       })
       .exec()
 
@@ -42,14 +42,14 @@ export async function createSection (req, res) {
     res.status(201).json({
       success: true,
       message: 'Section created successfully',
-      updatedCourseDetails
+      updatedCourseDetails,
     })
   } catch (error) {
     console.log('Error in createSection', error)
     res.status(500).json({
       success: false,
       message: 'Unable to create new section',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -79,14 +79,14 @@ export async function updateSection (req, res) {
     await Section.findByIdAndUpdate(
       sectionId,
       { sectionName },
-      { new: true }
+      { new: true },
     )
 
     // update course with EditSection
     const updatedCourseDetails = await Course.findByIdAndUpdate(courseId)
       .populate({
         path: 'courseContent',
-        populate: { path: 'subSections' }
+        populate: { path: 'subSections' },
       })
       .exec()
 
@@ -94,14 +94,14 @@ export async function updateSection (req, res) {
     res.status(201).json({
       success: true,
       message: 'SubSection Edited successfully',
-      updatedCourseDetails
+      updatedCourseDetails,
     })
   } catch (error) {
     console.log('Error in updateSection', error)
     res.status(500).json({
       success: false,
       message: 'Unable to update new section',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -128,7 +128,7 @@ export async function deleteSection (req, res) {
     }
 
     await Course.findByIdAndUpdate(courseId, {
-      $pull: { courseContent: sectionId }
+      $pull: { courseContent: sectionId },
     })
 
     // delete sub section
@@ -142,8 +142,8 @@ export async function deleteSection (req, res) {
       .populate({
         path: 'courseContent',
         populate: {
-          path: 'subSections'
-        }
+          path: 'subSections',
+        },
       })
       .exec()
 
@@ -151,14 +151,14 @@ export async function deleteSection (req, res) {
     return res.status(201).json({
       success: true,
       message: 'Section deleted successfully',
-      updatedCourseDetails
+      updatedCourseDetails,
     })
   } catch (error) {
     console.log('Error in deleteSection', error)
     res.status(500).json({
       success: false,
       message: 'Unable to Delete section',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -191,14 +191,14 @@ export async function getAllSections (req, res) {
     res.status(201).json({
       success: true,
       message: 'All Sections',
-      sections
+      sections,
     })
   } catch (error) {
     console.log('Error in getAllSections', error)
     res.status(500).json({
       success: false,
       message: 'Unable to get all sections',
-      error: error.message
+      error: error.message,
     })
   }
 }

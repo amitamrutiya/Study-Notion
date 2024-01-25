@@ -13,7 +13,7 @@ export async function deleteUserAccount (req, res) {
     if (!id) {
       return res.status(400).json({
         success: false,
-        message: 'User id is required'
+        message: 'User id is required',
       })
     }
 
@@ -22,7 +22,7 @@ export async function deleteUserAccount (req, res) {
     if (!userDetails) {
       return res.status(400).json({
         success: false,
-        message: 'User not found'
+        message: 'User not found',
       })
     }
 
@@ -30,7 +30,7 @@ export async function deleteUserAccount (req, res) {
     if (!profileId) {
       return res.status(400).json({
         success: false,
-        message: 'Profile not found'
+        message: 'Profile not found',
       })
     }
 
@@ -40,27 +40,27 @@ export async function deleteUserAccount (req, res) {
         await Course.findByIdAndUpdate(
           courseId,
           { $pull: { studentsEnrolled: id } },
-          { new: true }
+          { new: true },
         )
       }
     }
     // delete profile and account
     await Profile.findByIdAndDelete({
-      _id: new mongoose.Types.ObjectId(profileId)
+      _id: new mongoose.Types.ObjectId(profileId),
     })
     await User.findByIdAndDelete({ _id: id })
 
     // return response
     return res.status(201).json({
       success: true,
-      message: 'Account deleted successfully'
+      message: 'Account deleted successfully',
     })
   } catch (error) {
     console.log('Error in deleteAccount', error)
     res.status(500).json({
       success: false,
       message: 'Unable to delete Account',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -75,7 +75,7 @@ export async function getAllUserDetails (req, res) {
     if (!id) {
       return res.status(400).json({
         success: false,
-        message: 'User id is required'
+        message: 'User id is required',
       })
     }
     const userDetails = await User.findById(id)
@@ -86,14 +86,14 @@ export async function getAllUserDetails (req, res) {
     return res.status(201).json({
       success: true,
       message: 'User details fetched successfully',
-      data: userDetails
+      data: userDetails,
     })
   } catch (error) {
     console.log('Error in getUserDetails', error)
     res.status(500).json({
       success: false,
       message: 'Unable to fetch user details',
-      error: error.message
+      error: error.message,
     })
   }
 }

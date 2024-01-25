@@ -5,7 +5,7 @@ export default {
     fontFamily: {
       inter: ['Inter', 'sans-serif'],
       'edu-sa': ['Edu SA Beginner', 'cursive'],
-      mono: ['Roboto Mono', 'monospace']
+      mono: ['Roboto Mono', 'monospace'],
     },
     colors: {
       white: '#fff',
@@ -23,7 +23,7 @@ export default {
         600: '#424854',
         700: '#2C333F',
         800: '#161D29',
-        900: '#000814'
+        900: '#000814',
       },
       richblue: {
         5: '#ECF5FF',
@@ -37,7 +37,7 @@ export default {
         600: '#042E3B',
         700: '#032833',
         800: '#01212A',
-        900: '#001B22'
+        900: '#001B22',
       },
       blue: {
         5: '#EAF5FF',
@@ -51,7 +51,7 @@ export default {
         600: '#074B5D',
         700: '#053B48',
         800: '#022B32',
-        900: '#001B1D'
+        900: '#001B1D',
       },
       caribbeangreen: {
         5: '#C1FFFD',
@@ -65,7 +65,7 @@ export default {
         600: '#026144',
         700: '#014A32',
         800: '#01321F',
-        900: '#001B0D'
+        900: '#001B0D',
       },
       brown: {
         5: '#FFF4C4',
@@ -79,7 +79,7 @@ export default {
         600: '#705122',
         700: '#593C17',
         800: '#41260B',
-        900: '#291100'
+        900: '#291100',
       },
       pink: {
         5: '#FFF1F1',
@@ -93,7 +93,7 @@ export default {
         600: '#841E3E',
         700: '#691432',
         800: '#4F0A25',
-        900: '#340019'
+        900: '#340019',
       },
       yellow: {
         5: '#FFF970',
@@ -107,7 +107,7 @@ export default {
         600: '#6E5503',
         700: '#553F02',
         800: '#3D2A01',
-        900: '#251400'
+        900: '#251400',
       },
       'pure-greys': {
         5: '#F9F9F9',
@@ -121,15 +121,15 @@ export default {
         600: '#444444',
         700: '#2D2D2D',
         800: '#171717',
-        900: '#141414'
-      }
+        900: '#141414',
+      },
     },
     extend: {
       maxWidth: {
         maxContent: '1260px',
-        maxContentTab: '650px'
-      }
-    }
+        maxContentTab: '650px',
+      },
+    },
   },
-  plugins: []
+  plugins: [],
 }

@@ -34,7 +34,7 @@ export async function sendOTP (req, res) {
     let otp = otpGenerator.generate(6, {
       specialChars: false,
       lowerCaseAlphabets: false,
-      upperCaseAlphabets: false
+      upperCaseAlphabets: false,
     })
     console.log('OTP generated: ' + otp)
 
@@ -46,7 +46,7 @@ export async function sendOTP (req, res) {
       otp = otpGenerator.generate(6, {
         upperCase: false,
         specialChars: false,
-        alphabets: false
+        alphabets: false,
       })
       result = await OTP.findOne({ otp })
     }
@@ -58,13 +58,13 @@ export async function sendOTP (req, res) {
     res.status(200).json({
       success: true,
       message: 'OTP sent successfully',
-      data: otpBody
+      data: otpBody,
     })
   } catch (error) {
     console.log('Error in sending OTP: ' + error)
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -81,7 +81,7 @@ export async function signUp (req, res) {
       confirmPassword,
       accountType,
       contactNumber,
-      otp
+      otp,
     } = req.body
 
     // validate data
@@ -137,7 +137,7 @@ export async function signUp (req, res) {
       gender: null,
       dateOfBirth: null,
       about: null,
-      contactNumber: contactNumber ?? null
+      contactNumber: contactNumber ?? null,
     })
 
     const user = await User.create({
@@ -149,20 +149,20 @@ export async function signUp (req, res) {
       accountType,
       approved,
       additionalDetails: profileDetails._id,
-      image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName}+${lastName}`
+      image: `https://api.dicebear.com/5.x/initials/svg?seed=${firstName}+${lastName}`,
     })
 
     // return response
     res.status(200).json({
       success: true,
       message: 'User created successfully',
-      data: user
+      data: user,
     })
   } catch (error) {
     console.log('Error in creating user: ' + error)
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -176,7 +176,7 @@ export async function login (req, res) {
       // validate krlo means all inbox are filled or not;
       return res.status(403).json({
         success: false,
-        message: 'Please Fill up All the Required Fields'
+        message: 'Please Fill up All the Required Fields',
       })
     }
 
@@ -184,7 +184,7 @@ export async function login (req, res) {
     if (!user) {
       return res.status(401).json({
         success: false,
-        message: 'User is not registrered, please signup first'
+        message: 'User is not registrered, please signup first',
       })
     }
 
@@ -194,11 +194,11 @@ export async function login (req, res) {
         // generate payload;
         email: user.email,
         id: user._id,
-        accountType: user.accountType
+        accountType: user.accountType,
       }
       const token = jwt.sign(payload, process.env.JWT_SECRET, {
         // generate token (combination of header , payload , signature)
-        expiresIn: '20h' // set expiry time;
+        expiresIn: '20h', // set expiry time;
       })
       user.token = token
       user.password = undefined
@@ -206,27 +206,27 @@ export async function login (req, res) {
       const options = {
         // create cookie and send response
         expires: new Date(
-          Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+          Date.now() + process.env.JWT_COOKIE_EXPIRE * 24 * 60 * 60 * 1000,
         ),
-        httpOnly: true
+        httpOnly: true,
       }
       res.cookie('token', token, options).status(200).json({
         success: true,
         token,
         user,
-        message: 'Logged in successfully'
+        message: 'Logged in successfully',
       })
     } else {
       return res.status(401).json({
         success: false,
-        message: 'Password is incorrect'
+        message: 'Password is incorrect',
       })
     }
   } catch (error) {
     console.log(error)
     return res.status(500).json({
       success: false,
-      message: 'Login Failure, please try again'
+      message: 'Login Failure, please try again',
     })
   }
 }
@@ -248,7 +248,7 @@ export async function changePassword (req, res) {
     // Check if password is correct
     const isPasswordCorrect = await bcrypt.compare(
       oldPassword,
-      userDetails.password
+      userDetails.password,
     )
     if (isPasswordCorrect) {
       // Hash Password
@@ -258,7 +258,7 @@ export async function changePassword (req, res) {
       const updatedUserDetails = await User.findByIdAndUpdate(
         req.user.id,
         { password: hashedPawword },
-        { new: true }
+        { new: true },
       )
 
       // Send mail to user
@@ -268,22 +268,22 @@ export async function changePassword (req, res) {
           'Password updated successfully - [StudyNotion]',
           passwordUpdated(
             updatedUserDetails.email,
-            `Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`
-          )
+            `Password updated successfully for ${updatedUserDetails.firstName} ${updatedUserDetails.lastName}`,
+          ),
         )
         console.log('Email sent successfully:', emailResponse.response)
       } catch (error) {
         return res.status(500).json({
           success: false,
           message: 'Error occurred while sending email',
-          error: error.message
+          error: error.message,
         })
       }
 
       // return response
       res.status(200).json({
         success: true,
-        message: 'Password changed successfully'
+        message: 'Password changed successfully',
       })
     } else {
       return res

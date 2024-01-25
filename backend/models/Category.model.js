@@ -3,18 +3,18 @@ import { Schema, model } from 'mongoose'
 const categorySchems = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
+    required: true,
   },
   courses: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Course'
-    }
-  ]
+      ref: 'Course',
+    },
+  ],
 })
 
 export default model('Category', categorySchems)

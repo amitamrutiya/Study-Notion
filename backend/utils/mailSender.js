@@ -8,8 +8,8 @@ export default async function mailSender (email, title, body) {
       secure: true,
       auth: {
         user: process.env.MAIL_USER,
-        pass: process.env.MAIL_PASS
-      }
+        pass: process.env.MAIL_PASS,
+      },
     })
 
     // send mail with defined transport object
@@ -17,7 +17,7 @@ export default async function mailSender (email, title, body) {
       from: 'StudyNotion 📖 - by Amit Kumar',
       to: `${email}`,
       subject: `${title}`,
-      html: `${body}`
+      html: `${body}`,
     })
     console.log(info)
     return info

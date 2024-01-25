@@ -1,40 +1,44 @@
 import { useEffect, useState } from 'react'
-import ProgressBar from "@ramonak/react-progress-bar";
+import ProgressBar from '@ramonak/react-progress-bar'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { getUserEnrolledCourses } from "../../../services/operations/profileAPI";
+import { getUserEnrolledCourses } from '../../../services/operations/profileAPI'
 
-export default function EnrolledCourses() {
-  const { token } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
-  const [enrolledCourses, setEnrolledCourses] = useState(null);
+export default function EnrolledCourses () {
+  const { token } = useSelector((state) => state.auth)
+  const navigate = useNavigate()
+  const [enrolledCourses, setEnrolledCourses] = useState(null)
 
   const getEnrolledCourses = async () => {
     try {
-      const res = await getUserEnrolledCourses(token);
-      setEnrolledCourses(res);
+      const res = await getUserEnrolledCourses(token)
+      setEnrolledCourses(res)
     } catch (error) {
-      console.log("Could not fetch enrolled courses.");
+      console.log('Could not fetch enrolled courses.')
     }
-  };
+  }
 
   useEffect(() => {
-    getEnrolledCourses();
-  }, []);
+    getEnrolledCourses()
+  }, [])
 
   return (
     <>
       <div className="text-3xl text-richblack-50">Enrolled Courses</div>
-      {!enrolledCourses ? (
+      {!enrolledCourses
+        ? (
         <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
           <div className="spinner"></div>
         </div>
-      ) : !enrolledCourses.length ? (
+          )
+        : !enrolledCourses.length
+            ? (
         <p className="grid h-[10vh] w-full place-content-center text-richblack-5">
-          {" "}
-          You have not enrolled in any course yet.{" "}
+          {' '}
+          You have not enrolled in any course yet.{' '}
         </p>
-      ) : (
+              )
+            : (
         <div className="my-8 text-richblack-5">
           {/* Headings */}
           <div className="flex rounded-t-lg bg-richblack-500 ">
@@ -45,7 +49,7 @@ export default function EnrolledCourses() {
           {/* Course Names */}
           {enrolledCourses.map((course, i, arr) => (
             <div
-              className={`flex items-center border border-richblack-700 ${i === arr.length - 1 ? "rounded-b-lg" : "rounded-none"
+              className={`flex items-center border border-richblack-700 ${i === arr.length - 1 ? 'rounded-b-lg' : 'rounded-none'
                 }`}
               key={i}
             >
@@ -53,8 +57,8 @@ export default function EnrolledCourses() {
                 className="flex w-[45%] cursor-pointer items-center gap-4 px-5 py-3"
                 onClick={() => {
                   navigate(
-                    `/view-course/${course?._id}/section/${course.courseContent?.[0]?._id}/sub-section/${course.courseContent?.[0]?.subSections?.[0]?._id}`
-                  );
+                    `/view-course/${course?._id}/section/${course.courseContent?.[0]?._id}/sub-section/${course.courseContent?.[0]?.subSections?.[0]?._id}`,
+                  )
                 }}
               >
                 <img
@@ -78,12 +82,12 @@ export default function EnrolledCourses() {
                   completed={course.progressPercentage || 0}
                   height="8px"
                   isLabelVisible={false}
-                />{" "}
+                />{' '}
               </div>
             </div>
           ))}
         </div>
-      )}
+              )}
     </>
-  );
+  )
 }

@@ -10,7 +10,7 @@ const {
   SIGNUP_API,
   LOGIN_API,
   RESETPASSTOKEN_API,
-  RESETPASSWORD_API
+  RESETPASSWORD_API,
 } = authEndpoints
 
 export function sendOtp (email, navigate) {
@@ -20,7 +20,7 @@ export function sendOtp (email, navigate) {
     try {
       const response = await apiConnector('POST', SENDOTP_API, {
         email,
-        checkUserPresent: true
+        checkUserPresent: true,
       })
       console.log('SENDOTP API RESPONSE............', response)
 
@@ -46,7 +46,7 @@ export function signUp (
   password,
   confirmPassword,
   otp,
-  navigate
+  navigate,
 ) {
   return async (dispatch) => {
     const toastId = toast.loading('Loading...')
@@ -59,7 +59,7 @@ export function signUp (
         email,
         password,
         confirmPassword,
-        otp
+        otp,
       })
       console.log('SIGNUP API RESPONSE............', response)
 
@@ -85,7 +85,7 @@ export function login (email, password, navigate) {
     try {
       const response = await apiConnector('POST', LOGIN_API, {
         email,
-        password
+        password,
       })
       console.log('LOGIN API RESPONSE............', response)
 
@@ -128,7 +128,7 @@ export function getPasswordResetToken (email, setEmailSent) {
     dispatch(setLoading(true))
     try {
       const response = await apiConnector('POST', RESETPASSTOKEN_API, {
-        email
+        email,
       })
       console.log('RESET PASSWORD TOKEN RESPONSE....', response)
 
@@ -153,7 +153,7 @@ export function resetPassword (password, confirmPassword, token, navigate) {
       const response = await apiConnector('POST', RESETPASSWORD_API, {
         password,
         confirmPassword,
-        token
+        token,
       })
       console.log('RESET Password RESPONSE ... ', response)
 

@@ -16,8 +16,8 @@ export default defineConfig({
               .split('/')[0]
               .toString()
           }
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 })

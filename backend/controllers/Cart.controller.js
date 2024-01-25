@@ -8,27 +8,27 @@ export async function addCourseIntoCart (req, res) {
     if (courseId === undefined || userId === undefined) {
       return res.status(400).json({
         success: false,
-        message: 'courseId or userId is undefined'
+        message: 'courseId or userId is undefined',
       })
     }
 
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: 'User not found'
+        message: 'User not found',
       })
     }
     user.cartAddedCourses.push(courseId)
     await user.save()
     return res.status(200).json({
       success: true,
-      message: 'Course added to cart'
+      message: 'Course added to cart',
     })
   } catch (error) {
     console.log('Error in addCourseIntoCart: ' + error)
     return res.status(500).json({
       success: false,
-      message: 'Error on addCourseIntoCart controller: ' + error
+      message: 'Error on addCourseIntoCart controller: ' + error,
     })
   }
 }
@@ -39,7 +39,7 @@ export async function removeCourseFromCart (req, res) {
   if (courseId === undefined || userId === undefined) {
     return res.status(400).json({
       success: false,
-      message: 'courseId or userId is undefined'
+      message: 'courseId or userId is undefined',
     })
   }
 
@@ -48,20 +48,20 @@ export async function removeCourseFromCart (req, res) {
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: 'User not found'
+        message: 'User not found',
       })
     }
     user.cartAddedCourses.pull(courseId)
     await user.save()
     return res.status(200).json({
       success: true,
-      message: 'Course removed from cart'
+      message: 'Course removed from cart',
     })
   } catch (error) {
     console.log('Error in removeFromCart: ' + error)
     return res.status(500).json({
       success: false,
-      message: 'Error on removeFromCart controller: ' + error
+      message: 'Error on removeFromCart controller: ' + error,
     })
   }
 }
@@ -72,7 +72,7 @@ export async function clearCart (req, res) {
   if (userId === undefined) {
     return res.status(400).json({
       success: false,
-      message: 'userId is undefined'
+      message: 'userId is undefined',
     })
   }
 
@@ -81,20 +81,20 @@ export async function clearCart (req, res) {
     if (!user) {
       return res.status(404).json({
         success: false,
-        message: 'User not found'
+        message: 'User not found',
       })
     }
     user.cartAddedCourses = []
     await user.save()
     return res.status(200).json({
       success: true,
-      message: 'Cart cleared'
+      message: 'Cart cleared',
     })
   } catch (error) {
     console.log('Error in clearCart: ' + error)
     return res.status(500).json({
       success: false,
-      message: 'Error on clearCart controller: ' + error
+      message: 'Error on clearCart controller: ' + error,
     })
   }
 }

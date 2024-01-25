@@ -4,7 +4,7 @@ const initialState = {
   step: 1,
   course: null,
   editCourse: false,
-  paymentLoading: false
+  paymentLoading: false,
 }
 
 const courseSlice = createSlice({
@@ -27,8 +27,8 @@ const courseSlice = createSlice({
       state.step = 1
       state.course = null
       state.editCourse = false
-    }
-  }
+    },
+  },
 })
 
 export const {
@@ -36,7 +36,7 @@ export const {
   setCourse,
   setEditCourse,
   setPaymentLoading,
-  resetCourseState
+  resetCourseState,
 } = courseSlice.actions
 
 export default courseSlice.reducer

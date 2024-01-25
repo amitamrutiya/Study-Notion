@@ -7,37 +7,37 @@ import {
   getFullCourseDetails,
   editCourse,
   getInstructorCourses,
-  deleteCourse
+  deleteCourse,
 } from '../controllers/Course.controller.js' // Course Controllers Import
 
 import {
   showAllCategories,
   createCategory,
-  categoryPageDetails
+  categoryPageDetails,
 } from '../controllers/Category.controller.js' // Categories Controllers Import
 
 import {
   createSection,
   updateSection,
-  deleteSection
+  deleteSection,
 } from '../controllers/section.controller.js' // Sections Controllers Import
 
 import {
   createSubSection,
   updateSubSection,
-  deleteSubSection
+  deleteSubSection,
 } from '../controllers/subSection.controller.js' // Sub-Sections Controllers Import
 
 import {
   createRating,
   getAverageRating,
-  getAllRatingAndReview
+  getAllRatingAndReview,
 } from '../controllers/ratingAndReview.controller.js' // Rating Controllers Import
 
 import {
   addCourseIntoCart,
   removeCourseFromCart,
-  clearCart
+  clearCart,
 } from '../controllers/Cart.controller.js' // Cart Controllers Import
 
 import { auth, isInstructor, isStudent, isAdmin } from '../middlewares/auth.middelware.js' // Importing Middlewares

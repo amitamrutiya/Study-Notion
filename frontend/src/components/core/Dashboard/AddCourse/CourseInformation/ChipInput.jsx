@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
-import { MdClose } from "react-icons/md";
+import { MdClose } from 'react-icons/md'
 import { useSelector } from 'react-redux'
+import PropTypes from 'prop-types'
 
-export default function ChipInput({
+export default function ChipInput ({
   label,
   name,
   placeholder,
@@ -10,39 +11,39 @@ export default function ChipInput({
   errors,
   setValue,
 }) {
-  const { editCourse, course } = useSelector((state) => state.course);
-  const [chips, setChips] = useState([]);
+  const { editCourse, course } = useSelector((state) => state.course)
+  const [chips, setChips] = useState([])
 
   useEffect(() => {
     if (editCourse) {
-      setChips(course?.tags);
+      setChips(course?.tags)
     }
-    register(name, { required: true, validate: (value) => value.length > 0 });
-  }, []);
+    register(name, { required: true, validate: (value) => value.length > 0 })
+  }, [])
 
   useEffect(() => {
-    setValue(name, chips);
-  }, [chips]);
+    setValue(name, chips)
+  }, [chips])
 
   // Function to handle user input when chips are added
   const handleKeyDown = (event) => {
-    if (event.key === "Enter" || event.key === ",") {
-      event.preventDefault();
-      const chipValue = event.target.value.trim();
+    if (event.key === 'Enter' || event.key === ',') {
+      event.preventDefault()
+      const chipValue = event.target.value.trim()
       if (chipValue && !chips.includes(chipValue)) {
         // Check if the input value exists and is not already in the chips array
-        const newChips = [...chips, chipValue];
-        setChips(newChips);
-        event.target.value = "";
+        const newChips = [...chips, chipValue]
+        setChips(newChips)
+        event.target.value = ''
       }
     }
-  };
+  }
 
   // Function to handle deletion of a chip
   const handleDeleteChip = (chipIndex) => {
-    const newChips = chips.filter((_, index) => index !== chipIndex); //
-    setChips(newChips);
-  };
+    const newChips = chips.filter((_, index) => index !== chipIndex) //
+    setChips(newChips)
+  }
 
   return (
     <div className="flex flex-col space-y-2">
@@ -56,7 +57,7 @@ export default function ChipInput({
         {chips.map(
           (
             chip,
-            index
+            index,
           ) => (
             <div
               key={index}
@@ -68,12 +69,12 @@ export default function ChipInput({
                 className="ml-2 focus:outline-none"
                 onClick={() => handleDeleteChip(index)}
               >
-                {" "}
+                {' '}
                 {/* button to delete the chip */}
                 <MdClose className="text-sm" />
               </button>
             </div>
-          )
+          ),
         )}
 
         {/* Render the input for adding new chips */}
@@ -90,10 +91,19 @@ export default function ChipInput({
       {/* Render an error message if the input is required and not filled */}
       {errors[name] && (
         <span className="ml-2 text-xs tracking-wide text-pink-200">
-          {" "}
-          {label} is required{" "}
+          {' '}
+          {label} is required{' '}
         </span>
       )}
     </div>
-  );
+  )
+}
+
+ChipInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  placeholder: PropTypes.string.isRequired,
+  register: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
+  setValue: PropTypes.func.isRequired,
 }

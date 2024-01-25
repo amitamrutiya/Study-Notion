@@ -18,7 +18,7 @@ export function GetCourseTotalDuration (course) {
   for (let j = 0; j < course.courseContent.length; j++) {
     totalDurationInSeconds += course.courseContent[j].subSections.reduce(
       (acc, curr) => acc + parseInt(curr.timeDuration),
-      0
+      0,
     )
     totalDuration = convertSecondsToDuration(totalDurationInSeconds)
   }

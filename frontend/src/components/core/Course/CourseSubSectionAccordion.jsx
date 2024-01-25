@@ -1,16 +1,23 @@
-import { HiOutlineVideoCamera } from "react-icons/hi"
+import { HiOutlineVideoCamera } from 'react-icons/hi'
+import PropTypes from 'prop-types'
 
-function CourseSubSectionAccordion({ subSec }) {
+function CourseSubSectionAccordion ({ subSec }) {
   return (
     <div>
       <div className="flex justify-between py-2">
-        <div className={`flex items-center gap-2`}>
+        <div className={'flex items-center gap-2'}>
           <span> <HiOutlineVideoCamera /> </span>
           <p> {subSec?.title} </p>
         </div>
       </div>
     </div>
-  
-)}
+
+  )
+}
+
+CourseSubSectionAccordion.propTypes = {
+  subSec: PropTypes.object.isRequired,
+}
 
 export default CourseSubSectionAccordion
+

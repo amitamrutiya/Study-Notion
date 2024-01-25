@@ -1,38 +1,38 @@
 import { useState } from 'react'
-import { HomePageExplore } from "../../../data/homepage-explore";
-import CourseCard from "./CourseCard";
-import HighlightText from "./HighlightText";
+import { HomePageExplore } from '../../../data/homepage-explore'
+import CourseCard from './CourseCard'
+import HighlightText from './HighlightText'
 
 const tabsName = [
-  "Free",
-  "New to coding",
-  "Most popular",
-  "Skills paths",
-  "Career paths",
-];
+  'Free',
+  'New to coding',
+  'Most popular',
+  'Skills paths',
+  'Career paths',
+]
 
 const ExploreMore = () => {
-  const [currentTab, setCurrentTab] = useState(tabsName[0]);
-  const [courses, setCourses] = useState(HomePageExplore[0].courses);
+  const [currentTab, setCurrentTab] = useState(tabsName[0])
+  const [courses, setCourses] = useState(HomePageExplore[0].courses)
   const [currentCard, setCurrentCard] = useState(
-    HomePageExplore[0].courses[0].heading
-  );
+    HomePageExplore[0].courses[0].heading,
+  )
 
   const setMyCards = (value) => {
-    setCurrentTab(value);
-    const result = HomePageExplore.filter((ele) => ele.tag === value);
-    setCourses(result[0].courses);
-    setCurrentCard(result[0].courses[0].heading);
-  };
+    setCurrentTab(value)
+    const result = HomePageExplore.filter((ele) => ele.tag === value)
+    setCourses(result[0].courses)
+    setCurrentCard(result[0].courses[0].heading)
+  }
 
   return (
     <div>
       <div className="text-4xl font-semibold text-center my-10">
         Unlock the
-        <HighlightText text={"Power of Code"} />
+        <HighlightText text={'Power of Code'} />
         <p className="text-center text-richblack-300 text-lg font-semibold mt-1">
-          {" "}
-          Learn to build anything you can imagine{" "}
+          {' '}
+          Learn to build anything you can imagine{' '}
         </p>
       </div>
 
@@ -43,15 +43,15 @@ const ExploreMore = () => {
             <div
               className={`text-[16px] flex flex-row items-center gap-2 rounded-full transition-all duration-200 cursor-pointer  hover:bg-richblack-900 hover:text-richblack-5 px-7 py-[7px]
                                     ${currentTab === element
-                  ? "bg-richblack-900 text-richblack-5 font-medium"
-                  : "text-richblack-200"
+                  ? 'bg-richblack-900 text-richblack-5 font-medium'
+                  : 'text-richblack-200'
                 } `}
               key={index}
               onClick={() => setMyCards(element)}
             >
               {element}
             </div>
-          );
+          )
         })}
       </div>
 
@@ -67,11 +67,11 @@ const ExploreMore = () => {
               currentCard={currentCard}
               setCurrentCard={setCurrentCard}
             />
-          );
+          )
         })}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ExploreMore;
+export default ExploreMore

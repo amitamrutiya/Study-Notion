@@ -45,14 +45,14 @@ export async function capturePayment (req, res) {
   const options = {
     amount: totalAmount * 100,
     currency,
-    receipt: Math.random(Date.now()).toString()
+    receipt: Math.random(Date.now()).toString(),
   }
 
   try {
     const paymentResponse = await instance.orders.create(options)
     res.json({
       success: true,
-      message: paymentResponse
+      message: paymentResponse,
     })
   } catch (error) {
     console.log(error)
@@ -97,7 +97,7 @@ const enrollStudents = async (courses, userId, res) => {
   if (!courses || !userId) {
     return res.status(400).json({
       success: false,
-      message: 'Please Provide data for Courses or UserId'
+      message: 'Please Provide data for Courses or UserId',
     })
   }
 
@@ -107,7 +107,7 @@ const enrollStudents = async (courses, userId, res) => {
       const enrolledCourse = await Course.findOneAndUpdate(
         { _id: courseId },
         { $push: { studentsEnrolled: userId } },
-        { new: true }
+        { new: true },
       )
 
       if (!enrolledCourse) {
@@ -119,14 +119,14 @@ const enrollStudents = async (courses, userId, res) => {
       const courseProgress = await CourseProgress.create({
         courseId,
         userId,
-        completedVideos: []
+        completedVideos: [],
       })
 
       // find the student and add the course to their list of enrolledCOurses
       const enrolledStudent = await User.findByIdAndUpdate(
         userId,
         { $push: { courses: courseId, courseProgress: courseProgress._id } },
-        { new: true }
+        { new: true },
       )
 
       /// Send mail to the Student;
@@ -135,8 +135,8 @@ const enrollStudents = async (courses, userId, res) => {
         `Successfully Enrolled into ${enrolledCourse.courseName}`,
         courseEnrollmentEmail(
           enrolledCourse.courseName,
-          `${enrolledStudent.firstName}`
-        )
+          `${enrolledStudent.firstName}`,
+        ),
       )
     } catch (error) {
       console.log(error)
@@ -166,8 +166,8 @@ export async function sendPaymentSuccessEmail (req, res) {
         `${enrolledStudent.firstName}`,
         amount / 100,
         orderId,
-        paymentId
-      )
+        paymentId,
+      ),
     )
   } catch (error) {
     console.log('error in sending mail', error)

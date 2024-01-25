@@ -19,25 +19,25 @@ export async function createRating (req, res) {
 
     const courseDetails = await Course.findOne({
       _id: courseId,
-      studentsEnrolled: { $elemMatch: { $eq: userId } }
+      studentsEnrolled: { $elemMatch: { $eq: userId } },
     }) // check if user is enrolled or not
 
     if (!courseDetails) {
       return res.status(404).json({
         success: false,
-        message: 'Student is not enrolled in the course'
+        message: 'Student is not enrolled in the course',
       })
     }
 
     // check if user already reviewed
     const alreadyReviewed = await RatingAndReview.findOne({
       user: userId,
-      course: courseId
+      course: courseId,
     })
     if (alreadyReviewed) {
       return res.status(400).json({
         success: false,
-        message: 'You have already reviewed this course'
+        message: 'You have already reviewed this course',
       })
     }
 
@@ -46,23 +46,23 @@ export async function createRating (req, res) {
       rating,
       review,
       course: courseId,
-      user: userId
+      user: userId,
     })
 
     // update course with this rating/review
     await Course.findByIdAndUpdate(
       { _id: courseId },
       {
-        $push: { ratingAndReviews: ratingAndReview._id }
+        $push: { ratingAndReviews: ratingAndReview._id },
       },
-      { new: true }
+      { new: true },
     )
 
     // send response
     return res.status(200).json({
       success: true,
       message: 'Rating and review created successfully',
-      data: ratingAndReview
+      data: ratingAndReview,
     })
   } catch (error) {
     console.log('Error in createRatingAndReview')
@@ -86,14 +86,14 @@ export async function getAverageRating (req, res) {
     // get average rating and review
     const averageRating = await RatingAndReview.aggregate([
       {
-        $match: { course: new mongoose.Types.ObjectId(courseId) }
+        $match: { course: new mongoose.Types.ObjectId(courseId) },
       },
       {
         $group: {
           _id: null,
-          averageRating: { $avg: '$rating' }
-        }
-      }
+          averageRating: { $avg: '$rating' },
+        },
+      },
     ])
 
     // send response
@@ -101,12 +101,12 @@ export async function getAverageRating (req, res) {
       return res.status(200).json({
         success: true,
         message: 'Average rating and review fetched successfully',
-        data: averageRating[0].averageRating
+        data: averageRating[0].averageRating,
       })
     } else {
       return res.status(400).json({
         success: false,
-        message: 'No rating and review found for this course'
+        message: 'No rating and review found for this course',
       })
     }
   } catch (error) {
@@ -127,13 +127,13 @@ export async function getAllRatingAndReview (req, res) {
     if (!allReviews) {
       return res.status(400).json({
         success: false,
-        message: 'No rating and review found'
+        message: 'No rating and review found',
       })
     }
     return res.status(200).json({
       success: true,
       message: 'All rating and review fetched successfully',
-      data: allReviews
+      data: allReviews,
     })
   } catch (error) {
     console.log('Error in getAllRatingAndReview')

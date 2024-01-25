@@ -1,59 +1,59 @@
 import { useEffect, useRef, useState } from 'react'
-import { FiUpload } from "react-icons/fi";
+import { FiUpload } from 'react-icons/fi'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateDisplayPicture } from "../../../../services/operations/SettingsAPI";
-import IconBtn from "../../../common/IconBtn";
+import { updateDisplayPicture } from '../../../../services/operations/SettingsAPI'
+import IconBtn from '../../../common/IconBtn'
 
-export default function ChangeProfilePicture() {
-  const { token } = useSelector((state) => state.auth);
-  const { user } = useSelector((state) => state.profile);
-  const dispatch = useDispatch();
+export default function ChangeProfilePicture () {
+  const { token } = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.profile)
+  const dispatch = useDispatch()
 
-  const [loading, setLoading] = useState(false);
-  const [imageFile, setImageFile] = useState(null);
-  const [previewSource, setPreviewSource] = useState(null);
+  const [loading, setLoading] = useState(false)
+  const [imageFile, setImageFile] = useState(null)
+  const [previewSource, setPreviewSource] = useState(null)
 
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef(null)
 
   const handleClick = () => {
-    fileInputRef.current.click();
-  };
+    fileInputRef.current.click()
+  }
 
   const handleFileChange = (e) => {
-    const file = e.target.files[0];
+    const file = e.target.files[0]
     if (file) {
-      setImageFile(file);
-      previewFile(file);
+      setImageFile(file)
+      previewFile(file)
     }
-  };
+  }
 
   const previewFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
+    const reader = new FileReader()
+    reader.readAsDataURL(file)
     reader.onloadend = () => {
-      setPreviewSource(reader.result);
-    };
-  };
+      setPreviewSource(reader.result)
+    }
+  }
 
   const handleFileUpload = () => {
     try {
-      console.log("uploading...");
-      setLoading(true);
-      const formData = new FormData();
-      formData.append("displayPicture", imageFile);
+      console.log('uploading...')
+      setLoading(true)
+      const formData = new FormData()
+      formData.append('displayPicture', imageFile)
       dispatch(updateDisplayPicture(token, formData)).then(() => {
-        setLoading(false);
-      });
+        setLoading(false)
+      })
     } catch (error) {
-      console.log("ERROR MESSAGE - ", error.message);
+      console.log('ERROR MESSAGE - ', error.message)
     }
-  };
+  }
 
   useEffect(() => {
     if (imageFile) {
-      previewFile(imageFile);
+      previewFile(imageFile)
     }
-  }, [imageFile]);
+  }, [imageFile])
 
   return (
     <>
@@ -83,7 +83,7 @@ export default function ChangeProfilePicture() {
                 Select
               </button>
               <IconBtn
-                text={loading ? "Uploading..." : "Upload"}
+                text={loading ? 'Uploading...' : 'Upload'}
                 onclick={handleFileUpload}
               >
                 {!loading && (
@@ -95,5 +95,5 @@ export default function ChangeProfilePicture() {
         </div>
       </div>
     </>
-  );
+  )
 }

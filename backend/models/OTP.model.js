@@ -6,18 +6,18 @@ const OTPShema = new Schema({
   email: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   otp: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   createdAt: {
     type: Date,
     default: Date.now,
-    expires: 5 * 60
-  }
+    expires: 5 * 60,
+  },
 })
 
 async function sendVerificationEmail (email, otp) {
@@ -25,7 +25,7 @@ async function sendVerificationEmail (email, otp) {
     const mailResponse = await mailSender(
       email,
       'Verification Email from StudyNotion',
-      otpTemplate(otp)
+      otpTemplate(otp),
     )
     console.log('Email sent Successfully: ', mailResponse)
   } catch (error) {

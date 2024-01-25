@@ -17,7 +17,7 @@ describe('Category Model Test', () => {
     const categoryData = {
       name: 'Test Category',
       description: 'Test Description',
-      courses: []
+      courses: [],
     }
     const validCategory = new Category(categoryData)
     const savedCategory = await validCategory.save()

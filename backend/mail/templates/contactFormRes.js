@@ -4,7 +4,7 @@ export default function contactUsEmail (
   lastname,
   message,
   phoneNo,
-  countrycode
+  countrycode,
 ) {
   return `<!DOCTYPE html>
     <html>

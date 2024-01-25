@@ -1,7 +1,7 @@
-import loginImg from "../assets/Images/login.webp";
-import Template from "../components/core/Auth/Template";
+import loginImg from '../assets/Images/login.webp'
+import Template from '../components/core/Auth/Template'
 
-function Login({ setIsLoggedIn }) {
+function Login () {
   return (
     <Template
       title="Welcome Back"
@@ -10,7 +10,7 @@ function Login({ setIsLoggedIn }) {
       image={loginImg}
       formtype="login"
     />
-  );
+  )
 }
 
-export default Login;
+export default Login

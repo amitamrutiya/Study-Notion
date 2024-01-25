@@ -1,14 +1,12 @@
-import { RiEditBoxLine } from "react-icons/ri"
+import { RiEditBoxLine } from 'react-icons/ri'
 import { useSelector } from 'react-redux'
-import { useNavigate } from "react-router-dom"
-import { formattedDate } from "../../../utils/dateFormatter"
-import IconBtn from "../../common/IconBtn"
+import { useNavigate } from 'react-router-dom'
+import { formattedDate } from '../../../utils/dateFormatter'
+import IconBtn from '../../common/IconBtn'
 
-export default function MyProfile() {
-
+export default function MyProfile () {
   const { user } = useSelector((state) => state.profile)
   const navigate = useNavigate()
-
 
   return (
 
@@ -21,11 +19,11 @@ export default function MyProfile() {
           <img src={user?.image} alt={`profile-${user?.firstName}`} className="aspect-square w-[78px] rounded-full object-cover" />
 
           <div className="space-y-1">
-            <p className="text-lg font-semibold text-richblack-5"> {user?.firstName + " " + user?.lastName} </p>
+            <p className="text-lg font-semibold text-richblack-5"> {user?.firstName + ' ' + user?.lastName} </p>
             <p className="text-sm text-richblack-300">{user?.email}</p>
           </div>
         </div>
-        <IconBtn text="Edit" onclick={() => { navigate("/dashboard/settings") }} >
+        <IconBtn text="Edit" onclick={() => { navigate('/dashboard/settings') }} >
           <RiEditBoxLine />
         </IconBtn>
 
@@ -35,12 +33,12 @@ export default function MyProfile() {
 
         <div className="flex w-full items-center justify-between">
           <p className="text-lg font-semibold text-richblack-5">About</p>
-          <IconBtn text="Edit" onclick={() => { navigate("/dashboard/settings") }}>
+          <IconBtn text="Edit" onclick={() => { navigate('/dashboard/settings') }}>
             <RiEditBoxLine />
           </IconBtn>
         </div>
-        <p className={`${user?.additionalDetails?.about ? "text-richblack-5" : "text-richblack-400"} text-sm font-medium`} >
-          {user?.additionalDetails?.about ?? "Write Something About Yourself"}
+        <p className={`${user?.additionalDetails?.about ? 'text-richblack-5' : 'text-richblack-400'} text-sm font-medium`} >
+          {user?.additionalDetails?.about ?? 'Write Something About Yourself'}
         </p>
 
       </div>
@@ -49,7 +47,7 @@ export default function MyProfile() {
 
         <div className="flex w-full items-center justify-between">
           <p className="text-lg font-semibold text-richblack-5"> Personal Details </p>
-          <IconBtn text="Edit" onclick={() => { navigate("/dashboard/settings") }} >
+          <IconBtn text="Edit" onclick={() => { navigate('/dashboard/settings') }} >
             <RiEditBoxLine />
           </IconBtn>
         </div>
@@ -67,7 +65,7 @@ export default function MyProfile() {
             </div>
             <div>
               <p className="mb-2 text-sm text-richblack-600">Gender</p>
-              <p className="text-sm font-medium text-richblack-5"> {user?.additionalDetails?.gender ?? "Add Gender"} </p>
+              <p className="text-sm font-medium text-richblack-5"> {user?.additionalDetails?.gender ?? 'Add Gender'} </p>
             </div>
           </div>
 
@@ -78,12 +76,12 @@ export default function MyProfile() {
             </div>
             <div>
               <p className="mb-2 text-sm text-richblack-600">Phone Number</p>
-              <p className="text-sm font-medium text-richblack-5"> {user?.additionalDetails?.contactNumber ?? "Add Contact Number"} </p>
+              <p className="text-sm font-medium text-richblack-5"> {user?.additionalDetails?.contactNumber ?? 'Add Contact Number'} </p>
             </div>
             <div>
               <p className="mb-2 text-sm text-richblack-600">Date Of Birth</p>
               <p className="text-sm font-medium text-richblack-5">
-                {formattedDate(user?.additionalDetails?.dateOfBirth) ?? "Add Date Of Birth"}
+                {formattedDate(user?.additionalDetails?.dateOfBirth) ?? 'Add Date Of Birth'}
               </p>
             </div>
           </div>

@@ -15,7 +15,7 @@ export async function updateProfile (req, res) {
       dateOfBirth = '',
       about = '',
       contactNumber = '',
-      gender = ''
+      gender = '',
     } = req.body
     const { id } = req.user
 
@@ -24,7 +24,7 @@ export async function updateProfile (req, res) {
     if (!id) {
       return res.status(400).json({
         success: false,
-        message: 'User id is required'
+        message: 'User id is required',
       })
     } else if (
       contactNumber &&
@@ -32,7 +32,7 @@ export async function updateProfile (req, res) {
     ) {
       return res.status(400).json({
         success: false,
-        message: 'Contact number should be 10 digits'
+        message: 'Contact number should be 10 digits',
       })
     }
 
@@ -63,14 +63,14 @@ export async function updateProfile (req, res) {
     return res.status(201).json({
       success: true,
       message: 'Profile updated successfully',
-      updatedUserDetails
+      updatedUserDetails,
     })
   } catch (error) {
     console.log('Error in updateProfile', error)
     res.status(500).json({
       success: false,
       message: 'Unable to update profile',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -83,24 +83,24 @@ export async function updateDisplayPicture (req, res) {
       displayPicture,
       process.env.FOLDER_NAME,
       1000,
-      1000
+      1000,
     )
 
     const updatedProfile = await User.findByIdAndUpdate(
       { _id: userId },
       { image: image.secure_url },
-      { new: true }
+      { new: true },
     )
 
     res.send({
       success: true,
       message: 'Image Updated successfully',
-      updatedProfile
+      updatedProfile,
     })
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -114,9 +114,9 @@ export async function getEnrolledCourses (req, res) {
         populate: {
           path: 'courseContent',
           populate: {
-            path: 'subSections'
-          }
-        }
+            path: 'subSections',
+          },
+        },
       })
       .exec()
     userDetails = userDetails.toObject()
@@ -129,17 +129,17 @@ export async function getEnrolledCourses (req, res) {
           j
         ].subSections.reduce(
           (acc, curr) => acc + parseInt(curr.timeDuration),
-          0
+          0,
         )
         userDetails.courses[i].totalDuration = convertSecondsToDuration(
-          totalDurationInSeconds
+          totalDurationInSeconds,
         )
         SubsectionLength +=
           userDetails.courses[i].courseContent[j].subSections.length
       }
       let courseProgressCount = await CourseProgress.findOne({
         courseId: userDetails.courses[i]._id,
-        userId
+        userId,
       })
       courseProgressCount = courseProgressCount?.completedVideos.length
       if (SubsectionLength === 0) {
@@ -149,7 +149,7 @@ export async function getEnrolledCourses (req, res) {
         const multiplier = Math.pow(10, 2)
         userDetails.courses[i].progressPercentage =
           Math.round(
-            (courseProgressCount / SubsectionLength) * 100 * multiplier
+            (courseProgressCount / SubsectionLength) * 100 * multiplier,
           ) / multiplier
       }
     }
@@ -157,18 +157,18 @@ export async function getEnrolledCourses (req, res) {
     if (!userDetails) {
       return res.status(400).json({
         success: false,
-        message: `Could not find user with id: ${userDetails}`
+        message: `Could not find user with id: ${userDetails}`,
       })
     }
 
     return res.status(200).json({
       success: true,
-      data: userDetails.courses
+      data: userDetails.courses,
     })
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -187,13 +187,13 @@ export async function instructorDashboard (req, res) {
         courseName: course.courseName,
         courseDescription: course.courseDescription,
         totalStudentsEnrolled, // Include other course properties as needed
-        totalAmountGenerated
+        totalAmountGenerated,
       }
       return courseDataWithStats
     })
 
     res.status(200).json({
-      courses: courseData
+      courses: courseData,
     })
   } catch (error) {
     console.error(error)

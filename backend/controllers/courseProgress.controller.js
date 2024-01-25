@@ -16,14 +16,14 @@ export async function updateCourseProgress (req, res) {
     // Find the course progress document for the user and course
     const courseProgress = await CourseProgress.findOne({
       courseId,
-      userId
+      userId,
     })
 
     if (!courseProgress) {
       // If course progress doesn't exist, create a new one
       return res.status(404).json({
         success: false,
-        message: 'Course progress Does Not Exist'
+        message: 'Course progress Does Not Exist',
       })
     } else {
       // If course progress exists, check if the subsection is already completed

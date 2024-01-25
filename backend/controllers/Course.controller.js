@@ -21,7 +21,7 @@ export async function createCourse (req, res) {
       // totalDuration,
       language,
       status,
-      instructions
+      instructions,
     } = req.body
 
     // get thumbnail
@@ -50,12 +50,12 @@ export async function createCourse (req, res) {
     }
     // Check for instructor
     const instructorDetails = await User.findById(req.user.id, {
-      accountType: 'Instructor'
+      accountType: 'Instructor',
     })
     if (!instructorDetails) {
       return res.status(400).json({
         success: false,
-        message: 'You are not authorized to create course'
+        message: 'You are not authorized to create course',
       })
     }
 
@@ -64,14 +64,14 @@ export async function createCourse (req, res) {
     if (!categoryDetails) {
       return res.status(400).json({
         success: false,
-        message: 'Please select a valid category'
+        message: 'Please select a valid category',
       })
     }
 
     // upload thumbnail to cloudinary
     const thumbnailImage = await uploadFileToCloudinary(
       thumbnail,
-      process.env.CLOUDINARY_COURSE_THUMBNAIL_FOLDER
+      process.env.CLOUDINARY_COURSE_THUMBNAIL_FOLDER,
     )
 
     // create an entry for new course
@@ -87,34 +87,34 @@ export async function createCourse (req, res) {
       language,
       // totalDuration,
       status,
-      instructions: instructionList
+      instructions: instructionList,
     })
 
     // push course id to instructor's course array
     await User.findByIdAndUpdate(
       instructorDetails._id,
       { $push: { courses: newCourse._id } },
-      { new: true }
+      { new: true },
     )
 
     // update category schema
     await Category.findByIdAndUpdate(
       category,
       { $push: { courses: newCourse._id } },
-      { new: true }
+      { new: true },
     )
 
     // send response
     return res.status(200).json({
       success: true,
       message: 'Course created successfully',
-      data: newCourse
+      data: newCourse,
     })
   } catch (error) {
     console.log('Error in creating course: ' + error)
     return res.status(500).json({
       success: false,
-      message: 'Error on createCourse controller: ' + error
+      message: 'Error on createCourse controller: ' + error,
     })
   }
 }
@@ -131,8 +131,8 @@ export async function getAllCourses (req, res) {
         instructor: true,
         ratingAndReviews: true,
         category: true,
-        studentsEnrolled: true
-      }
+        studentsEnrolled: true,
+      },
     )
       .populate('instructor')
       .exec()
@@ -140,13 +140,13 @@ export async function getAllCourses (req, res) {
     return res.status(200).json({
       success: true,
       message: 'All courses fetched successfully',
-      data: allCourses
+      data: allCourses,
     })
   } catch (error) {
     console.log('Error in showAllCourses controller: ')
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -161,7 +161,7 @@ export async function getCourseDetails (req, res) {
     if (!courseId) {
       return res.status(400).json({
         success: false,
-        message: 'Please give course Id'
+        message: 'Please give course Id',
       })
     }
 
@@ -169,20 +169,20 @@ export async function getCourseDetails (req, res) {
     const courseDetails = await Course.findOne({ _id: courseId })
       .populate({
         path: 'instructor',
-        populate: { path: 'additionalDetails' }
+        populate: { path: 'additionalDetails' },
       })
       .populate('category')
       .populate('ratingAndReviews')
       .populate({
         path: 'courseContent',
-        populate: { path: 'subSections' }
+        populate: { path: 'subSections' },
       })
       .exec()
 
     if (!courseDetails) {
       return res.status(400).json({
         success: false,
-        message: `Could not find course details with ${courseId}`
+        message: `Could not find course details with ${courseId}`,
       })
     }
     let totalDuration
@@ -202,13 +202,13 @@ export async function getCourseDetails (req, res) {
     return res.status(200).json({
       success: true,
       message: 'Course details fetched successfully',
-      data: { courseDetails, totalDuration }
+      data: { courseDetails, totalDuration },
     })
   } catch (error) {
     console.log('Error in getCourseDetails controller: ')
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -221,27 +221,27 @@ export async function getFullCourseDetails (req, res) {
       .populate({
         path: 'instructor',
         populate: {
-          path: 'additionalDetails'
-        }
+          path: 'additionalDetails',
+        },
       })
       .populate('category')
       .populate('ratingAndReviews')
       .populate({
         path: 'courseContent',
         populate: {
-          path: 'subSections'
-        }
+          path: 'subSections',
+        },
       })
       .exec()
     const courseProgressCount = await CourseProgress.findOne({
       courseId,
-      userId
+      userId,
     })
 
     if (!courseDetails) {
       return res.status(400).json({
         success: false,
-        message: `Could not find course with id: ${courseId}`
+        message: `Could not find course with id: ${courseId}`,
       })
     }
     let totalDurationInSeconds = 0
@@ -261,13 +261,13 @@ export async function getFullCourseDetails (req, res) {
         totalDuration,
         completedVideos: courseProgressCount?.completedVideos
           ? courseProgressCount?.completedVideos
-          : []
-      }
+          : [],
+      },
     })
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -279,26 +279,26 @@ export async function getInstructorCourses (req, res) {
 
     // Find all courses belonging to the instructor
     const instructorCourses = await Course.find({
-      instructor: instructorId
+      instructor: instructorId,
     })
       .populate({
         path: 'courseContent',
         populate: {
-          path: 'subSections'
-        }
+          path: 'subSections',
+        },
       })
       .sort({ createdAt: -1 })
 
     res.status(200).json({
       // Return the instructor's courses
       success: true,
-      data: instructorCourses
+      data: instructorCourses,
     })
   } catch (error) {
     res.status(500).json({
       success: false,
       message: 'Failed to retrieve instructor courses',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -333,14 +333,14 @@ export async function deleteCourse (req, res) {
 
     return res.status(200).json({
       success: true,
-      message: 'Course deleted successfully'
+      message: 'Course deleted successfully',
     })
   } catch (error) {
     console.error(error)
     return res.status(500).json({
       success: false,
       message: 'Server error',
-      error: error.message
+      error: error.message,
     })
   }
 }
@@ -361,7 +361,7 @@ export async function editCourse (req, res) {
       const thumbnail = req.files.thumbnailImage
       const thumbnailImage = await uploadFileToCloudinary(
         thumbnail,
-        process.env.FOLDER_NAME
+        process.env.FOLDER_NAME,
       )
       course.thumbnail = thumbnailImage.secure_url
     }
@@ -383,29 +383,29 @@ export async function editCourse (req, res) {
       .populate({
         path: 'instructor',
         populate: {
-          path: 'additionalDetails'
-        }
+          path: 'additionalDetails',
+        },
       })
       .populate('category')
       .populate('ratingAndReviews')
       .populate({
         path: 'courseContent',
         populate: {
-          path: 'subSections'
-        }
+          path: 'subSections',
+        },
       })
       .exec()
 
     res.json({
       success: true,
       message: 'Course updated successfully',
-      data: updatedCourse
+      data: updatedCourse,
     })
   } catch (error) {
     res.status(500).json({
       success: false,
       message: 'Internal server error',
-      error: error.message
+      error: error.message,
     })
   }
 }

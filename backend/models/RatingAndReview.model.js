@@ -4,21 +4,21 @@ const ratingAndReviewSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: 'User'
+    ref: 'User',
   },
   course: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: 'Course'
+    ref: 'Course',
   },
   rating: {
     type: Number,
-    required: true
+    required: true,
   },
   review: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 })
 
 export default model('RatingAndReview', ratingAndReviewSchema)

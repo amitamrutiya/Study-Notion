@@ -1,4 +1,4 @@
-export default function IconBtn({
+export default function IconBtn ({
   text,
   onclick,
   children,
@@ -14,19 +14,21 @@ export default function IconBtn({
       className={`flex items-center cursor-pointer gap-x-2 rounded-md py-2 px-5 font-semibold text-richblack-900
               ${
                 outline
-                  ? "border border-yellow-50 bg-transparent"
-                  : "bg-yellow-50"
+                  ? 'border border-yellow-50 bg-transparent'
+                  : 'bg-yellow-50'
               } ${customClasses}`}
       type={type}
     >
-      {children ? (
+      {children
+        ? (
         <>
-          <span className={`${outline && "text-yellow-50"}`}> {text} </span>
+          <span className={`${outline && 'text-yellow-50'}`}> {text} </span>
           {children}
         </>
-      ) : (
-        text
-      )}
+          )
+        : (
+            text
+          )}
     </button>
-  );
+  )
 }

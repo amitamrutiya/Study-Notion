@@ -8,7 +8,7 @@ import { resetCart } from '../../slices/cartSlice'
 const {
   COURSE_PAYMENT_API,
   COURSE_VERIFY_API,
-  SEND_PAYMENT_SUCCESS_EMAIL_API
+  SEND_PAYMENT_SUCCESS_EMAIL_API,
 } = studentEndpoints
 
 function loadScript (src) {
@@ -31,13 +31,13 @@ export async function buyCourse (
   courses,
   userDetails,
   navigate,
-  dispatch
+  dispatch,
 ) {
   const toastId = toast.loading('Loading...')
   try {
     // load the script
     const res = await loadScript(
-      'https://checkout.razorpay.com/v1/checkout.js'
+      'https://checkout.razorpay.com/v1/checkout.js',
     )
 
     if (!res) {
@@ -50,7 +50,7 @@ export async function buyCourse (
       'POST',
       COURSE_PAYMENT_API,
       { courses },
-      { Authorization: `Bearer ${token}` }
+      { Authorization: `Bearer ${token}` },
     )
 
     if (!orderResponse.data.success) {
@@ -68,18 +68,18 @@ export async function buyCourse (
       image: rzpLogo,
       prefill: {
         name: `${userDetails.firstName}`,
-        email: userDetails.email
+        email: userDetails.email,
       },
       handler: function (response) {
         // send successful wala mail
         sendPaymentSuccessEmail(
           response,
           orderResponse.data.message.amount,
-          token
+          token,
         )
         // verifyPayment
         verifyPayment({ ...response, courses }, token, navigate, dispatch)
-      }
+      },
     }
     const paymentObject = new window.Razorpay(options)
     paymentObject.open()
@@ -102,11 +102,11 @@ async function sendPaymentSuccessEmail (response, amount, token) {
       {
         orderId: response.razorpay_order_id,
         paymentId: response.razorpay_payment_id,
-        amount
+        amount,
       },
       {
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     )
   } catch (error) {
     console.log('PAYMENT SUCCESS EMAIL ERROR....', error)
@@ -119,7 +119,7 @@ async function verifyPayment (bodyData, token, navigate, dispatch) {
   dispatch(setPaymentLoading(true))
   try {
     const response = await apiConnector('POST', COURSE_VERIFY_API, bodyData, {
-      Authorization: `Bearer ${token}`
+      Authorization: `Bearer ${token}`,
     })
     if (!response.data.success) {
       throw new Error(response.data.message)

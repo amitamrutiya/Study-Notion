@@ -4,17 +4,17 @@ import {
   login,
   signUp,
   sendOTP,
-  changePassword
+  changePassword,
 } from '../controllers/auth.controller.js'
 
 import {
   resetPasswordToken,
-  resetPassword
+  resetPassword,
 } from '../controllers/resetPassword.controller.js'
 
 import {
   deleteUserAccount,
-  getAllUserDetails
+  getAllUserDetails,
 } from '../controllers/user.controller.js'
 
 import { auth } from '../middlewares/auth.middelware.js'

@@ -10,7 +10,7 @@ const initialState = {
     : 0,
   totalItems: localStorage.getItem('totalItems')
     ? JSON.parse(localStorage.getItem('totalItems'))
-    : 0
+    : 0,
 }
 
 const cartSlice = createSlice({
@@ -61,8 +61,8 @@ const cartSlice = createSlice({
       localStorage.removeItem('cart') // Update to localstorage
       localStorage.removeItem('total')
       localStorage.removeItem('totalItems')
-    }
-  }
+    },
+  },
 })
 
 export const { addToCart, removeFromCart, resetCart } = cartSlice.actions

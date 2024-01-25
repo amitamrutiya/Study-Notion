@@ -9,7 +9,7 @@ export const getCatalogaPageData = async (categoryId) => {
     const response = await apiConnector(
       'POST',
       catalogData.CATALOGPAGEDATA_API,
-      { categoryId }
+      { categoryId },
     )
 
     if (!response?.data?.success) {

@@ -13,7 +13,7 @@ export async function auth (req, res, next) {
     if (!token) {
       return res.status(401).json({
         success: false,
-        message: 'No token, authorization denied'
+        message: 'No token, authorization denied',
       })
     }
 
@@ -26,7 +26,7 @@ export async function auth (req, res, next) {
       // verfiy token failed
       return res.status(401).json({
         success: false,
-        message: 'Token is not valid'
+        message: 'Token is not valid',
       })
     }
     next()
@@ -46,7 +46,7 @@ export async function isStudent (req, res, next) {
     if (user.accountType !== 'Student') {
       return res.status(401).json({
         success: false,
-        message: 'This is a protected router for Students only'
+        message: 'This is a protected router for Students only',
       })
     }
     next()
@@ -66,7 +66,7 @@ export async function isInstructor (req, res, next) {
     if (user.accountType !== 'Instructor') {
       return res.status(401).json({
         success: false,
-        message: 'This is a protected router for instructor only'
+        message: 'This is a protected router for instructor only',
       })
     }
     next()
@@ -86,7 +86,7 @@ export async function isAdmin (req, res, next) {
     if (user.accountType !== 'Admin') {
       return res.status(401).json({
         success: false,
-        message: 'This is a protected router for admin only'
+        message: 'This is a protected router for admin only',
       })
     }
     next()

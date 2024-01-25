@@ -32,9 +32,9 @@ export async function resetPasswordToken (req, res) {
       { email },
       {
         token,
-        resetPasswordExpires: Date.now() + 5 * 60 * 1000
+        resetPasswordExpires: Date.now() + 5 * 60 * 1000,
       },
-      { new: true }
+      { new: true },
     )
 
     // create url
@@ -44,19 +44,19 @@ export async function resetPasswordToken (req, res) {
     await mailSender(
       email,
       'Password Reset Link',
-      resetPasswordTemplate(email, url)
+      resetPasswordTemplate(email, url),
     )
 
     // return response successful
     res.status(200).json({
       success: true,
-      message: 'Reset Password Email sent successfully'
+      message: 'Reset Password Email sent successfully',
     })
   } catch (error) {
     console.log('Error in sending reset password email: ' + error)
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }
@@ -71,12 +71,12 @@ export async function resetPassword (req, res) {
     if (!password || !confirmPassword || !token) {
       return res.status(400).json({
         success: false,
-        message: 'Fields are required'
+        message: 'Fields are required',
       })
     } else if (password !== confirmPassword) {
       return res.status(400).json({
         success: false,
-        message: 'Password does not match'
+        message: 'Password does not match',
       })
     }
 
@@ -87,7 +87,7 @@ export async function resetPassword (req, res) {
     if (!userDetails) {
       return res.status(400).json({
         success: false,
-        message: 'Invalid token'
+        message: 'Invalid token',
       })
     }
 
@@ -95,7 +95,7 @@ export async function resetPassword (req, res) {
     if (userDetails.resetPasswordExpires < Date.now()) {
       return res.status(400).json({
         success: false,
-        message: "Token is expired, please regenerate your token'"
+        message: "Token is expired, please regenerate your token'",
       })
     }
 
@@ -106,19 +106,19 @@ export async function resetPassword (req, res) {
     await User.findOneAndUpdate(
       { token },
       { password: hashedPassword },
-      { new: true }
+      { new: true },
     )
 
     // return response successful
     res.status(200).json({
       success: true,
-      message: 'Password reset successfully'
+      message: 'Password reset successfully',
     })
   } catch (error) {
     console.log('Error in reset password: ' + error)
     return res.status(500).json({
       success: false,
-      message: error.message
+      message: error.message,
     })
   }
 }

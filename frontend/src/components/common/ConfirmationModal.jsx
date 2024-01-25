@@ -36,8 +36,8 @@ ConfirmationModal.propTypes = {
     btn1Handler: PropTypes.func,
     btn1Text: PropTypes.string,
     btn2Handler: PropTypes.func,
-    btn2Text: PropTypes.string
-  }).isRequired
+    btn2Text: PropTypes.string,
+  }).isRequired,
 }
 
 export default ConfirmationModal

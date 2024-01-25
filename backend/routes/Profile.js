@@ -5,7 +5,7 @@ import {
   updateProfile,
   updateDisplayPicture,
   getEnrolledCourses,
-  instructorDashboard
+  instructorDashboard,
 } from '../controllers/profile.controller.js'
 const router = Router()
 

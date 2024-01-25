@@ -4,7 +4,7 @@ const initialState = {
   user: localStorage.getItem('user')
     ? JSON.parse(localStorage.getItem('user'))
     : null,
-  loading: false
+  loading: false,
 }
 
 const profileSlice = createSlice({
@@ -17,8 +17,8 @@ const profileSlice = createSlice({
     },
     setLoading (state, value) {
       state.loading = value.payload
-    }
-  }
+    },
+  },
 })
 
 export const { setUser, setLoading } = profileSlice.actions

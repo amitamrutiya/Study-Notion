@@ -1,7 +1,7 @@
-import signupImg from "../assets/Images/signup.webp";
-import Template from "../components/core/Auth/Template";
+import signupImg from '../assets/Images/signup.webp'
+import Template from '../components/core/Auth/Template'
 
-function Signup() {
+function Signup () {
   return (
     <Template
       title="Join the millions learning to code with StudyNotion for free"
@@ -10,7 +10,7 @@ function Signup() {
       image={signupImg}
       formType="signup"
     />
-  );
+  )
 }
 
-export default Signup;
+export default Signup

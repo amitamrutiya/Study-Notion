@@ -12,7 +12,7 @@ import fileUpload from 'express-fileupload'
 import dotenv from 'dotenv'
 
 dotenv.config({
-  path: './env'
+  path: './env',
 })
 
 const app = express()
@@ -34,15 +34,15 @@ app.use(cookieParser())
 app.use(
   cors({
     origin: process.env.REACT_FRONTED_URL,
-    credentials: true
-  })
+    credentials: true,
+  }),
 )
 
 app.use(
   fileUpload({
     useTempFiles: true, // this middeare is for fileupload in local media
-    tempFileDir: '/tmp'
-  })
+    tempFileDir: '/tmp',
+  }),
 )
 
 // cloudinary connection
@@ -59,6 +59,6 @@ app.use('/api/v1/reach', contactUsRoute)
 app.get('/', (req, res) => {
   return res.json({
     success: true,
-    message: 'Your server is up and running....'
+    message: 'Your server is up and running....',
   })
 })
