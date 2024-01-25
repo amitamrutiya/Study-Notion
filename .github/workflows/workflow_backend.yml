@@ -33,7 +33,7 @@ jobs:
       run: npm install --prefix backend
 
     - name: Run ESLint
-      run: npx eslint . --ext .js
+      run: cd.. && npm run format
 
     - name: Run Tests
       run: npm test --prefix backend
