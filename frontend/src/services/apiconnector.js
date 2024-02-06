@@ -1,15 +1,21 @@
-import axios from 'axios'
+export const apiConnector = async (method, url, bodyData, headers, params) => {
+  const options = {
+    method: method,
+    headers: headers || {},
+    body: JSON.stringify(bodyData) || null,
+  };
 
-export const axiosInstance = axios.create({})
+  if (params) {
+    url += "?" + new URLSearchParams(params).toString();
+  }
 
-export const apiConnector = (method, url, bodyData, headers, params) => {
-  return axiosInstance({
-    method: `${method}`,
-    url: `${url}`,
-    data: bodyData || null,
-    headers: headers || null,
-    params: params || null,
-  })
-}
-
-// this apiConnector is used to connect (backend API to fronted);
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
