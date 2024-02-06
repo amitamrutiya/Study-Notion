@@ -8,13 +8,13 @@ import {
   editCourse,
   getInstructorCourses,
   deleteCourse,
-} from '../controllers/Course.controller.js' // Course Controllers Import
+} from '../controllers/course.controller.js' // Course Controllers Import
 
 import {
   showAllCategories,
   createCategory,
   categoryPageDetails,
-} from '../controllers/Category.controller.js' // Categories Controllers Import
+} from '../controllers/category.controller.js' // Categories Controllers Import
 
 import {
   createSection,
@@ -38,7 +38,7 @@ import {
   addCourseIntoCart,
   removeCourseFromCart,
   clearCart,
-} from '../controllers/Cart.controller.js' // Cart Controllers Import
+} from '../controllers/cart.controller.js' // Cart Controllers Import
 
 import { auth, isInstructor, isStudent, isAdmin } from '../middlewares/auth.middelware.js' // Importing Middlewares
 
