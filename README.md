@@ -11,7 +11,7 @@
 [![Issues](https://img.shields.io/github/issues/amitamrutiya2210/Study-Notion?style=for-the-badge&label=Issues)](https://github.com/amitamrutiya2210/Study-Notion/)
 [![Watchers](	https://img.shields.io/github/watchers/amitamrutiya2210/Study-Notion?label=Watch&style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/) 
 
-![Main Page](https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/751c80f1-de29-410b-8c0f-c7f547852581)
+https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/d243a4aa-97cc-48fb-bfa7-023017f37c91
 
 ## Tech Stack
 
