@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose"
 
 const courseSchems = new Schema({
   courseName: {
@@ -76,6 +76,6 @@ const courseSchems = new Schema({
     type: Date,
     default: Date.now,
   },
-});
+})
 
-export default model("Course", courseSchems);
+export default model("Course", courseSchems)

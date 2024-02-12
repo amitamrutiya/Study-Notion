@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose"
 
 const ratingAndReviewSchema = new Schema({
   user: {
@@ -19,6 +19,6 @@ const ratingAndReviewSchema = new Schema({
     type: String,
     required: true,
   },
-});
+})
 
-export default model("RatingAndReview", ratingAndReviewSchema);
+export default model("RatingAndReview", ratingAndReviewSchema)

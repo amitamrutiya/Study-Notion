@@ -43,4 +43,4 @@ export const FooterLink2 = [
       { title: "Beta Content", link: "/beta-content" },
     ],
   },
-];
+]

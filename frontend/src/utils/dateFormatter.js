@@ -3,5 +3,5 @@ export const formattedDate = (date) => {
     month: "long",
     day: "numeric",
     year: "numeric",
-  });
-};
+  })
+}

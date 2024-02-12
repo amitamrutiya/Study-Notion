@@ -6,40 +6,39 @@ module.exports = {
   extends: [
     "standard",
     "plugin:react/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
   ],
   overrides: [
     {
       env: {
         node: true,
       },
-      files: [
-        ".eslintrc.{js,cjs}",
-      ],
+      files: [".eslintrc.{js,cjs,jsx,mjs,ts,tsx}"],
       parserOptions: {
         sourceType: "script",
       },
     },
   ],
+  parser: "@babel/eslint-parser",
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
     ecmaFeatures: {
       jsx: true, // This is the key line - it tells ESLint to expect JSX syntax
     },
+    requireConfigFile: false,
   },
-  plugins: [
-    "react",
-  ],
+  plugins: ["react"],
   rules: {
     "comma-dangle": ["error", "always-multiline"], // Enforces trailing commas for multiline statements
     "react/jsx-filename-extension": ["warn", { extensions: [".js", ".jsx"] }], // Enforces .jsx extension for JSX files
     "react/react-in-jsx-scope": "off", // Prevents React to be incorrectly marked as unused
     quotes: ["error", "double"],
-    semi: ["error", "always"],
   },
   settings: {
     react: {
       version: "detect", // Automatically picks the version you have installed.
     },
   },
-};
+}

@@ -1,4 +1,4 @@
-import { ACCOUNT_TYPE } from "../utils/constants";
+import { ACCOUNT_TYPE } from "../utils/constants"
 
 export const sidebarLinks = [
   {
@@ -43,4 +43,4 @@ export const sidebarLinks = [
     icon: "VscArchive",
   },
 
-];
+]

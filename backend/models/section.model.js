@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose"
 
 const sectionSchems = new Schema({
   sectionName: {
@@ -11,6 +11,6 @@ const sectionSchems = new Schema({
       ref: "SubSection",
     },
   ],
-});
+})
 
-export default model("Section", sectionSchems);
+export default model("Section", sectionSchems)

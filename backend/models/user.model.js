@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose"
 
 const userSchems = new Schema({
   firstName: {
@@ -59,6 +59,6 @@ const userSchems = new Schema({
   resetPasswordExpires: {
     type: Date,
   },
-});
+})
 
-export default model("User", userSchems);
+export default model("User", userSchems)

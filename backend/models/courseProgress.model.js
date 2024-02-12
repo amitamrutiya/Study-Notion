@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from "mongoose"
 
 const courseProgressSchems = new Schema({
   courseId: {
@@ -16,6 +16,6 @@ const courseProgressSchems = new Schema({
       ref: "SubSection",
     },
   ],
-});
+})
 
-export default model("CourseProgress", courseProgressSchems);
+export default model("CourseProgress", courseProgressSchems)
