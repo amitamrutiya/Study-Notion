@@ -83,5 +83,5 @@ export default function courseEnrollmentEmail (courseName, name) {
         </div>
     </body>
 
-    </html>`
+    </html>`;
 }

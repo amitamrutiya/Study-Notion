@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose";
 
 const tagsSchema = new Schema({
   name: {
@@ -10,8 +10,8 @@ const tagsSchema = new Schema({
   },
   course: {
     type: Schema.Types.ObjectId,
-    ref: 'Course',
+    ref: "Course",
   },
-})
+});
 
-export default model('Tag', tagsSchema)
+export default model("Tag", tagsSchema);

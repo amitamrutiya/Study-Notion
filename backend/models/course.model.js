@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose";
 
 const courseSchems = new Schema({
   courseName: {
@@ -12,7 +12,7 @@ const courseSchems = new Schema({
   instructor: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: 'User',
+    ref: "User",
   },
   whatYouWillLearn: {
     type: String,
@@ -21,13 +21,13 @@ const courseSchems = new Schema({
   courseContent: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Section',
+      ref: "Section",
     },
   ],
   ratingAndReviews: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'RatingAndReview',
+      ref: "RatingAndReview",
       required: true,
     },
   ],
@@ -42,7 +42,7 @@ const courseSchems = new Schema({
   category: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: 'Category',
+    ref: "Category",
   },
   tags: {
     type: [String],
@@ -52,7 +52,7 @@ const courseSchems = new Schema({
     {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: 'User',
+      ref: "User",
     },
   ],
   language: {
@@ -70,12 +70,12 @@ const courseSchems = new Schema({
   },
   status: {
     type: String,
-    enum: ['Draft', 'Published'],
+    enum: ["Draft", "Published"],
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
-})
+});
 
-export default model('Course', courseSchems)
+export default model("Course", courseSchems);

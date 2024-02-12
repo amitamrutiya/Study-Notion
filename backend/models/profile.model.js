@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose";
 
 const profileSchems = new Schema({
   gender: {
@@ -15,6 +15,6 @@ const profileSchems = new Schema({
     type: Number,
     trim: true,
   },
-})
+});
 
-export default model('Profile', profileSchems)
+export default model("Profile", profileSchems);

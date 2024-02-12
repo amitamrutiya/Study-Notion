@@ -71,5 +71,5 @@ export default function passwordUpdated (email, name) {
         </div>
     </body>
 
-    </html>`
+    </html>`;
 }

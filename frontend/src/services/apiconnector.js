@@ -1,6 +1,6 @@
-import axios from 'axios'
+import axios from "axios";
 
-export const axiosInstance = axios.create({})
+export const axiosInstance = axios.create({});
 
 export const apiConnector = (method, url, bodyData, headers, params) => {
   return axiosInstance({
@@ -9,5 +9,5 @@ export const apiConnector = (method, url, bodyData, headers, params) => {
     data: bodyData || null,
     headers: headers || null,
     params: params || null,
-  })
-}
+  });
+};

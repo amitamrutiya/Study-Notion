@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken'
+import jwt from "jsonwebtoken";
 
 // auth
 export async function auth (req, res, next) {
@@ -7,32 +7,32 @@ export async function auth (req, res, next) {
     const token =
       req.cookies.token ||
       req.body.token ||
-      req.header('authorization').replace('Bearer ', '')
+      req.header("authorization").replace("Bearer ", "");
 
     // check if token exist
     if (!token) {
       return res.status(401).json({
         success: false,
-        message: 'No token, authorization denied',
-      })
+        message: "No token, authorization denied",
+      });
     }
 
     try {
       // verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET)
-      console.log(decoded)
-      req.user = decoded
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      console.log(decoded);
+      req.user = decoded;
     } catch (error) {
       // verfiy token failed
       return res.status(401).json({
         success: false,
-        message: 'Token is not valid',
-      })
+        message: "Token is not valid",
+      });
     }
-    next()
+    next();
   } catch (error) {
-    console.log('Error in auth middleware: ' + error)
-    return res.status(500).json({ success: false, message: error.message })
+    console.log("Error in auth middleware: " + error);
+    return res.status(500).json({ success: false, message: error.message });
   }
 }
 
@@ -40,19 +40,19 @@ export async function auth (req, res, next) {
 export async function isStudent (req, res, next) {
   try {
     // get user from request object
-    const user = req.user
+    const user = req.user;
 
     // check if user is student
-    if (user.accountType !== 'Student') {
+    if (user.accountType !== "Student") {
       return res.status(401).json({
         success: false,
-        message: 'This is a protected router for Students only',
-      })
+        message: "This is a protected router for Students only",
+      });
     }
-    next()
+    next();
   } catch (error) {
-    console.log('Error in isStudent middleware: ' + error)
-    return res.status(500).json({ success: false, message: error.message })
+    console.log("Error in isStudent middleware: " + error);
+    return res.status(500).json({ success: false, message: error.message });
   }
 }
 
@@ -60,19 +60,19 @@ export async function isStudent (req, res, next) {
 export async function isInstructor (req, res, next) {
   try {
     // get user from request object
-    const user = req.user
+    const user = req.user;
 
     // check if user is instructor
-    if (user.accountType !== 'Instructor') {
+    if (user.accountType !== "Instructor") {
       return res.status(401).json({
         success: false,
-        message: 'This is a protected router for instructor only',
-      })
+        message: "This is a protected router for instructor only",
+      });
     }
-    next()
+    next();
   } catch (error) {
-    console.log('Error in isInstructor middleware: ' + error)
-    return res.status(500).json({ success: false, message: error.message })
+    console.log("Error in isInstructor middleware: " + error);
+    return res.status(500).json({ success: false, message: error.message });
   }
 }
 
@@ -80,18 +80,18 @@ export async function isInstructor (req, res, next) {
 export async function isAdmin (req, res, next) {
   try {
     // get user from request object
-    const user = req.user
+    const user = req.user;
 
     // check if user is admin
-    if (user.accountType !== 'Admin') {
+    if (user.accountType !== "Admin") {
       return res.status(401).json({
         success: false,
-        message: 'This is a protected router for admin only',
-      })
+        message: "This is a protected router for admin only",
+      });
     }
-    next()
+    next();
   } catch (error) {
-    console.log('Error in isAdmin middleware: ' + error)
-    return res.status(500).json({ success: false, message: error.message })
+    console.log("Error in isAdmin middleware: " + error);
+    return res.status(500).json({ success: false, message: error.message });
   }
 }

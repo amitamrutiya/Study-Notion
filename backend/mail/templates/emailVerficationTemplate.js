@@ -71,5 +71,5 @@ export default function otpTemplate (otp) {
           href="mailto:info@studynotion.store">info@studynotion.store</a>. We are here to help!</div>
     </div>
   </body>
-  </html>`
+  </html>`;
 }

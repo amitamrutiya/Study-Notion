@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose";
 
 const subSectionSchems = new Schema({
   title: {
@@ -16,6 +16,6 @@ const subSectionSchems = new Schema({
   videoUrl: {
     type: String,
   },
-})
+});
 
-export default model('SubSection', subSectionSchems)
+export default model("SubSection", subSectionSchems);

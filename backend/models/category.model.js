@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose";
 
 const categorySchems = new Schema({
   name: {
@@ -12,9 +12,9 @@ const categorySchems = new Schema({
   courses: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Course',
+      ref: "Course",
     },
   ],
-})
+});
 
-export default model('Category', categorySchems)
+export default model("Category", categorySchems);

@@ -78,5 +78,5 @@ export default function resetPasswordTemplate (email, url) {
               href="mailto:info@studynotion.store">info@studynotion.store</a>. We are here to help!</div>
         </div>
       </body>
-      </html>`
+      </html>`;
 }

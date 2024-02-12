@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose'
+import { Schema, model } from "mongoose";
 
 const userSchems = new Schema({
   firstName: {
@@ -23,24 +23,24 @@ const userSchems = new Schema({
   },
   accountType: {
     type: String,
-    enum: ['Admin', 'Student', 'Instructor'],
+    enum: ["Admin", "Student", "Instructor"],
     required: true,
   },
   additionalDetails: {
     type: Schema.Types.ObjectId,
     required: true,
-    ref: 'Profile',
+    ref: "Profile",
   },
   courses: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Course',
+      ref: "Course",
     },
   ],
   cartAddedCourses: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'Course',
+      ref: "Course",
     },
   ],
   image: {
@@ -50,7 +50,7 @@ const userSchems = new Schema({
   courseProgress: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'CourseProgress',
+      ref: "CourseProgress",
     },
   ],
   token: {
@@ -59,6 +59,6 @@ const userSchems = new Schema({
   resetPasswordExpires: {
     type: Date,
   },
-})
+});
 
-export default model('User', userSchems)
+export default model("User", userSchems);

@@ -4,8 +4,8 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'standard',
-    'plugin:react/recommended',
+    "standard",
+    "plugin:react/recommended",
   ],
   overrides: [
     {
@@ -13,31 +13,33 @@ module.exports = {
         node: true,
       },
       files: [
-        '.eslintrc.{js,cjs}',
+        ".eslintrc.{js,cjs}",
       ],
       parserOptions: {
-        sourceType: 'script',
+        sourceType: "script",
       },
     },
   ],
   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
+    ecmaVersion: "latest",
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true, // This is the key line - it tells ESLint to expect JSX syntax
     },
   },
   plugins: [
-    'react',
+    "react",
   ],
   rules: {
-    'comma-dangle': ['error', 'always-multiline'], // Enforces trailing commas for multiline statements
-    'react/jsx-filename-extension': ['warn', { extensions: ['.js', '.jsx'] }], // Enforces .jsx extension for JSX files
-    'react/react-in-jsx-scope': 'off', // Prevents React to be incorrectly marked as unused
+    "comma-dangle": ["error", "always-multiline"], // Enforces trailing commas for multiline statements
+    "react/jsx-filename-extension": ["warn", { extensions: [".js", ".jsx"] }], // Enforces .jsx extension for JSX files
+    "react/react-in-jsx-scope": "off", // Prevents React to be incorrectly marked as unused
+    quotes: ["error", "double"],
+    semi: ["error", "always"],
   },
   settings: {
     react: {
-      version: 'detect', // Automatically picks the version you have installed.
+      version: "detect", // Automatically picks the version you have installed.
     },
   },
-}
+};
