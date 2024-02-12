@@ -183,6 +183,7 @@ function SignupForm () {
                 name="contactNumber"
                 id="contactNumber"
                 value={contactNumber}
+                onChange={handleOnChange}
                 placeholder="12345 67890"
                 className="form-style bg-richblack-800 rounded-[0.5rem] text-richblack-5"
                 style={{
