@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend-app
+    env_file:
+      - ./frontend/.env
+    depends_on:
+      - backend
+    ports:
+      - 3000:3000
+    command: npm run preview
+    stdin_open: true
+    tty: true
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend-app
+    ports:
+      - 4000:4000
+    env_file:
+      - ./backend/.env
+    command: npm run start

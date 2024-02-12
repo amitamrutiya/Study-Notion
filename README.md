@@ -1,21 +1,21 @@
 # StudyNotion Online Education Platform (MERN App) [Website Link](https://studynotion.store)
 
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/amitamrutiya2210/Study-Notion?logo=github&style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/) 
-[![GitHub last commit](https://img.shields.io/github/last-commit/amitamrutiya2210/Study-Notion?style=for-the-badge&logo=git)](https://github.com/amitamrutiya2210/Study-Notion/) 
-[![GitHub stars](https://img.shields.io/github/stars/amitamrutiya2210/Study-Notion?style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/stargazers) 
-[![My stars](https://img.shields.io/github/stars/amitamrutiya2210?affiliations=OWNER%2CCOLLABORATOR&style=for-the-badge&label=My%20stars)](https://github.com/amitamrutiya2210/Study-Notion/) 
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/amitamrutiya2210/Study-Notion?logo=github&style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/amitamrutiya2210/Study-Notion?style=for-the-badge&logo=git)](https://github.com/amitamrutiya2210/Study-Notion/)
+[![GitHub stars](https://img.shields.io/github/stars/amitamrutiya2210/Study-Notion?style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/stargazers)
+[![My stars](https://img.shields.io/github/stars/amitamrutiya2210?affiliations=OWNER%2CCOLLABORATOR&style=for-the-badge&label=My%20stars)](https://github.com/amitamrutiya2210/Study-Notion/)
 [![GitHub forks](https://img.shields.io/github/forks/amitamrutiya2210/Study-Notion?style=for-the-badge&logo=git)](https://github.com/amitamrutiya2210/Study-Notion/)
 [![Code size](https://img.shields.io/github/languages/code-size/amitamrutiya2210/Study-Notion?style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/)
 [![Languages](https://img.shields.io/github/languages/count/amitamrutiya2210/Study-Notion?style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/)
 [![Top](https://img.shields.io/github/languages/top/amitamrutiya2210/Study-Notion?style=for-the-badge&label=Top%20Languages)](https://github.com/amitamrutiya2210/Study-Notion/)
 [![Issues](https://img.shields.io/github/issues/amitamrutiya2210/Study-Notion?style=for-the-badge&label=Issues)](https://github.com/amitamrutiya2210/Study-Notion/)
-[![Watchers](	https://img.shields.io/github/watchers/amitamrutiya2210/Study-Notion?label=Watch&style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/) 
+[![Watchers](	https://img.shields.io/github/watchers/amitamrutiya2210/Study-Notion?label=Watch&style=for-the-badge)](https://github.com/amitamrutiya2210/Study-Notion/)
 
 https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/d243a4aa-97cc-48fb-bfa7-023017f37c91
 
 ## Tech Stack
 
-**Client:** React, Redux, TailwindCSS, HTML, CSS, JavaScript 
+**Client:** React, Redux, TailwindCSS, HTML, CSS, JavaScript
 
 **Server:** Node, Express, MongoDB, Razorpay
 
@@ -44,13 +44,13 @@ The StudyNotion ed-tech platform consists of three main components: the front en
 back end, and the database. The platform follows a client-server architecture, with the
 front end serving as the client and the back end and database serving as the server.
 
-### Front-end 
+### Front-end
 
 The front end of the platform is built using ReactJS, ReactJS allows for the creation of dynamic and responsive user
 interfaces, which are critical for providing an engaging learning experience to the students.
 The front end communicates with the back end using RESTful API calls
 
-### Back-end 
+### Back-end
 
 The back end of the platform is built using NodeJS and ExpressJS,. The back end
 provides APIs for the front end to consume, which include functionalities such as user
@@ -117,21 +117,21 @@ as user management and course management pages.
 To build the front end, we use frameworks and libraries such as ReactJS, We also use CSS and Tailwind, which are
 styling frameworks that help make the user interface look good and responsive.
 To manage the state of the application, we use Redux, which is a popular state management
-library for React. 
+library for React.
 
 ## Back End
 
-Description of the Back-end Architecture: 
+Description of the Back-end Architecture:
 StudyNotion uses a monolithic architecture, with the backend built using Node.js and
-Express.js, and MongoDB as the primary database. 
+Express.js, and MongoDB as the primary database.
 
-Features and Functionalities of the Back-end: 
+Features and Functionalities of the Back-end:
 The back end of StudyNotion provides a range of features and functionalities, including:
 1. User authentication and authorization: Students and instructors can sign up and log in
 to the platform using their email addresses and password. The platform also supports
 OTP (One-Time Password) verification and forgot password functionality for added
 security.
-1. Course management: Instructors can create, read, update, and delete courses, as well 
+1. Course management: Instructors can create, read, update, and delete courses, as well
 as manage course content and media. Students can view and rate courses.
 1. Payment Integration: Students will purchase and enrol on courses by completing the
 checkout flow that is followed by Razorpay integration for payment handling.
@@ -141,7 +141,7 @@ and documents.
 1. Markdown formatting: Course content in document format is stored in Markdown
 format, which allows for easier display and rendering on the front end.
 
-Frameworks, Libraries, and Tools used: 
+Frameworks, Libraries, and Tools used:
 The back end of StudyNotion uses a range of frameworks, libraries, and tools to ensure its
 functionality and performance, including:
 1. Node.js: Node.js is used as the primary framework for the back end.
@@ -156,7 +156,7 @@ data.
 6. Mongoose: Mongoose is used as an Object Data Modeling (ODM) library, providing a
 way to interact with MongoDB using JavaScript
 
-### Data Models and Database Schema: 
+### Data Models and Database Schema:
 The back end of StudyNotion uses a range of data models and database schemas to
 manage data, including:
 1. Student schema: Includes fields such as name, email, password, and course details
@@ -198,4 +198,9 @@ provide a smooth user experience while ensuring security and stability.
   cd ..
   npm run dev
 ```
-    
+
+#### Using docker-copose
+```bash
+  Setup env variable in both frontend and backend
+  Run: docker-compose up
+```
