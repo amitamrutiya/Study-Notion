@@ -19,6 +19,8 @@ https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/d243a4aa-97cc-4
 
 **Server:** Node, Express, MongoDB, Razorpay
 
+**Deployment:** Docker, Kubernetes
+
 ## Project Description
 
 StudyNotion is a fully functional ed-tech platform that enables users to create, consume,
