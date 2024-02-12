@@ -74,7 +74,7 @@ const CodeBlocks = ({
 CodeBlocks.propTypes = {
   position: PropTypes.string.isRequired,
   heading: PropTypes.object.isRequired,
-  subheading: PropTypes.object.isRequired,
+  subheading: PropTypes.string.isRequired,
   ctabtn1: PropTypes.object.isRequired,
   ctabtn2: PropTypes.object.isRequired,
   codeblock: PropTypes.string.isRequired,

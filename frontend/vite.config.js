@@ -12,28 +12,28 @@ export default defineConfig({
     port: 3000,
     strictPort: true,
     host: true,
-    origin: "http://0.0.0.0:3000",
+    origin: 'http://localhost:3000',
   },
   define: {
     global: {},
   },
   optimizeDeps: {
-    include: ["react-dom"],
+    include: ['react-dom'],
   },
   build: {
     chunkSizeWarningLimit: 1600,
     rollupOptions: {
       output: {
-        manualChunks(id) {
-          if (id.includes("node_modules")) {
+        manualChunks (id) {
+          if (id.includes('node_modules')) {
             return id
               .toString()
-              .split("node_modules/")[1]
-              .split("/")[0]
-              .toString();
+              .split('node_modules/')[1]
+              .split('/')[0]
+              .toString()
           }
         },
       },
     },
   },
-});
+})
