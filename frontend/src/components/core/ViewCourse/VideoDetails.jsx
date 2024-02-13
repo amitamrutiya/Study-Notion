@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams, useLocation } from 'react-router-dom'
-import 'video-react/dist/video-react.css'
+import React, { useEffect, useRef, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate, useParams, useLocation } from "react-router-dom"
+import "video-react/dist/video-react.css"
 
-import { BigPlayButton, Player } from 'video-react'
-import { markLectureAsComplete } from '../../../services/operations/courseDetailsAPI'
-import { updateCompletedLectures } from '../../../slices/viewCourseSlice'
-import IconBtn from '../../common/IconBtn'
+import { BigPlayButton, Player } from "video-react"
+import { markLectureAsComplete } from "../../../services/operations/courseDetailsAPI"
+import { updateCompletedLectures } from "../../../slices/viewCourseSlice"
+import IconBtn from "../../common/IconBtn"
 
 const VideoDetails = () => {
   const { courseId, sectionId, subSectionId } = useParams()
@@ -18,15 +18,15 @@ const VideoDetails = () => {
   const { courseSectionData, courseEntireData, completedLectures } = useSelector((state) => state.viewCourse)
 
   const [videoData, setVideoData] = useState([])
-  const [previewSource, setPreviewSource] = useState('')
+  const [previewSource, setPreviewSource] = useState("")
   const [videoEnded, setVideoEnded] = useState(false)
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    ; (async () => {
+    (async () => {
       if (!courseSectionData.length) return
       if (!courseId && !sectionId && !subSectionId) {
-        navigate('/dashboard/enrolled-courses')
+        navigate("/dashboard/enrolled-courses")
       } else {
         const filteredData = courseSectionData.filter((course) => course._id === sectionId)
         const filteredVideoData = filteredData?.[0]?.subSections.filter((data) => data._id === subSectionId)
@@ -111,11 +111,11 @@ const VideoDetails = () => {
           <BigPlayButton position="center" />
           {/* Render When Video Ends */}
           {videoEnded && (
-            <div style={{ backgroundImage: 'linear-gradient(to top, rgb(0, 0, 0), rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.1)' }}
+            <div style={{ backgroundImage: "linear-gradient(to top, rgb(0, 0, 0), rgba(0,0,0,0.7), rgba(0,0,0,0.5), rgba(0,0,0,0.1)" }}
               className="full absolute inset-0 z-[100] grid h-full place-content-center font-inter" >
 
               {!completedLectures.includes(subSectionId) && (
-                <IconBtn disabled={loading} onclick={() => handleLectureCompletion()} text={!loading ? 'Mark As Completed' : 'Loading...'} customClasses="text-xl max-w-max px-4 mx-auto" />
+                <IconBtn disabled={loading} onclick={() => handleLectureCompletion()} text={!loading ? "Mark As Completed" : "Loading..."} customClasses="text-xl max-w-max px-4 mx-auto" />
               )}
 
               <IconBtn disabled={loading} text="Rewatch" customClasses="text-xl max-w-max px-4 mx-auto mt-2"

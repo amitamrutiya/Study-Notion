@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
-import { useDropzone } from 'react-dropzone'
-import { FiUploadCloud } from 'react-icons/fi'
+import { useEffect, useRef, useState } from "react"
+import { useDropzone } from "react-dropzone"
+import { FiUploadCloud } from "react-icons/fi"
 
-import 'video-react/dist/video-react.css'
-import { Player } from 'video-react'
-import PropTypes from 'prop-types'
+import "video-react/dist/video-react.css"
+import { Player } from "video-react"
+import PropTypes from "prop-types"
 
 export default function Upload ({
   name,
@@ -18,7 +18,7 @@ export default function Upload ({
 }) {
   const [selectedFile, setSelectedFile] = useState(null)
   const [previewSource, setPreviewSource] = useState(
-    viewData || (editData || ''),
+    viewData || (editData || ""),
   )
 
   const inputRef = useRef(null)
@@ -33,8 +33,8 @@ export default function Upload ({
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: !video
-      ? { 'image/*': ['.jpeg', '.jpg', '.png'] }
-      : { 'video/*': ['.mp4'] },
+      ? { "image/*": [".jpeg", ".jpg", ".png"] }
+      : { "video/*": [".mp4"] },
     onDrop,
   })
 
@@ -57,12 +57,12 @@ export default function Upload ({
   return (
     <div className="flex flex-col space-y-2">
       <label className="text-sm text-richblack-5" htmlFor={name}>
-        {' '}
-        {label} {!viewData && <sup className="text-pink-200">*</sup>}{' '}
+        {" "}
+        {label} {!viewData && <sup className="text-pink-200">*</sup>}{" "}
       </label>
 
       <div
-        className={`${isDragActive ? 'bg-richblack-600' : 'bg-richblack-700'
+        className={`${isDragActive ? "bg-richblack-600" : "bg-richblack-700"
           } flex min-h-[250px] cursor-pointer items-center justify-center rounded-md border-2 border-dotted border-richblack-500`}
       >
         {previewSource
@@ -84,7 +84,7 @@ export default function Upload ({
                 type="button"
                 className="mt-3 text-richblack-400 underline"
                 onClick={() => {
-                  setPreviewSource('')
+                  setPreviewSource("")
                   setSelectedFile(null)
                   setValue(name, null)
                 }}
@@ -104,7 +104,7 @@ export default function Upload ({
               <FiUploadCloud className="text-2xl text-yellow-50" />
             </div>
             <p className="mt-2 max-w-[200px] text-center text-sm text-richblack-200">
-              Drag and drop an {!video ? 'image' : 'video'}, or click to{' '}
+              Drag and drop an {!video ? "image" : "video"}, or click to{" "}
               <span className="font-semibold text-yellow-50">Browse</span> a
               file
             </p>
@@ -118,8 +118,8 @@ export default function Upload ({
 
       {errors[name] && (
         <span className="ml-2 text-xs tracking-wide text-pink-200">
-          {' '}
-          {label} is required{' '}
+          {" "}
+          {label} is required{" "}
         </span>
       )}
     </div>

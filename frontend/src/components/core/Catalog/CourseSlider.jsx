@@ -1,7 +1,7 @@
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import CourseCard from './CourseCard'
-import PropTypes from 'prop-types'
+import { Swiper, SwiperSlide } from "swiper/react"
+import "swiper/css"
+import CourseCard from "./CourseCard"
+import PropTypes from "prop-types"
 
 const CourseSlider = ({ Courses }) => {
   return (
@@ -17,7 +17,7 @@ const CourseSlider = ({ Courses }) => {
           >
             {Courses?.map((course, i) => (
               <SwiperSlide key={i}>
-                <CourseCard course={course} Height={'h-[250px]'} />
+                <CourseCard course={course} Height={"h-[250px]"} />
               </SwiperSlide>
             ))}
           </Swiper>

@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { changePassword } from '../../../../services/operations/SettingsAPI'
-import IconBtn from '../../../common/IconBtn'
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { changePassword } from "../../../../services/operations/SettingsAPI"
+import IconBtn from "../../../common/IconBtn"
 
 export default function UpdatePassword () {
   const { token } = useSelector((state) => state.auth)
@@ -22,7 +22,7 @@ export default function UpdatePassword () {
     try {
       await changePassword(token, data)
     } catch (error) {
-      console.log('ERROR MESSAGE - ', error.message)
+      console.log("ERROR MESSAGE - ", error.message)
     }
   }
 
@@ -34,16 +34,16 @@ export default function UpdatePassword () {
           <div className="flex flex-col gap-5 lg:flex-row">
             <div className="relative flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="oldPassword" className="lable-style">
-                {' '}
-                Current Password{' '}
+                {" "}
+                Current Password{" "}
               </label>
               <input
-                type={showOldPassword ? 'text' : 'password'}
+                type={showOldPassword ? "text" : "password"}
                 name="oldPassword"
                 id="oldPassword"
                 placeholder="Enter Current Password"
                 className="form-style"
-                {...register('oldPassword', { required: true })}
+                {...register("oldPassword", { required: true })}
               />
               <span
                 onClick={() => setShowOldPassword((prev) => !prev)}
@@ -59,7 +59,7 @@ export default function UpdatePassword () {
               </span>
               {errors.oldPassword && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  {' '}
+                  {" "}
                   Please enter your Current Password.
                 </span>
               )}
@@ -67,16 +67,16 @@ export default function UpdatePassword () {
 
             <div className="relative flex flex-col gap-2 lg:w-[48%]">
               <label htmlFor="newPassword" className="lable-style">
-                {' '}
-                New Password{' '}
+                {" "}
+                New Password{" "}
               </label>
               <input
-                type={showNewPassword ? 'text' : 'password'}
+                type={showNewPassword ? "text" : "password"}
                 name="newPassword"
                 id="newPassword"
                 placeholder="Enter New Password"
                 className="form-style"
-                {...register('newPassword', { required: true })}
+                {...register("newPassword", { required: true })}
               />
               <span
                 onClick={() => setShowNewPassword((prev) => !prev)}
@@ -92,7 +92,7 @@ export default function UpdatePassword () {
               </span>
               {errors.newPassword && (
                 <span className="-mt-1 text-[12px] text-yellow-100">
-                  {' '}
+                  {" "}
                   Please enter your New Password.
                 </span>
               )}
@@ -104,7 +104,7 @@ export default function UpdatePassword () {
           <button
             className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
             onClick={() => {
-              navigate('/dashboard/my-profile')
+              navigate("/dashboard/my-profile")
             }}
           >
             Cancel

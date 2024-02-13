@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { fetchInstructorCourses } from '../../../../services/operations/courseDetailsAPI'
-import { getInstructorData } from '../../../../services/operations/profileAPI'
-import InstructorChart from './InstructorChart'
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import { Link } from "react-router-dom"
+import { fetchInstructorCourses } from "../../../../services/operations/courseDetailsAPI"
+import { getInstructorData } from "../../../../services/operations/profileAPI"
+import InstructorChart from "./InstructorChart"
 
 export default function Instructor () {
   const { token } = useSelector((state) => state.auth)
@@ -18,7 +18,7 @@ export default function Instructor () {
       const instructorApiData = await getInstructorData(token)
       const result = await fetchInstructorCourses(token)
       if (instructorApiData?.length) {
-        console.log('inside if')
+        console.log("inside if")
         setInstructorData(instructorApiData)
       }
       if (result) {
@@ -42,12 +42,12 @@ export default function Instructor () {
     <div>
       <div className="space-y-2">
         <h1 className="text-2xl font-bold text-richblack-5">
-          {' '}
-          Hi {user?.firstName} 👋{' '}
+          {" "}
+          Hi {user?.firstName} 👋{" "}
         </h1>
         <p className="font-medium text-richblack-200">
-          {' '}
-          Let&&apos;s start something new{' '}
+          {" "}
+          Let&&apos;s start something new{" "}
         </p>
       </div>
 
@@ -70,8 +70,8 @@ export default function Instructor () {
               <div className="flex-1 rounded-md bg-richblack-800 p-6">
                 <p className="text-lg font-bold text-richblack-5">Visualize</p>
                 <p className="mt-4 text-xl font-medium text-richblack-50">
-                  {' '}
-                  Not Enough Data To Visualize{' '}
+                  {" "}
+                  Not Enough Data To Visualize{" "}
                 </p>
               </div>
                 )}
@@ -89,14 +89,14 @@ export default function Instructor () {
                 <div>
                   <p className="text-lg text-richblack-200">Total Students</p>
                   <p className="text-3xl font-semibold text-richblack-50">
-                    {totalStudents}{' '}
+                    {totalStudents}{" "}
                   </p>
                 </div>
                 <div>
                   <p className="text-lg text-richblack-200">Total Income</p>
                   <p className="text-3xl font-semibold text-richblack-50">
-                    {' '}
-                    Rs. {totalAmount}{' '}
+                    {" "}
+                    Rs. {totalAmount}{" "}
                   </p>
                 </div>
               </div>
@@ -122,19 +122,19 @@ export default function Instructor () {
                   />
                   <div className="mt-3 w-full">
                     <p className="text-sm font-medium text-richblack-50">
-                      {' '}
-                      {course?.courseName}{' '}
+                      {" "}
+                      {course?.courseName}{" "}
                     </p>
                     <div className="mt-1 flex items-center space-x-2">
                       <p className="text-xs font-medium text-richblack-300">
-                        {course?.studentsEnroled?.length ?? 0} students{' '}
+                        {course?.studentsEnroled?.length ?? 0} students{" "}
                       </p>
                       <p className="text-xs font-medium text-richblack-300">
-                        {' '}
-                        |{' '}
+                        {" "}
+                        |{" "}
                       </p>
                       <p className="text-xs font-medium text-richblack-300">
-                        {' '}
+                        {" "}
                         Rs. {course?.price}
                       </p>
                     </div>
@@ -148,13 +148,13 @@ export default function Instructor () {
           : (
         <div className="mt-20 rounded-md bg-richblack-800 p-6 py-20">
           <p className="text-center text-2xl font-bold text-richblack-5">
-            {' '}
+            {" "}
             You have not created any courses yet
           </p>
           <Link to="/dashboard/add-course">
             <p className="mt-1 text-center text-lg font-semibold text-yellow-50">
-              {' '}
-              Create a course{' '}
+              {" "}
+              Create a course{" "}
             </p>
           </Link>
         </div>

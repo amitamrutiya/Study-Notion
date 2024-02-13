@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { toast } from 'react-hot-toast'
-import CountryCode from '../../data/countrycode.json'
-import { apiConnector } from '../../services/apiconnector'
-import { contactusEndpoint } from '../../services/apis'
+import { useEffect, useState } from "react"
+import { useForm } from "react-hook-form"
+import { toast } from "react-hot-toast"
+import CountryCode from "../../data/countrycode.json"
+import { apiConnector } from "../../services/apiconnector"
+import { contactusEndpoint } from "../../services/apis"
 
 const ContactUsForm = () => {
   const [loading, setLoading] = useState(false)
@@ -15,14 +15,14 @@ const ContactUsForm = () => {
   } = useForm() //  useform is used to collect data of input box in object form (read from internet)
 
   const submitContactForm = async (data) => {
-    const toastId = toast.loading('Loading...')
+    const toastId = toast.loading("Loading...")
     try {
       setLoading(true)
-      await apiConnector('POST', contactusEndpoint.CONTACT_US_API, data)
-      toast.success('We got you data')
+      await apiConnector("POST", contactusEndpoint.CONTACT_US_API, data)
+      toast.success("We got you data")
       setLoading(false)
     } catch (error) {
-      console.log('ERROR MESSAGE - ', error.message)
+      console.log("ERROR MESSAGE - ", error.message)
     }
     toast.dismiss(toastId)
   }
@@ -30,11 +30,11 @@ const ContactUsForm = () => {
   useEffect(() => {
     if (isSubmitSuccessful) {
       reset({
-        email: '',
-        firstname: '',
-        lastname: '',
-        message: '',
-        phoneNo: '',
+        email: "",
+        firstname: "",
+        lastname: "",
+        message: "",
+        phoneNo: "",
       })
     }
   }, [reset, isSubmitSuccessful])
@@ -47,7 +47,7 @@ const ContactUsForm = () => {
       <div className="flex flex-col gap-5 lg:flex-row">
         <div className="flex flex-col gap-2 lg:w-[48%]">
           <label htmlFor="firstname" className="lable-style">
-            {' '}
+            {" "}
             First Name <sup className="text-pink-200">*</sup>
           </label>
           <input
@@ -56,19 +56,19 @@ const ContactUsForm = () => {
             id="firstname"
             placeholder="Enter first name"
             className="form-style"
-            {...register('firstname', { required: true })}
+            {...register("firstname", { required: true })}
           />
           {errors.firstname && (
             <span className="-mt-1 text-[12px] text-yellow-100">
-              {' '}
-              Please enter your name.{' '}
+              {" "}
+              Please enter your name.{" "}
             </span>
           )}
         </div>
 
         <div className="flex flex-col gap-2 lg:w-[48%]">
           <label htmlFor="lastname" className="lable-style">
-            {' '}
+            {" "}
             Last Name
           </label>
           <input
@@ -77,14 +77,14 @@ const ContactUsForm = () => {
             id="lastname"
             placeholder="Enter last name"
             className="form-style"
-            {...register('lastname')}
+            {...register("lastname")}
           />
         </div>
       </div>
 
       <div className="flex flex-col gap-2">
         <label htmlFor="email" className="lable-style">
-          {' '}
+          {" "}
           Email Address <sup className="text-pink-200">*</sup>
         </label>
         <input
@@ -93,19 +93,19 @@ const ContactUsForm = () => {
           id="email"
           placeholder="Enter email address"
           className="form-style"
-          {...register('email', { required: true })}
+          {...register("email", { required: true })}
         />
         {errors.email && (
           <span className="-mt-1 text-[12px] text-yellow-100">
-            {' '}
-            Please enter your Email address.{' '}
+            {" "}
+            Please enter your Email address.{" "}
           </span>
         )}
       </div>
 
       <div className="flex flex-col gap-2">
         <label htmlFor="phonenumber" className="lable-style">
-          {' '}
+          {" "}
           Phone Number <sup className="text-pink-200">*</sup>
         </label>
 
@@ -117,13 +117,13 @@ const ContactUsForm = () => {
               id="firstname"
               placeholder="Enter first name"
               className="form-style"
-              {...register('countrycode', { required: true })}
+              {...register("countrycode", { required: true })}
             >
               {CountryCode.map((ele, i) => {
                 return (
                   <option key={i} value={ele.code}>
-                    {' '}
-                    {ele.code} - {ele.country}{' '}
+                    {" "}
+                    {ele.code} - {ele.country}{" "}
                   </option>
                 )
               })}
@@ -137,13 +137,13 @@ const ContactUsForm = () => {
               id="phonenumber"
               placeholder="12345 67890"
               className="form-style"
-              {...register('phoneNo', {
+              {...register("phoneNo", {
                 required: {
                   value: true,
-                  message: 'Please enter your Phone Number.',
+                  message: "Please enter your Phone Number.",
                 },
-                maxLength: { value: 12, message: 'Invalid Phone Number' },
-                minLength: { value: 10, message: 'Invalid Phone Number' },
+                maxLength: { value: 12, message: "Invalid Phone Number" },
+                minLength: { value: 10, message: "Invalid Phone Number" },
               })}
             />
           </div>
@@ -151,15 +151,15 @@ const ContactUsForm = () => {
 
         {errors.phoneNo && (
           <span className="-mt-1 text-[12px] text-yellow-100">
-            {' '}
-            {errors.phoneNo.message}{' '}
+            {" "}
+            {errors.phoneNo.message}{" "}
           </span>
         )}
       </div>
 
       <div className="flex flex-col gap-2">
         <label htmlFor="message" className="lable-style">
-          {' '}
+          {" "}
           Message <sup className="text-pink-200">*</sup>
         </label>
         <textarea
@@ -169,12 +169,12 @@ const ContactUsForm = () => {
           rows="7"
           placeholder="Enter your message here"
           className="form-style"
-          {...register('message', { required: true })}
+          {...register("message", { required: true })}
         />
         {errors.message && (
           <span className="-mt-1 text-[12px] text-yellow-100">
-            {' '}
-            Please enter your Message.{' '}
+            {" "}
+            Please enter your Message.{" "}
           </span>
         )}
       </div>
@@ -184,7 +184,7 @@ const ContactUsForm = () => {
         type="submit"
         className={`rounded-md bg-yellow-50 px-6 py-3 text-center text-[13px] font-bold text-black shadow-[2px_2px_0px_0px_rgba(255,255,255,0.18)]
                   ${!loading &&
-          'transition-all duration-200 hover:scale-95 hover:shadow-none'
+          "transition-all duration-200 hover:scale-95 hover:shadow-none"
           }  disabled:bg-richblack-500 sm:text-[16px] `}
       >
         Send Message

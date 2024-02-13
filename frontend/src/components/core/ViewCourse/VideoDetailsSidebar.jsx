@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react'
-import { BsChevronDown } from 'react-icons/bs'
-import { IoIosArrowBack } from 'react-icons/io'
-import { useSelector } from 'react-redux'
-import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import IconBtn from '../../common/IconBtn'
-import PropTypes from 'prop-types'
+import { useEffect, useState } from "react"
+import { BsChevronDown } from "react-icons/bs"
+import { IoIosArrowBack } from "react-icons/io"
+import { useSelector } from "react-redux"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
+import IconBtn from "../../common/IconBtn"
+import PropTypes from "prop-types"
 
 export default function VideoDetailsSidebar ({ setReviewModal }) {
-  const [activeStatus, setActiveStatus] = useState('')
-  const [videoBarActive, setVideoBarActive] = useState('')
+  const [activeStatus, setActiveStatus] = useState("")
+  const [videoBarActive, setVideoBarActive] = useState("")
   const navigate = useNavigate()
   const location = useLocation()
   const { sectionId, subSectionId } = useParams()
@@ -51,7 +51,7 @@ export default function VideoDetailsSidebar ({ setReviewModal }) {
             <div className="flex w-full items-center justify-between ">
               <div
                 onClick={() => {
-                  navigate('/dashboard/enrolled-courses')
+                  navigate("/dashboard/enrolled-courses")
                 }}
                 title="back"
                 className="flex h-[35px] w-[35px] items-center justify-center rounded-full bg-richblack-100 p-1 text-richblack-700 hover:scale-90"
@@ -68,7 +68,7 @@ export default function VideoDetailsSidebar ({ setReviewModal }) {
             <div className="flex flex-col">
               <p>{courseEntireData?.courseName}</p>
               <p className="text-sm font-semibold text-richblack-500">
-                {' '}
+                {" "}
                 {completedLectures?.length} / {totalNoOfLectures}
               </p>
             </div>
@@ -89,8 +89,8 @@ export default function VideoDetailsSidebar ({ setReviewModal }) {
                   <div className="flex items-center gap-3">
                     <span
                       className={`${activeStatus === course?.sectionName
-                        ? 'rotate-0'
-                        : 'rotate-180'
+                        ? "rotate-0"
+                        : "rotate-180"
                         } transition-all duration-500`}
                     >
                       <BsChevronDown />
@@ -104,8 +104,8 @@ export default function VideoDetailsSidebar ({ setReviewModal }) {
                     {course.subSections.map((topic, i) => (
                       <div
                         className={`flex gap-3  px-5 py-2 ${videoBarActive === topic._id
-                          ? 'bg-yellow-200 font-semibold text-richblack-800'
-                          : 'hover:bg-richblack-900'
+                          ? "bg-yellow-200 font-semibold text-richblack-800"
+                          : "hover:bg-richblack-900"
                           } `}
                         key={i}
                         onClick={() => {

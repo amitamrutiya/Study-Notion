@@ -1,21 +1,21 @@
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { toast } from 'react-hot-toast'
-import { IoAddCircleOutline } from 'react-icons/io5'
-import { MdNavigateNext } from 'react-icons/md'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from "react"
+import { useForm } from "react-hook-form"
+import { toast } from "react-hot-toast"
+import { IoAddCircleOutline } from "react-icons/io5"
+import { MdNavigateNext } from "react-icons/md"
+import { useDispatch, useSelector } from "react-redux"
 
 import {
   createSection,
   updateSection,
-} from '../../../../../services/operations/courseDetailsAPI'
+} from "../../../../../services/operations/courseDetailsAPI"
 import {
   setCourse,
   setEditCourse,
   setStep,
-} from '../../../../../slices/courseSlice'
-import IconBtn from '../../../../common/IconBtn'
-import NestedView from './NestedView'
+} from "../../../../../slices/courseSlice"
+import IconBtn from "../../../../common/IconBtn"
+import NestedView from "./NestedView"
 
 export default function CourseBuilderForm () {
   const {
@@ -45,7 +45,7 @@ export default function CourseBuilderForm () {
         },
         token,
       )
-      console.log('edit', response)
+      console.log("edit", response)
     } else {
       response = await createSection(
         {
@@ -54,21 +54,21 @@ export default function CourseBuilderForm () {
         },
         token,
       )
-      console.log('save', response)
+      console.log("save", response)
     }
 
     if (response) {
       // console.log("section response", response)
       dispatch(setCourse(response))
       setEditSectionName(null)
-      setValue('sectionName', '')
+      setValue("sectionName", "")
     }
     setLoading(false)
   }
 
   const cancelEdit = () => {
     setEditSectionName(null)
-    setValue('sectionName', '')
+    setValue("sectionName", "")
   }
 
   const handleChangeEditSectionName = (sectionId, sectionName) => {
@@ -77,18 +77,18 @@ export default function CourseBuilderForm () {
       return
     }
     setEditSectionName(sectionId)
-    setValue('sectionName', sectionName)
+    setValue("sectionName", sectionName)
   }
 
   const goToNext = () => {
     if (course.courseContent.length === 0) {
-      toast.error('Please add atleast one section')
+      toast.error("Please add atleast one section")
       return
     }
     if (
       course.courseContent.some((section) => section.subSections.length === 0)
     ) {
-      toast.error('Please add atleast one lecture in each section')
+      toast.error("Please add atleast one lecture in each section")
       return
     }
     dispatch(setStep(3))
@@ -105,20 +105,20 @@ export default function CourseBuilderForm () {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="flex flex-col space-y-2">
           <label className="text-sm text-richblack-5" htmlFor="sectionName">
-            {' '}
-            Section Name <sup className="text-pink-200">*</sup>{' '}
+            {" "}
+            Section Name <sup className="text-pink-200">*</sup>{" "}
           </label>
           <input
             id="sectionName"
             disabled={loading}
             placeholder="Add a section to build your course"
-            {...register('sectionName', { required: true })}
+            {...register("sectionName", { required: true })}
             className="form-style w-full"
           />
           {errors.sectionName && (
             <span className="ml-2 text-xs tracking-wide text-pink-200">
-              {' '}
-              Section name is required{' '}
+              {" "}
+              Section name is required{" "}
             </span>
           )}
         </div>
@@ -127,7 +127,7 @@ export default function CourseBuilderForm () {
           <IconBtn
             type="submit"
             disabled={loading}
-            text={editSectionName ? 'Edit Section Name' : 'Create Section'}
+            text={editSectionName ? "Edit Section Name" : "Create Section"}
             outline={true}
           >
             <IoAddCircleOutline size={20} className="text-yellow-50" />
@@ -152,7 +152,7 @@ export default function CourseBuilderForm () {
       <div className="flex justify-end gap-x-3">
         <button
           onClick={goBack}
-          className={'flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900'}
+          className={"flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900"}
         >
           Back
         </button>

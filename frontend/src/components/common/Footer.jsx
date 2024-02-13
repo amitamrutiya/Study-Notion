@@ -1,21 +1,21 @@
-import { FooterLink2 } from '../../data/footer-links'
-import { Link } from 'react-router-dom'
-import Logo from '../../assets/Logo/Logo-Full-Light.png'
-import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from 'react-icons/fa'
+import { FooterLink2 } from "../../data/footer-links"
+import { Link } from "react-router-dom"
+import Logo from "../../assets/Logo/Logo-Full-Light.png"
+import { FaFacebook, FaGoogle, FaTwitter, FaYoutube } from "react-icons/fa"
 
-const BottomFooter = ['Privacy Policy', 'Cookie Policy', 'Terms']
+const BottomFooter = ["Privacy Policy", "Cookie Policy", "Terms"]
 const Resources = [
-  'Articles',
-  'Blog',
-  'Chart Sheet',
-  'Code challenges',
-  'Docs',
-  'Projects',
-  'Videos',
-  'Workspaces',
+  "Articles",
+  "Blog",
+  "Chart Sheet",
+  "Code challenges",
+  "Docs",
+  "Projects",
+  "Videos",
+  "Workspaces",
 ]
-const Plans = ['Paid memberships', 'For students', 'Business solutions']
-const Community = ['Forums', 'Chapters', 'Events']
+const Plans = ["Paid memberships", "For students", "Business solutions"]
+const Community = ["Forums", "Chapters", "Events"]
 
 const Footer = () => {
   return (
@@ -27,12 +27,12 @@ const Footer = () => {
             <div className="w-[30%] flex flex-col gap-3 lg:w-[30%] mb-7 lg:pl-0">
               <img src={Logo} alt="" className="object-contain" />
               <h1 className="text-richblack-50 font-semibold text-[16px]">
-                {' '}
-                Company{' '}
+                {" "}
+                Company{" "}
               </h1>
 
               <div className="flex flex-col gap-2">
-                {['About', 'Careers', 'Affiliates'].map((ele, i) => {
+                {["About", "Careers", "Affiliates"].map((ele, i) => {
                   return (
                     <div
                       key={i}
@@ -51,8 +51,8 @@ const Footer = () => {
 
             <div className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
               <h1 className="text-richblack-50 font-semibold text-[16px]">
-                {' '}
-                Resources{' '}
+                {" "}
+                Resources{" "}
               </h1>
               <div className="flex flex-col gap-2 mt-2">
                 {Resources.map((ele, index) => {
@@ -61,9 +61,9 @@ const Footer = () => {
                       key={index}
                       className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200"
                     >
-                      <Link to={ele.split(' ').join('-').toLowerCase()}>
-                        {' '}
-                        {ele}{' '}
+                      <Link to={ele.split(" ").join("-").toLowerCase()}>
+                        {" "}
+                        {ele}{" "}
                       </Link>
                     </div>
                   )
@@ -71,50 +71,50 @@ const Footer = () => {
               </div>
 
               <h1 className="text-richblack-50 font-semibold text-[16px] mt-7">
-                {' '}
-                Support{' '}
+                {" "}
+                Support{" "}
               </h1>
               <div className="text-[14px] cursor-pointer hover:text-richblack-50 transition-all duration-200 mt-2">
-                <Link to={'/contact'}>Help Center</Link>
+                <Link to={"/contact"}>Help Center</Link>
               </div>
             </div>
 
             <div className="w-[48%] lg:w-[30%] mb-7 lg:pl-0">
               <h1 className="text-richblack-50 font-semibold text-[16px]">
-                {' '}
-                Plans{' '}
+                {" "}
+                Plans{" "}
               </h1>
               <div className="flex flex-col gap-2 mt-2 text-[14px] cursor-pointer ">
-                <Link to={Plans[0].split(' ').join('-').toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
-                  {' '}
-                  {Plans[0]}{' '}
+                <Link to={Plans[0].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
+                  {" "}
+                  {Plans[0]}{" "}
                 </Link>
-                <Link to={Plans[1].split(' ').join('-').toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
-                  {' '}
-                  {Plans[1]}{' '}
+                <Link to={Plans[1].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
+                  {" "}
+                  {Plans[1]}{" "}
                 </Link>
-                <Link to={Plans[2].split(' ').join('-').toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
-                  {' '}
-                  {Plans[2]}{' '}
+                <Link to={Plans[2].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
+                  {" "}
+                  {Plans[2]}{" "}
                 </Link>
               </div>
 
               <h1 className="text-richblack-50 font-semibold text-[16px] mt-7">
-                {' '}
-                Community{' '}
+                {" "}
+                Community{" "}
               </h1>
               <div className="flex flex-col gap-2 mt-2 text-[14px] cursor-pointer ">
-                <Link to={Community[0].split(' ').join('-').toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
-                  {' '}
-                  {Community[0]}{' '}
+                <Link to={Community[0].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
+                  {" "}
+                  {Community[0]}{" "}
                 </Link>
-                <Link to={Community[1].split(' ').join('-').toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
-                  {' '}
-                  {Community[1]}{' '}
+                <Link to={Community[1].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
+                  {" "}
+                  {Community[1]}{" "}
                 </Link>
-                <Link to={Community[2].split(' ').join('-').toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
-                  {' '}
-                  {Community[2]}{' '}
+                <Link to={Community[2].split(" ").join("-").toLowerCase()} className="hover:text-richblack-50  transition-all duration-200">
+                  {" "}
+                  {Community[2]}{" "}
                 </Link>
               </div>
             </div>
@@ -153,26 +153,26 @@ const Footer = () => {
           <div className="flex flex-row">
             <div className=" border-r border-richblack-700 cursor-pointer hover:text-richblack-50 transition-all duration-200 px-3">
               <Link
-                to={BottomFooter[0].split(' ').join('-').toLocaleLowerCase()}
+                to={BottomFooter[0].split(" ").join("-").toLocaleLowerCase()}
               >
-                {' '}
-                {BottomFooter[0]}{' '}
+                {" "}
+                {BottomFooter[0]}{" "}
               </Link>
             </div>
             <div className=" border-r border-richblack-700 cursor-pointer hover:text-richblack-50 transition-all duration-200 px-3">
               <Link
-                to={BottomFooter[1].split(' ').join('-').toLocaleLowerCase()}
+                to={BottomFooter[1].split(" ").join("-").toLocaleLowerCase()}
               >
-                {' '}
-                {BottomFooter[1]}{' '}
+                {" "}
+                {BottomFooter[1]}{" "}
               </Link>
             </div>
             <div className="cursor-pointer hover:text-richblack-50 transition-all duration-200 px-3">
               <Link
-                to={BottomFooter[2].split(' ').join('-').toLocaleLowerCase()}
+                to={BottomFooter[2].split(" ").join("-").toLocaleLowerCase()}
               >
-                {' '}
-                {BottomFooter[2]}{' '}
+                {" "}
+                {BottomFooter[2]}{" "}
               </Link>
             </div>
           </div>

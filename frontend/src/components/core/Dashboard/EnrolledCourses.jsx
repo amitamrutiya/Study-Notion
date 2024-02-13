@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import ProgressBar from '@ramonak/react-progress-bar'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { getUserEnrolledCourses } from '../../../services/operations/profileAPI'
+import { useEffect, useState } from "react"
+import ProgressBar from "@ramonak/react-progress-bar"
+import { useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { getUserEnrolledCourses } from "../../../services/operations/profileAPI"
 
 export default function EnrolledCourses () {
   const { token } = useSelector((state) => state.auth)
@@ -14,7 +14,7 @@ export default function EnrolledCourses () {
       const res = await getUserEnrolledCourses(token)
       setEnrolledCourses(res)
     } catch (error) {
-      console.log('Could not fetch enrolled courses.')
+      console.log("Could not fetch enrolled courses.")
     }
   }
 
@@ -34,8 +34,8 @@ export default function EnrolledCourses () {
         : !enrolledCourses.length
             ? (
         <p className="grid h-[10vh] w-full place-content-center text-richblack-5">
-          {' '}
-          You have not enrolled in any course yet.{' '}
+          {" "}
+          You have not enrolled in any course yet.{" "}
         </p>
               )
             : (
@@ -49,7 +49,7 @@ export default function EnrolledCourses () {
           {/* Course Names */}
           {enrolledCourses.map((course, i, arr) => (
             <div
-              className={`flex items-center border border-richblack-700 ${i === arr.length - 1 ? 'rounded-b-lg' : 'rounded-none'
+              className={`flex items-center border border-richblack-700 ${i === arr.length - 1 ? "rounded-b-lg" : "rounded-none"
                 }`}
               key={i}
             >
@@ -82,7 +82,7 @@ export default function EnrolledCourses () {
                   completed={course.progressPercentage || 0}
                   height="8px"
                   isLabelVisible={false}
-                />{' '}
+                />{" "}
               </div>
             </div>
           ))}

@@ -1,22 +1,22 @@
-import { useSelector } from 'react-redux'
-import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
-import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
-import { useState } from 'react'
-import { FaCheck } from 'react-icons/fa'
-import { FiEdit2 } from 'react-icons/fi'
-import { HiClock } from 'react-icons/hi'
-import { RiDeleteBin6Line } from 'react-icons/ri'
-import { useNavigate } from 'react-router-dom'
+import { useSelector } from "react-redux"
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table"
+import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css"
+import { useState } from "react"
+import { FaCheck } from "react-icons/fa"
+import { FiEdit2 } from "react-icons/fi"
+import { HiClock } from "react-icons/hi"
+import { RiDeleteBin6Line } from "react-icons/ri"
+import { useNavigate } from "react-router-dom"
 
-import { formatDate } from '../../../../services/formatDate.js'
+import { formatDate } from "../../../../services/formatDate.js"
 import {
   deleteCourse,
   fetchInstructorCourses,
-} from '../../../../services/operations/courseDetailsAPI.js'
-import { COURSE_STATUS } from '../../../../utils/constants'
-import ConfirmationModal from '../../../common/ConfirmationModal'
-import { GetCourseTotalDuration } from '../../../../utils/totalDuration.js'
-import PropTypes from 'prop-types'
+} from "../../../../services/operations/courseDetailsAPI.js"
+import { COURSE_STATUS } from "../../../../utils/constants"
+import ConfirmationModal from "../../../common/ConfirmationModal"
+import { GetCourseTotalDuration } from "../../../../utils/totalDuration.js"
+import PropTypes from "prop-types"
 
 export default function CoursesTable ({ courses, setCourses }) {
   const navigate = useNavigate()
@@ -42,20 +42,20 @@ export default function CoursesTable ({ courses, setCourses }) {
         <Thead>
           <Tr className="flex gap-x-10 rounded-t-md border-b border-b-richblack-800 px-6 py-2">
             <Th className="flex-1 text-left text-sm font-medium uppercase text-richblack-100">
-              {' '}
-              Courses{' '}
+              {" "}
+              Courses{" "}
             </Th>
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">
-              {' '}
-              Duration{' '}
+              {" "}
+              Duration{" "}
             </Th>
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">
-              {' '}
-              Price{' '}
+              {" "}
+              Price{" "}
             </Th>
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">
-              {' '}
-              Actions{' '}
+              {" "}
+              Actions{" "}
             </Th>
           </Tr>
         </Thead>
@@ -65,8 +65,8 @@ export default function CoursesTable ({ courses, setCourses }) {
             ? (
             <Tr>
               <Td className="py-10 text-center text-2xl font-medium text-richblack-100">
-                {' '}
-                No courses found{' '}
+                {" "}
+                No courses found{" "}
               </Td>
             </Tr>
               )
@@ -84,21 +84,21 @@ export default function CoursesTable ({ courses, setCourses }) {
                   />
                   <div className="flex flex-col justify-between">
                     <p className="text-lg font-semibold text-richblack-5">
-                      {' '}
-                      {course.courseName}{' '}
+                      {" "}
+                      {course.courseName}{" "}
                     </p>
                     <p className="text-xs text-richblack-300">
-                      {course.courseDescription.split(' ').length >
+                      {course.courseDescription.split(" ").length >
                         TRUNCATE_LENGTH
                         ? course.courseDescription
-                          .split(' ')
+                          .split(" ")
                           .slice(0, TRUNCATE_LENGTH)
-                          .join(' ') + '...'
+                          .join(" ") + "..."
                         : course.courseDescription}
                     </p>
                     <p className="text-[12px] text-white">
-                      {' '}
-                      Created: {formatDate(course.createdAt)}{' '}
+                      {" "}
+                      Created: {formatDate(course.createdAt)}{" "}
                     </p>
                     {course.status === COURSE_STATUS.DRAFT
                       ? (
@@ -117,12 +117,12 @@ export default function CoursesTable ({ courses, setCourses }) {
                   </div>
                 </Td>
                 <Td className="text-sm font-medium text-richblack-100">
-                  {' '}
-                  {GetCourseTotalDuration(course)}{' '}
+                  {" "}
+                  {GetCourseTotalDuration(course)}{" "}
                 </Td>
                 <Td className="text-sm font-medium text-richblack-100">
-                  {' '}
-                  ₹{course.price}{' '}
+                  {" "}
+                  ₹{course.price}{" "}
                 </Td>
                 <Td className="text-sm font-medium text-richblack-100 ">
                   <button
@@ -141,11 +141,11 @@ export default function CoursesTable ({ courses, setCourses }) {
                     className="px-1 transition-all duration-200 hover:scale-110 hover:text-[#ff0000]"
                     onClick={() => {
                       setConfirmationModal({
-                        text1: 'Do you want to delete this course?',
+                        text1: "Do you want to delete this course?",
                         text2:
-                          'All the data related to this course will be deleted',
-                        btn1Text: !loading ? 'Delete' : 'Loading...  ',
-                        btn2Text: 'Cancel',
+                          "All the data related to this course will be deleted",
+                        btn1Text: !loading ? "Delete" : "Loading...  ",
+                        btn2Text: "Cancel",
                         btn1Handler: !loading
                           ? () => handleCourseDelete(course._id)
                           : () => { },

@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react'
-import ReactStars from 'react-rating-stars-component'
+import { useEffect, useState } from "react"
+import ReactStars from "react-rating-stars-component"
 
-import { Swiper, SwiperSlide } from 'swiper/react' // Import Swiper React components
-import 'swiper/css' // Import Swiper styles
-import 'swiper/css/free-mode'
-import 'swiper/css/pagination'
-import '../../App.css'
-import { FaStar } from 'react-icons/fa' // Icons
+import { Swiper, SwiperSlide } from "swiper/react" // Import Swiper React components
+import "swiper/css" // Import Swiper styles
+import "swiper/css/free-mode"
+import "swiper/css/pagination"
+import "../../App.css"
+import { FaStar } from "react-icons/fa" // Icons
 
-import { apiConnector } from '../../services/apiconnector' // Get apiFunction and the endpoint
-import { ratingsEndpoints } from '../../services/apis'
+import { apiConnector } from "../../services/apiconnector" // Get apiFunction and the endpoint
+import { ratingsEndpoints } from "../../services/apis"
 
 function ReviewSlider () {
   const [reviews, setReviews] = useState([])
@@ -18,7 +18,7 @@ function ReviewSlider () {
   useEffect(() => {
     (async () => {
       const { data } = await apiConnector(
-        'GET',
+        "GET",
         ratingsEndpoints.REVIEWS_DETAILS_API,
       )
       if (data?.success) {
@@ -56,25 +56,25 @@ function ReviewSlider () {
                     <div className="flex flex-col">
                       <h1 className="font-semibold text-richblack-5">{`${review?.user?.firstName} ${review?.user?.lastName}`}</h1>
                       <h2 className="text-[12px] font-medium text-richblack-500">
-                        {' '}
-                        {review?.course?.courseName}{' '}
+                        {" "}
+                        {review?.course?.courseName}{" "}
                       </h2>
                     </div>
                   </div>
 
                   <p className="font-medium text-richblack-25">
-                    {review?.review.split(' ').length > truncateWords
+                    {review?.review.split(" ").length > truncateWords
                       ? `${review?.review
-                        .split(' ')
+                        .split(" ")
                         .slice(0, truncateWords)
-                        .join(' ')} ...`
+                        .join(" ")} ...`
                       : `${review?.review}`}
                   </p>
 
                   <div className="flex items-center gap-2 ">
                     <h3 className="font-semibold text-yellow-100">
-                      {' '}
-                      {review.rating.toFixed(1)}{' '}
+                      {" "}
+                      {review.rating.toFixed(1)}{" "}
                     </h3>
                     <ReactStars
                       count={5}

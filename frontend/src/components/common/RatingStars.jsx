@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { TiStarFullOutline, TiStarHalfOutline, TiStarOutline } from 'react-icons/ti'
-import PropTypes from 'prop-types'
+import { useEffect, useState } from "react"
+import { TiStarFullOutline, TiStarHalfOutline, TiStarOutline } from "react-icons/ti"
+import PropTypes from "prop-types"
 
 function RatingStars ({ ReviewCount, StarSize }) {
   const [starCount, SetStarCount] = useState({

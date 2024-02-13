@@ -1,7 +1,7 @@
-import CTAButton from '../HomePage/Button'
-import { FaArrowRight } from 'react-icons/fa'
-import { TypeAnimation } from 'react-type-animation'
-import PropTypes from 'prop-types'
+import CTAButton from "../HomePage/Button"
+import { FaArrowRight } from "react-icons/fa"
+import { TypeAnimation } from "react-type-animation"
+import PropTypes from "prop-types"
 
 const CodeBlocks = ({
   position,
@@ -27,14 +27,14 @@ const CodeBlocks = ({
         <div className="flex gap-7 mt-7">
           <CTAButton active={ctabtn1.active} linkto={ctabtn1.linkto}>
             <div className="flex gap-2 items-center">
-              {' '}
-              {ctabtn1.btnText} <FaArrowRight />{' '}
+              {" "}
+              {ctabtn1.btnText} <FaArrowRight />{" "}
             </div>
           </CTAButton>
 
           <CTAButton active={ctabtn2.active} linkto={ctabtn2.linkto}>
-            {' '}
-            {ctabtn2.btnText}{' '}
+            {" "}
+            {ctabtn2.btnText}{" "}
           </CTAButton>
         </div>
       </div>
@@ -59,14 +59,14 @@ const CodeBlocks = ({
           className={`w-[90%] flex flex-col gap-2 font-bold font-mono ${codeColor} pr-1`}
         >
           <TypeAnimation
-            sequence={[codeblock, 1000, '']}
+            sequence={[codeblock, 1000, ""]}
             repeat={Infinity}
             cursor={true}
             omitDeletionAnimation={true}
-            style={{ whiteSpace: 'pre-line', display: 'block' }}
+            style={{ whiteSpace: "pre-line", display: "block" }}
           />
         </div>
-      </div>{' '}
+      </div>{" "}
     </div>
   )
 }

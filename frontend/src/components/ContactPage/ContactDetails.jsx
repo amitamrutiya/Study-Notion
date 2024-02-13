@@ -1,26 +1,26 @@
-import * as Icon1 from 'react-icons/bi'
-import * as Icon3 from 'react-icons/hi2'
-import * as Icon2 from 'react-icons/io5'
+import * as Icon1 from "react-icons/bi"
+import * as Icon3 from "react-icons/hi2"
+import * as Icon2 from "react-icons/io5"
 
 const contactDetails = [
   {
-    icon: 'HiChatBubbleLeftRight',
-    heading: 'Chat on us',
-    description: 'Our friendly team is here to help.',
-    details: 'info@studynotion.store',
+    icon: "HiChatBubbleLeftRight",
+    heading: "Chat on us",
+    description: "Our friendly team is here to help.",
+    details: "info@studynotion.store",
   },
   {
-    icon: 'BiWorld',
-    heading: 'Visit us',
-    description: 'Come and say hello at our office HQ.',
+    icon: "BiWorld",
+    heading: "Visit us",
+    description: "Come and say hello at our office HQ.",
     details:
-      'E-704, Shaligram Status, Near Ashadeep School, Vip Circle, Surat, Gujarat, India - 394105',
+      "E-704, Shaligram Status, Near Ashadeep School, Vip Circle, Surat, Gujarat, India - 394105",
   },
   {
-    icon: 'IoCall',
-    heading: 'Call us',
-    description: 'Mon - Fri From 8am to 5pm',
-    details: '+123 456 7869',
+    icon: "IoCall",
+    heading: "Call us",
+    description: "Mon - Fri From 8am to 5pm",
+    details: "+123 456 7869",
   },
 ]
 
@@ -37,8 +37,8 @@ const ContactDetails = () => {
             <div className="flex flex-row items-center gap-3">
               <Icon size={25} />
               <h1 className="text-lg font-semibold text-richblack-5">
-                {' '}
-                {ele?.heading}{' '}
+                {" "}
+                {ele?.heading}{" "}
               </h1>
             </div>
 

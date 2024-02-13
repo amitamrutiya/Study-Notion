@@ -1,10 +1,10 @@
-import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { updateProfile } from '../../../../services/operations/SettingsAPI'
-import IconBtn from '../../../common/IconBtn'
+import { useForm } from "react-hook-form"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate } from "react-router-dom"
+import { updateProfile } from "../../../../services/operations/SettingsAPI"
+import IconBtn from "../../../common/IconBtn"
 
-const genders = ['Male', 'Female', 'Non-Binary', 'Prefer not to say', 'Other']
+const genders = ["Male", "Female", "Non-Binary", "Prefer not to say", "Other"]
 
 export default function EditProfile () {
   const { user } = useSelector((state) => state.profile)
@@ -22,7 +22,7 @@ export default function EditProfile () {
     try {
       dispatch(updateProfile(token, data))
     } catch (error) {
-      console.log('ERROR MESSAGE - ', error.message)
+      console.log("ERROR MESSAGE - ", error.message)
     }
   }
 
@@ -46,7 +46,7 @@ export default function EditProfile () {
                 id="firstName"
                 placeholder="Enter first name"
                 className="form-style"
-                {...register('firstName', { required: true })}
+                {...register("firstName", { required: true })}
                 defaultValue={user?.firstName}
               />
               {errors.firstName && (
@@ -65,7 +65,7 @@ export default function EditProfile () {
                 id="lastName"
                 placeholder="Enter first name"
                 className="form-style"
-                {...register('lastName', { required: true })}
+                {...register("lastName", { required: true })}
                 defaultValue={user?.lastName}
               />
               {errors.lastName && (
@@ -86,14 +86,14 @@ export default function EditProfile () {
                 name="dateOfBirth"
                 id="dateOfBirth"
                 className="form-style"
-                {...register('dateOfBirth', {
+                {...register("dateOfBirth", {
                   required: {
                     value: true,
-                    message: 'Please enter your Date of Birth.',
+                    message: "Please enter your Date of Birth.",
                   },
                   max: {
-                    value: new Date().toISOString().split('T')[0],
-                    message: 'Date of Birth cannot be in the future.',
+                    value: new Date().toISOString().split("T")[0],
+                    message: "Date of Birth cannot be in the future.",
                   },
                 })}
                 defaultValue={user?.additionalDetails?.dateOfBirth}
@@ -113,7 +113,7 @@ export default function EditProfile () {
                 name="gender"
                 id="gender"
                 className="form-style"
-                {...register('gender', { required: true })}
+                {...register("gender", { required: true })}
                 defaultValue={user?.additionalDetails?.gender}
               >
                 {genders.map((ele, i) => {
@@ -143,13 +143,13 @@ export default function EditProfile () {
                 id="contactNumber"
                 placeholder="Enter Contact Number"
                 className="form-style"
-                {...register('contactNumber', {
+                {...register("contactNumber", {
                   required: {
                     value: true,
-                    message: 'Please enter your Contact Number.',
+                    message: "Please enter your Contact Number.",
                   },
-                  maxLength: { value: 12, message: 'Invalid Contact Number' },
-                  minLength: { value: 10, message: 'Invalid Contact Number' },
+                  maxLength: { value: 12, message: "Invalid Contact Number" },
+                  minLength: { value: 10, message: "Invalid Contact Number" },
                 })}
                 defaultValue={user?.additionalDetails?.contactNumber}
               />
@@ -169,7 +169,7 @@ export default function EditProfile () {
                 id="about"
                 placeholder="Enter Bio Details"
                 className="form-style"
-                {...register('about', { required: true })}
+                {...register("about", { required: true })}
                 defaultValue={user?.additionalDetails?.about}
               />
               {errors.about && (
@@ -184,7 +184,7 @@ export default function EditProfile () {
         <div className="flex justify-end gap-2">
           <button
             onClick={() => {
-              navigate('/dashboard/my-profile')
+              navigate("/dashboard/my-profile")
             }}
             className="cursor-pointer rounded-md bg-richblack-700 py-2 px-5 font-semibold text-richblack-50"
           >

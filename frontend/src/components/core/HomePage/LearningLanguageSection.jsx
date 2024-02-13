@@ -1,8 +1,8 @@
-import HighlightText from './HighlightText'
-import KnowYourProgress from '../../../assets/Images/Know_your_progress.png'
-import CompareWithOthers from '../../../assets/Images/Compare_with_others.png'
-import PlanYourLesson from '../../../assets/Images/Plan_your_lessons.png'
-import CTAButton from '../HomePage/Button'
+import HighlightText from "./HighlightText"
+import KnowYourProgress from "../../../assets/Images/Know_your_progress.png"
+import CompareWithOthers from "../../../assets/Images/Compare_with_others.png"
+import PlanYourLesson from "../../../assets/Images/Plan_your_lessons.png"
+import CTAButton from "../HomePage/Button"
 
 const LearningLanguageSection = () => {
   return (
@@ -12,7 +12,7 @@ const LearningLanguageSection = () => {
 
                 <div>
                     Your Swiss Knife for
-                    <HighlightText text={' learning any language'} />
+                    <HighlightText text={" learning any language"} />
                 </div>
 
                 <p className="text-center text-richblack-700 font-medium lg:w-[75%] mx-auto leading-6 text-base mt-3"> Using spin making learning multiple languages easy. with 20+ languages realistic voice-over, progress tracking, custom schedule and more. </p>
@@ -25,7 +25,7 @@ const LearningLanguageSection = () => {
             </div>
 
             <div className="w-fit mx-auto lg:mb-20 mb-8 -mt-5">
-                <CTAButton active={true} linkto={'/signup'}> Learn more </CTAButton>
+                <CTAButton active={true} linkto={"/signup"}> Learn more </CTAButton>
             </div>
 
         </>

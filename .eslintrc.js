@@ -20,9 +20,9 @@ module.exports = {
       },
     },
   ],
-  parser: "@babel/eslint-parser",
+  // parser: "@babel/eslint-parser",
   parserOptions: {
-    ecmaVersion: "latest",
+    ecmaVersion: 2020,
     sourceType: "module",
     ecmaFeatures: {
       jsx: true, // This is the key line - it tells ESLint to expect JSX syntax

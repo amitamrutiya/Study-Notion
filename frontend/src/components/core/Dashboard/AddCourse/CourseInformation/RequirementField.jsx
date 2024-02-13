@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import PropTypes from 'prop-types'
+import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
+import PropTypes from "prop-types"
 
 export default function RequirementsField ({
   name,
@@ -10,7 +10,7 @@ export default function RequirementsField ({
   errors,
 }) {
   const { editCourse, course } = useSelector((state) => state.course)
-  const [requirement, setRequirement] = useState('')
+  const [requirement, setRequirement] = useState("")
   const [requirementsList, setRequirementsList] = useState([])
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function RequirementsField ({
   const handleAddRequirement = () => {
     if (requirement) {
       setRequirementsList([...requirementsList, requirement])
-      setRequirement('')
+      setRequirement("")
     }
   }
 
@@ -40,8 +40,8 @@ export default function RequirementsField ({
   return (
     <div className="flex flex-col space-y-2">
       <label className="text-sm text-richblack-5" htmlFor={name}>
-        {' '}
-        {label} <sup className="text-pink-200">*</sup>{' '}
+        {" "}
+        {label} <sup className="text-pink-200">*</sup>{" "}
       </label>
       <div className="flex flex-col items-start space-y-2">
         <input
@@ -79,8 +79,8 @@ export default function RequirementsField ({
 
       {errors[name] && (
         <span className="ml-2 text-xs tracking-wide text-pink-200">
-          {' '}
-          {label} is required{' '}
+          {" "}
+          {label} is required{" "}
         </span>
       )}
     </div>

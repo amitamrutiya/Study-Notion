@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Outlet, useParams } from 'react-router-dom'
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
+import { Outlet, useParams } from "react-router-dom"
 
-import CourseReviewModal from '../components/core/ViewCourse/CourseReviewModal'
-import VideoDetailsSidebar from '../components/core/ViewCourse/VideoDetailsSidebar'
-import { getFullDetailsOfCourse } from '../services/operations/courseDetailsAPI'
+import CourseReviewModal from "../components/core/ViewCourse/CourseReviewModal"
+import VideoDetailsSidebar from "../components/core/ViewCourse/VideoDetailsSidebar"
+import { getFullDetailsOfCourse } from "../services/operations/courseDetailsAPI"
 import {
   setCompletedLectures,
   setCourseSectionData,
   setEntireCourseData,
   setTotalNoOfLectures,
-} from '../slices/viewCourseSlice'
+} from "../slices/viewCourseSlice"
 
 export default function ViewCourse () {
   const { courseId } = useParams()
@@ -43,7 +43,7 @@ export default function ViewCourse () {
           </div>
         </div>
       </div>
-      {reviewModal && <CourseReviewModal setReviewModal={setReviewModal} />}{' '}
+      {reviewModal && <CourseReviewModal setReviewModal={setReviewModal} />}{" "}
       {/* when we open reviewModal or click on review then CourseReviewModal will be active */}
     </>
   )

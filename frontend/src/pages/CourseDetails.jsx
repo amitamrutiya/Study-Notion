@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react'
-import { BiInfoCircle } from 'react-icons/bi'
-import { HiOutlineGlobeAlt } from 'react-icons/hi'
-import Markdown from 'react-markdown'
-import { useDispatch, useSelector } from 'react-redux'
-import { useNavigate, useParams } from 'react-router-dom'
-import ConfirmationModal from '../components/common/ConfirmationModal'
-import Footer from '../components/common/Footer'
-import RatingStars from '../components/common/RatingStars'
-import CourseAccordionBar from '../components/core/Course/CourseAccordionBar'
-import CourseDetailsCard from '../components/core/Course/CourseDetailsCard'
-import { formatDate } from '../services/formatDate'
-import { fetchCourseDetails } from '../services/operations/courseDetailsAPI'
-import { buyCourse } from '../services/operations/studentFeaturesAPI'
-import GetAvgRating from '../utils/avgRating'
-import Error from './Error'
-import { toast } from 'react-hot-toast'
-import { ACCOUNT_TYPE } from '../../src/utils/constants'
+import { useEffect, useState } from "react"
+import { BiInfoCircle } from "react-icons/bi"
+import { HiOutlineGlobeAlt } from "react-icons/hi"
+import Markdown from "react-markdown"
+import { useDispatch, useSelector } from "react-redux"
+import { useNavigate, useParams } from "react-router-dom"
+import ConfirmationModal from "../components/common/ConfirmationModal"
+import Footer from "../components/common/Footer"
+import RatingStars from "../components/common/RatingStars"
+import CourseAccordionBar from "../components/core/Course/CourseAccordionBar"
+import CourseDetailsCard from "../components/core/Course/CourseDetailsCard"
+import { formatDate } from "../services/formatDate"
+import { fetchCourseDetails } from "../services/operations/courseDetailsAPI"
+import { buyCourse } from "../services/operations/studentFeaturesAPI"
+import GetAvgRating from "../utils/avgRating"
+import Error from "./Error"
+import { toast } from "react-hot-toast"
+import { ACCOUNT_TYPE } from "../../src/utils/constants"
 
 function CourseDetails () {
   const { user } = useSelector((state) => state.profile)
@@ -38,7 +38,7 @@ function CourseDetails () {
         const res = await fetchCourseDetails(courseId)
         setResponse(res)
       } catch (error) {
-        console.log('Could not fetch Course Details')
+        console.log("Could not fetch Course Details")
       }
     })()
   }, [courseId])
@@ -93,7 +93,7 @@ function CourseDetails () {
     instructor,
     studentsEnrolled,
     createdAt,
-  } = response.data?.courseDetails
+  } = response.data.courseDetails
 
   const handleBuyCourse = () => {
     if (user && user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
@@ -105,11 +105,11 @@ function CourseDetails () {
       return
     }
     setConfirmationModal({
-      text1: 'You are not logged in!',
-      text2: 'Please login to Purchase Course.',
-      btn1Text: 'Login',
-      btn2Text: 'Cancel',
-      btn1Handler: () => navigate('/login'),
+      text1: "You are not logged in!",
+      text2: "Please login to Purchase Course.",
+      btn1Text: "Login",
+      btn2Text: "Cancel",
+      btn1Handler: () => navigate("/login"),
       btn2Handler: () => setConfirmationModal(null),
     })
   }
@@ -124,7 +124,7 @@ function CourseDetails () {
 
   return (
     <>
-      <div className={'relative w-full bg-richblack-800'}>
+      <div className={"relative w-full bg-richblack-800"}>
         {/* Hero Section */}
         <div className="mx-auto box-content px-4 lg:w-[1260px] 2xl:relative ">
           <div className="mx-auto grid min-h-[450px] max-w-maxContentTab justify-items-center py-8 lg:mx-0 lg:justify-items-start lg:py-0 xl:max-w-[810px]">
@@ -138,15 +138,15 @@ function CourseDetails () {
             </div>
 
             <div
-              className={'z-30 my-5 flex flex-col justify-center gap-4 py-5 text-lg text-richblack-5'}
+              className={"z-30 my-5 flex flex-col justify-center gap-4 py-5 text-lg text-richblack-5"}
             >
               <div>
                 <p className="text-4xl font-bold text-richblack-5 sm:text-[42px]">
-                  {' '}
-                  {courseName}{' '}
+                  {" "}
+                  {courseName}{" "}
                 </p>
               </div>
-              <p className={'text-richblack-200'}>{courseDescription}</p>
+              <p className={"text-richblack-200"}>{courseDescription}</p>
               <div className="text-md flex flex-wrap items-center gap-2">
                 <span className="text-yellow-25">{avgReviewCount}</span>
                 <RatingStars ReviewCount={avgReviewCount} StarSize={24} />
@@ -155,30 +155,30 @@ function CourseDetails () {
               </div>
               <div>
                 <p className="">
-                  {' '}
-                  Created By {`${instructor.firstName} ${instructor.lastName}`}{' '}
+                  {" "}
+                  Created By {`${instructor.firstName} ${instructor.lastName}`}{" "}
                 </p>
               </div>
               <div className="flex flex-wrap gap-5 text-lg">
                 <p className="flex items-center gap-2">
-                  {' '}
-                  <BiInfoCircle /> Created at {formatDate(createdAt)}{' '}
+                  {" "}
+                  <BiInfoCircle /> Created at {formatDate(createdAt)}{" "}
                 </p>
                 <p className="flex items-center gap-2">
-                  {' '}
-                  <HiOutlineGlobeAlt /> {language}{' '}
+                  {" "}
+                  <HiOutlineGlobeAlt /> {language}{" "}
                 </p>
               </div>
             </div>
 
             <div className="flex w-full flex-col gap-4 border-y border-y-richblack-500 py-4 lg:hidden">
               <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
-                {' '}
-                Rs. {price}{' '}
+                {" "}
+                Rs. {price}{" "}
               </p>
               <button className="yellowButton" onClick={handleBuyCourse}>
-                {' '}
-                Buy Now{' '}
+                {" "}
+                Buy Now{" "}
               </button>
               <button className="blackButton">Add to Cart</button>
             </div>
@@ -212,12 +212,12 @@ function CourseDetails () {
               <div className="flex flex-wrap justify-between gap-2">
                 <div className="flex gap-2">
                   <span>
-                    {' '}
-                    {courseContent.length} {'section(s)'}{' '}
+                    {" "}
+                    {courseContent.length} {"section(s)"}{" "}
                   </span>
                   <span>
-                    {' '}
-                    {totalNoOfLectures} {'lecture(s)'}{' '}
+                    {" "}
+                    {totalNoOfLectures} {"lecture(s)"}{" "}
                   </span>
                   <span>{response.data?.totalDuration} total length</span>
                 </div>
@@ -227,8 +227,8 @@ function CourseDetails () {
                     className="text-yellow-25"
                     onClick={() => setIsActive([])}
                   >
-                    {' '}
-                    Collapse all sections{' '}
+                    {" "}
+                    Collapse all sections{" "}
                   </button>
                 </div>
               </div>
@@ -262,8 +262,8 @@ function CourseDetails () {
                 <p className="text-lg">{`${instructor.firstName} ${instructor.lastName}`}</p>
               </div>
               <p className="text-richblack-50">
-                {' '}
-                {instructor?.additionalDetails?.about}{' '}
+                {" "}
+                {instructor?.additionalDetails?.about}{" "}
               </p>
             </div>
           </div>

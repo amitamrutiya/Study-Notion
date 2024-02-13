@@ -1,19 +1,19 @@
-import { useState } from 'react'
-import { AiFillCaretDown } from 'react-icons/ai'
-import { FaPlus } from 'react-icons/fa'
-import { MdEdit } from 'react-icons/md'
-import { RiDeleteBin6Line } from 'react-icons/ri'
-import { RxDropdownMenu } from 'react-icons/rx'
-import { useDispatch, useSelector } from 'react-redux'
+import { useState } from "react"
+import { AiFillCaretDown } from "react-icons/ai"
+import { FaPlus } from "react-icons/fa"
+import { MdEdit } from "react-icons/md"
+import { RiDeleteBin6Line } from "react-icons/ri"
+import { RxDropdownMenu } from "react-icons/rx"
+import { useDispatch, useSelector } from "react-redux"
 
 import {
   deleteSection,
   deleteSubSection,
-} from '../../../../../services/operations/courseDetailsAPI'
-import { setCourse } from '../../../../../slices/courseSlice'
-import ConfirmationModal from '../../../../common/ConfirmationModal'
-import SubSectionModal from './SubSectionModal'
-import PropTypes from 'prop-types'
+} from "../../../../../services/operations/courseDetailsAPI"
+import { setCourse } from "../../../../../slices/courseSlice"
+import ConfirmationModal from "../../../../common/ConfirmationModal"
+import SubSectionModal from "./SubSectionModal"
+import PropTypes from "prop-types"
 
 export default function NestedView ({ handleChangeEditSectionName }) {
   const { course } = useSelector((state) => state.course)
@@ -64,8 +64,8 @@ export default function NestedView ({ handleChangeEditSectionName }) {
               <div className="flex items-center gap-x-3">
                 <RxDropdownMenu className="text-2xl text-richblack-50" />
                 <p className="font-semibold text-richblack-50">
-                  {' '}
-                  {section.sectionName}{' '}
+                  {" "}
+                  {section.sectionName}{" "}
                 </p>
               </div>
               <div className="flex items-center gap-x-3">
@@ -82,10 +82,10 @@ export default function NestedView ({ handleChangeEditSectionName }) {
                 <button
                   onClick={() =>
                     setConfirmationModal({
-                      text1: 'Delete this Section?',
-                      text2: 'All the lectures in this section will be deleted',
-                      btn1Text: 'Delete',
-                      btn2Text: 'Cancel',
+                      text1: "Delete this Section?",
+                      text2: "All the lectures in this section will be deleted",
+                      btn1Text: "Delete",
+                      btn2Text: "Cancel",
                       btn1Handler: () => handleDeleleSection(section._id),
                       btn2Handler: () => setConfirmationModal(null),
                     })
@@ -94,7 +94,7 @@ export default function NestedView ({ handleChangeEditSectionName }) {
                   <RiDeleteBin6Line className="text-xl text-richblack-300" />
                 </button>
                 <span className="font-medium text-richblack-300">|</span>
-                <AiFillCaretDown className={'text-xl text-richblack-300'} />
+                <AiFillCaretDown className={"text-xl text-richblack-300"} />
               </div>
             </summary>
 
@@ -109,8 +109,8 @@ export default function NestedView ({ handleChangeEditSectionName }) {
                   <div className="flex items-center gap-x-3 py-2 ">
                     <RxDropdownMenu className="text-2xl text-richblack-50" />
                     <p className="font-semibold text-richblack-50">
-                      {' '}
-                      {data.title}{' '}
+                      {" "}
+                      {data.title}{" "}
                     </p>
                   </div>
                   <div
@@ -127,10 +127,10 @@ export default function NestedView ({ handleChangeEditSectionName }) {
                     <button
                       onClick={() =>
                         setConfirmationModal({
-                          text1: 'Delete this Sub-Section?',
-                          text2: 'This lecture will be deleted',
-                          btn1Text: 'Delete',
-                          btn2Text: 'Cancel',
+                          text1: "Delete this Sub-Section?",
+                          text2: "This lecture will be deleted",
+                          btn1Text: "Delete",
+                          btn2Text: "Cancel",
                           btn1Handler: () =>
                             handleDeleteSubSection(data._id, section._id),
                           btn2Handler: () => setConfirmationModal(null),

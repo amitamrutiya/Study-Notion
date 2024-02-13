@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
-import { useForm } from 'react-hook-form'
-import { RxCross2 } from 'react-icons/rx'
-import ReactStars from 'react-rating-stars-component'
-import { useSelector } from 'react-redux'
-import { createRating } from '../../../services/operations/courseDetailsAPI'
-import IconBtn from '../../common/IconBtn'
-import PropTypes from 'prop-types'
+import { useEffect } from "react"
+import { useForm } from "react-hook-form"
+import { RxCross2 } from "react-icons/rx"
+import ReactStars from "react-rating-stars-component"
+import { useSelector } from "react-redux"
+import { createRating } from "../../../services/operations/courseDetailsAPI"
+import IconBtn from "../../common/IconBtn"
+import PropTypes from "prop-types"
 
 export default function CourseReviewModal ({ setReviewModal }) {
   const { user } = useSelector((state) => state.profile)
@@ -15,12 +15,12 @@ export default function CourseReviewModal ({ setReviewModal }) {
   const { register, handleSubmit, setValue, formState: { errors } } = useForm()
 
   useEffect(() => {
-    setValue('courseExperience', '')
-    setValue('courseRating', 0)
+    setValue("courseExperience", "")
+    setValue("courseRating", 0)
   }, [])
 
   const ratingChanged = (newRating) => {
-    setValue('courseRating', newRating)
+    setValue("courseRating", newRating)
   }
 
   const onSubmit = async (data) => {
@@ -50,7 +50,7 @@ export default function CourseReviewModal ({ setReviewModal }) {
         <div className="p-6">
 
           <div className="flex items-center justify-center gap-x-4">
-            <img src={user?.image} alt={user?.firstName + 'profile'} className="aspect-square w-[50px] rounded-full object-cover" />
+            <img src={user?.image} alt={user?.firstName + "profile"} className="aspect-square w-[50px] rounded-full object-cover" />
             <div className="">
               <p className="font-semibold text-richblack-5"> {user?.firstName} {user?.lastName} </p>
               <p className="text-sm text-richblack-5"> Posting Publicly </p>
@@ -66,7 +66,7 @@ export default function CourseReviewModal ({ setReviewModal }) {
                 Add Your Experience <sup className="text-pink-200">*</sup>
               </label>
 
-              <textarea id="courseExperience" className="form-style resize-x-none min-h-[130px] w-full" placeholder="Add Your Experience" {...register('courseExperience', { required: true })} />
+              <textarea id="courseExperience" className="form-style resize-x-none min-h-[130px] w-full" placeholder="Add Your Experience" {...register("courseExperience", { required: true })} />
 
               {errors.courseExperience && (
                 <span className="ml-2 text-xs tracking-wide text-pink-200"> Please Add Your Experience  </span>
@@ -74,7 +74,7 @@ export default function CourseReviewModal ({ setReviewModal }) {
             </div>
 
             <div className="mt-6 flex w-11/12 justify-end gap-x-2">
-              <button onClick={() => setReviewModal(false)} className={'flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900'} >
+              <button onClick={() => setReviewModal(false)} className={"flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900"} >
                 Cancel
               </button>
               <IconBtn text="Save" />

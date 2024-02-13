@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
-import { AiOutlineDown } from 'react-icons/ai'
-import CourseSubSectionAccordion from './CourseSubSectionAccordion'
-import PropTypes from 'prop-types'
+import { useEffect, useRef, useState } from "react"
+import { AiOutlineDown } from "react-icons/ai"
+import CourseSubSectionAccordion from "./CourseSubSectionAccordion"
+import PropTypes from "prop-types"
 
 export default function CourseAccordionBar ({ course, isActive, handleActive }) {
   const contentEl = useRef(null)
@@ -21,7 +21,7 @@ export default function CourseAccordionBar ({ course, isActive, handleActive }) 
     <div className="overflow-hidden border border-solid border-richblack-600 bg-richblack-700 text-richblack-5 last:mb-0">
       <div>
         <div
-          className={'flex cursor-pointer items-start justify-between bg-opacity-20 px-7  py-6 transition-[0.3s]'}
+          className={"flex cursor-pointer items-start justify-between bg-opacity-20 px-7  py-6 transition-[0.3s]"}
           onClick={() => {
             handleActive(course._id)
           }}
@@ -29,7 +29,7 @@ export default function CourseAccordionBar ({ course, isActive, handleActive }) 
           <div className="flex items-center gap-2">
             <i
               className={
-                isActive.includes(course._id) ? 'rotate-180' : 'rotate-0'
+                isActive.includes(course._id) ? "rotate-180" : "rotate-0"
               }
             >
               <AiOutlineDown />
@@ -38,8 +38,8 @@ export default function CourseAccordionBar ({ course, isActive, handleActive }) 
           </div>
           <div className="space-x-4">
             <span className="text-yellow-25">
-              {' '}
-              {`${course.subSections.length || 0} lecture(s)`}{' '}
+              {" "}
+              {`${course.subSections.length || 0} lecture(s)`}{" "}
             </span>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default function CourseAccordionBar ({ course, isActive, handleActive }) 
 
       <div
         ref={contentEl}
-        className={'relative h-0 overflow-hidden bg-richblack-900 transition-[height] duration-[0.35s] ease-[ease]'}
+        className={"relative h-0 overflow-hidden bg-richblack-900 transition-[height] duration-[0.35s] ease-[ease]"}
         style={{ height: sectionHeight }}
       >
         <div className="text-textHead flex flex-col gap-2 px-7 py-6 font-semibold">
