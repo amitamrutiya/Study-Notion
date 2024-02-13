@@ -1,6 +1,8 @@
 {
     "name": "study-notion",
     "version": "0.1.0",
+    "description": "study-notion",
+    "type": "module",
     "private": true,
     "dependencies": {
         "concurrently": "^8.2.2"
@@ -8,6 +10,12 @@
     "scripts": {
         "start:server": "cd backend && npm run dev",
         "start:client": "cd frontend && npm run dev",
-        "dev": "concurrently -n \"server,client\" -c \"red,blue\" \"npm run start:server\" \"npm run start:client\""
+        "dev": "concurrently -n \"server,client\" -c \"red,blue\" \"npm run start:server\" \"npm run start:client\"",
+        "format:server": "cd backend && npm run format",
+        "format:client": "cd frontend && npm run format",
+        "format": "concurrently -n \"server,client\" -c \"red,blue\" \"npm run format:server\" \"npm run format:client\"",
+        "test:server": "cd backend && npm run test",
+        "test:client": "cd frontend && npm run test",
+        "test": "concurrently -n \"server,client\" -c \"red,blue\" \"npm run test:server\" \"npm run test:client\""
     }
 }
