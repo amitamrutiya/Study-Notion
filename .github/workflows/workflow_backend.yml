@@ -16,7 +16,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          path: "backend"
           ref: main
 
       - name: Use Node.js

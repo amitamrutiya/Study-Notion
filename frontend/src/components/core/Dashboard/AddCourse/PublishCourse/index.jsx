@@ -52,7 +52,7 @@ export default function PublishCourse () {
     setLoading(false)
   }
 
-  const onSubmit = (data) => {
+  const onSubmit = () => {
     handleCoursePublish()
   }
 

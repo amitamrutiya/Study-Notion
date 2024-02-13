@@ -4,10 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    "standard",
-    "plugin:react/recommended",
     "eslint:recommended",
-    "plugin:react/recommended",
   ],
   overrides: [
     {
@@ -20,7 +17,6 @@ module.exports = {
       },
     },
   ],
-  // parser: "@babel/eslint-parser",
   parserOptions: {
     ecmaVersion: 2020,
     sourceType: "module",
@@ -29,12 +25,10 @@ module.exports = {
     },
     requireConfigFile: false,
   },
-  plugins: ["react"],
   rules: {
-    "comma-dangle": ["error", "always-multiline"], // Enforces trailing commas for multiline statements
-    "react/jsx-filename-extension": ["warn", { extensions: [".js", ".jsx"] }], // Enforces .jsx extension for JSX files
-    "react/react-in-jsx-scope": "off", // Prevents React to be incorrectly marked as unused
+    "comma-dangle": ["error", "always-multiline"],
     quotes: ["error", "double"],
+    "no-undef" : "off",
   },
   settings: {
     react: {
