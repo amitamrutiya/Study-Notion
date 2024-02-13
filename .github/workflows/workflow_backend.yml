@@ -2,32 +2,33 @@ name: Backend CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./backend
 
     steps:
-    - uses: actions/checkout@v2
-      with:
-        path: 'backend'
-        ref: main
+      - uses: actions/checkout@v2
+        with:
+          path: "backend"
+          ref: main
 
-    - name: Use Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20.x'
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "20.x"
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm install
 
-    - name: Run ESLint
-      run: npm run format
+      - name: Run ESLint
+        run: npm run format
 
+      - name: Run Tests
+        run: npm run test
