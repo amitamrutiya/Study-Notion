@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import GetAvgRating from "../../utils/avgRating"
 
 describe("GetAvgRating", () => {
