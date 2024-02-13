@@ -1,40 +1,40 @@
-.PHONY: start-server start-client
+.PHONY: start-server start-client dev lint-server lint-client lint test-server test-client test format-server format-client format build
+
+define run_in_dir
+	@(cd $(1) && $(2))
+endef
 
 start-server:
-	@cd backend && npm run dev
+	$(call run_in_dir,backend,npm run dev)
 
 start-client:
-	@cd frontend && npm run dev
+	$(call run_in_dir,frontend,npm run dev)
 
-dev:
-	@make start-server & make start-client
+dev: start-server start-client
 
 lint-server:
-	@cd backend && npm run format
+	$(call run_in_dir,backend,npm run format)
 
 lint-client:
-	@cd frontend && npm run format
+	$(call run_in_dir,frontend,npm run format)
 
-lint:
-	@make format-server & make format-client
+lint: lint-server lint-client
 
 test-server:
-	@cd backend && npm run test
+	$(call run_in_dir,backend,npm run test)
 
 test-client:
-	@cd frontend && npm run test
+	$(call run_in_dir,frontend,npm run test)
 
-test:
-	@make test-server & make test-client
+test: test-server test-client
 
 format-server:
-	@cd backend && npx eslint . --fix
+	$(call run_in_dir,backend,npx eslint . --fix)
 
 format-client:
-	@cd frontend && npx eslint . --fix
+	$(call run_in_dir,frontend,npx eslint . --fix)
 
-format:
-	@make format-server & make format-client
+format: format-server format-client
 
 build:
-	@cd frontend && npm run build
+	$(call run_in_dir,frontend,npm run build)
