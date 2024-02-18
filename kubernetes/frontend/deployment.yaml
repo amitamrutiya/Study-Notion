@@ -4,8 +4,8 @@ metadata:
   name: frontend
   namespace: study-notion
   labels:
-    role: frontend
-    env: demo
+    app: frontend
+
 spec:
   replicas: 2
   strategy:
@@ -15,32 +15,22 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels:
-      role: frontend
+      app: frontend
   template:
     metadata:
       labels:
-        role: frontend
+        app: frontend
     spec:
-      imagePullSecrets:
-      - name: ecr-registry-secret
       containers:
-      - name: frontend
-        image: 339713132076.dkr.ecr.ap-south-1.amazonaws.com/study-notion-frontend:latest
-        resources:
-          limits:
-            cpu: "1"
-            memory: "500Mi"
-          requests:
-            cpu: "0.5"
-            memory: "200Mi"
-        imagePullPolicy: Always
-        env:
-          - name: VITE_REACT_APP_BASE_URL
-            value: "https://study-notion-n7gh.onrender.com/api/v1"
-          - name: VITE_RAZORPAY_KEY
-            valueFrom:
-              secretKeyRef:
-                name: frontend-sec
-                key: vite_razorpay_key
-        ports:
-        - containerPort: 3000
+        - name: frontend
+          image: amit2210/study-notion:frontend
+          resources:
+            limits:
+              cpu: "1"
+              memory: "500Mi"
+            requests:
+              cpu: "0.5"
+              memory: "200Mi"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000

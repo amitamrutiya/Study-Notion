@@ -10,7 +10,8 @@ start-server:
 start-client:
 	$(call run_in_dir,frontend,npm run dev)
 
-dev: start-server start-client
+dev:
+	@((make start-server &) & (make start-client &))
 
 lint-server:
 	$(call run_in_dir,backend,npm run format)
