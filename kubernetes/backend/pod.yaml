@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backend
+  namespace: study-notion
+  labels:
+    app: backend
+spec:
+  containers:
+    - name: backend
+      image: amit2210/study-notion:backend
+      resources:
+        limits:
+          cpu: "1"
+          memory: "500Mi"
+        requests:
+          cpu: "0.5"
+          memory: "200Mi"
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 4000

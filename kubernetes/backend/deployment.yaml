@@ -4,8 +4,7 @@ metadata:
   name: backend
   namespace: study-notion
   labels:
-    role: backend
-    env: demo
+    app: backend
 spec:
   replicas: 2
   strategy:
@@ -15,14 +14,12 @@ spec:
       maxUnavailable: 25%
   selector:
     matchLabels:
-      role: backend
+      app: backend
   template:
     metadata:
       labels:
-        role: backend
+        app: backend
     spec:
-      imagePullSecrets:
-      - name: ecr-registry-secret
       containers:
       - name: backend
         resources:
@@ -32,23 +29,7 @@ spec:
           requests:
             cpu: "0.5"
             memory: "200Mi"
-        envFrom:
-        - secretRef:
-            name: backend-sec
-        image: 339713132076.dkr.ecr.ap-south-1.amazonaws.com/study-notion-backend:latest
+        image: amit2210/study-notion:backend
         imagePullPolicy: Always
-        env:
-          - name: MONGO_CONN_STR
-            value: mongodb+srv://mongodb-svc@cluster0.gdxackk.mongodb.net/StudyNotion?directConnection=true
-          - name: MONGO_USERNAME
-            valueFrom:
-              secretKeyRef:
-                name: mongo-sec
-                key: username
-          - name: MONGO_PASSWORD
-            valueFrom:
-              secretKeyRef:
-                name: mongo-sec
-                key: password
         ports:
-        - containerPort: 8080
+        - containerPort: 4000
