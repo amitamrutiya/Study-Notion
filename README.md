@@ -206,6 +206,6 @@ provide a smooth user experience while ensuring security and stability.
 
 #### Using docker-copose
 ```bash
-  Setup env variable in both frontend and backend
+  Setup env variable in both frontend and backend directory
   Run: docker-compose up
 ```
