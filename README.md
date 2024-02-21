@@ -19,7 +19,7 @@ https://github.com/amitamrutiya2210/Study-Notion/assets/91112485/d243a4aa-97cc-4
 
 **Server:** Node, Express, MongoDB, Razorpay
 
-**Deployment:** Docker, Kubernetes
+**Deployment:** Docker, Kubernetes, AWS EKS
 
 ## Project Description
 
@@ -65,6 +65,11 @@ provides a flexible and scalable data storage solution. MongoDB allows for the s
 unstructured and semi-structured data. The database stores the course content, user data, and other
 relevant information related to the platform.
 
+### Deployment
+
+This project has been deployed using Docker, Kubernetes, and AWS EKS. Docker is used to containerize the application, creating a standalone executable package that includes everything needed to run the application - the code, runtime, libraries, and system tools. This ensures that the application runs the same way in every environment. Kubernetes, a powerful container orchestration system, is then used to manage these Docker containers. It handles tasks like scaling (increasing or decreasing the number of container instances based on demand), self-healing (restarting containers that fail), and rolling updates (gradually updating containers to a new version).
+
+AWS EKS (Elastic Kubernetes Service) is the specific Kubernetes service used for this project. EKS is a managed service that makes it easier to run Kubernetes on AWS, as it eliminates much of the manual configuration and management involved in setting up a Kubernetes cluster. It integrates with other AWS services for storage, networking, and security, making it a robust solution for deploying applications at scale.
 
 ### Architecture Diagram
 
