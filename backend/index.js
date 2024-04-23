@@ -7,14 +7,17 @@ import contactUsRoute from "./routes/contactUs.route.js"
 import connectDB from "./config/database.js"
 import cookieParser from "cookie-parser"
 import cors from "cors"
+import job from "./cron.js";
 import { cloudinaryConnect } from "./config/cloudinary.js"
 import fileUpload from "express-fileupload"
 import dotenv from "dotenv"
+
 
 dotenv.config({
   path: "./env",
 })
 
+job.start();
 const app = express()
 
 // database connect
