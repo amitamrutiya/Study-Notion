@@ -209,3 +209,13 @@ provide a smooth user experience while ensuring security and stability.
   Setup env variable in both frontend and backend directory
   Run: docker-compose up
 ```
+
+## Sample Accounts
+
+### Student
+- Email: amensister007@gmail.com
+- Password: password
+
+### Admin
+- Email: flutterwithfun@gmail.com
+- Password: password
