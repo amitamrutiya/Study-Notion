@@ -36,7 +36,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(
   cors({
-    origin: process.env.REACT_FRONTED_URL,
+    origin: [process.env.REACT_FRONTED_URL, process.env.VERCEL_FRONTED_URL],
     credentials: true,
   }),
 )
